@@ -28,14 +28,18 @@ export default {
 </script>
 
 <template>
-  <header>
-    Поисковая строка, кнопки и т д
-  </header>
-
-  <main>
-    Тут карточки 
-    (пишу с компа Полины)
-  </main>
+    <div class="card">
+        <div class="card-imgBlock">
+            <img class="card-imgBlock-img" src="../assets/imgs/cat1.jpg" alt="">
+            <img class="card-imgBlock-like" src="../assets/imgs/Heart.svg" alt="">
+            <div class="card-imgBlock-name">
+                <h3>КотоБубсик</h3>
+            </div>
+        </div>
+        <div class="card-info">
+            <p>Информация о КотоБубсике</p>
+        </div>
+    </div>
 </template>
 
-<style src="./styles/style.css"></style>
+<style src="./card.css"></style>
