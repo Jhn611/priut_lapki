@@ -2,44 +2,42 @@
 export default {
   data() {
     return {
-      // тут переменные которые будут изменяться или использоваться для отображения или для изменения состояния(видно или не видно блок например)
+        fav: false,
     }
   },
-  components: {
-    //тут импортируются компоненты (например карточка)
-  },
-  computed: {
-    // тут функции которые что-то считают и возвращают что-то (пока можно не использовать, это для оптимизации)
-  },
   methods: {
-    //тут функции которые будем использовать для изменения визуального контента (изменение переменных, добавление стилей, и т. д.) в целом можно все тут писать
-  },
-
-  created() {},
-
-  mounted() {
-    // то что происходит когда страница создаётся (то есть запуск анимаций которые должны проиграться при открытии страницы и подобное)
-  },
-
-  unmounted() {
-    // то что происходит когда страница закрывается/происходит переход на другу страницу
+    scaleOn(){
+        const img = this.$refs.cardImg
+        img.style.transform = "scale(1.1)"
+    },
+    scaleOff(){
+        const img = this.$refs.cardImg
+        img.style.transform = "scale(1.0)"
+    },
+    addFav(){
+        this.fav = !this.fav
+        const imgFav = this.$refs.cardFav
+        if(this.fav){
+            // хз пока чё тут
+        }
+    },
   },
 }
 </script>
 
 <template>
-    <div class="card">
+    <div class="card" @mouseenter="scaleOn" @mouseleave="scaleOff">
         <div class="card-imgBlock">
-            <img class="card-imgBlock-img" src="../assets/imgs/cat1.jpg" alt="">
-            <img class="card-imgBlock-like" src="../assets/imgs/Heart.svg" alt="">
+            <img class="card-imgBlock-img" src="../assets/imgs/cat1.jpg" alt="" ref="cardImg">
+            <img class="card-imgBlock-like" src="../assets/imgs/Heart.svg" alt="" @click="addFav" ref="cardFav">
             <div class="card-imgBlock-name">
                 <h3>КотоБубсик</h3>
             </div>
         </div>
         <div class="card-info">
-            <p>Информация о КотоБубсике</p>
+            <p>Он милашка</p>
         </div>
     </div>
 </template>
 
-<style src="./card.css"></style>
+<style src="../styles/card.css"></style>
