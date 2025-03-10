@@ -33,7 +33,8 @@ export default {
   </header>
 
   <main>
-    Тут карточки
+    Тут карточки 
+    (пишу с компа Полины)
   </main>
 </template>
 
