@@ -1,9 +1,47 @@
 body {
   width: 100%;
   height: 100%;
+  background-color: #E9D4C0;
 }
 
 #app {
   width: 100%;
   height: 100%;
+}
+
+.background_find {
+  position: fixed;
+  top: 0;
+  display: flex;
+  align-items: center;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1005px;
+  height: 117px;
+  background-color: #FFFFFF;
+  border-radius: 0 0 11px 11px;
+  z-index: 1000;
+}
+
+.header_icons {
+  height: 32px;
+  width: 176px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.background_find {
+  display: flex;
+  flex-direction: column;
+}
+
+.bg_find_all {
+  display: flex;
+  flex-direction: row;
+}
+
+.header_text {
+  display: flex;
+  flex-direction: row;
 }/*# sourceMappingURL=style.css.map */

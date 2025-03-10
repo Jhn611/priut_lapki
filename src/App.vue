@@ -29,14 +29,39 @@ export default {
 
 <template>
   <header>
-    Поисковая строка, кнопки и т д
+    <div class="background_find"> 
+      <div class="bg_find_all">
+        <img class="logo_find" src="./assets/imgs/logo.svg" />
+
+      <input/>
+
+      <div class="header_icons">
+        <img class="icon_home" src="./assets/imgs/Home.svg" />
+        <img class="icon_heart" src="./assets/imgs/Heart.svg" />
+        <img class="icon_user" src="./assets/imgs/User.svg" />
+      </div>
+
+      <div class="header_text">
+        <div class="header_text1">
+        <a> Как помочь </a>
+        <a> Нужды приюта </a>
+        <a> Полезные статьи </a>
+        <a> Сдать кошку в приют </a>
+        <a> Контакты </a>
+      </div>
+
+      <div class="header_text2">
+        <a> Москва Ул. Софьи Ковалевской 228 </a>
+      </div>
+
+      </div>
+      </div>
+    </div>
   </header>
 
   <main>
-    Тут карточки 
-    (пишу с компа Полины)
-    <!-- <CatCard/> -->
+    <CatCard/>
   </main>
 </template>
 
-<style src="./styles/style.css"></style>
+<style src="./styles/style.css"> </style>
