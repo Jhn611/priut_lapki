@@ -36,7 +36,7 @@ body {
   flex-direction: column;
 }
 
-.bg_find_all {
+.bg_upper {
   display: flex;
   flex-direction: row;
 }
