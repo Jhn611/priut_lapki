@@ -5,6 +5,7 @@ export default {
   data() {
     return {
       // тут переменные которые будут изменяться или использоваться для отображения или для изменения состояния(видно или не видно блок например)
+      test: [1, 2, 3],
     }
   },
   components: {
@@ -21,6 +22,9 @@ export default {
 
   mounted() {
     // то что происходит когда страница создаётся (то есть запуск анимаций которые должны проиграться при открытии страницы и подобное)
+    const main = document.querySelector("#main")
+    const height = this.test.length * 286 + 100
+    main.style.height = `${height}px`
   },
 
   unmounted() {
@@ -58,11 +62,16 @@ export default {
     </div>
   </header>
 
-  <main>
-    <div class="background_card">
-      <!-- <CatCard/> -->
+  <main id="main">
+    <div class="background_card" v-for="x in test" :key="x">
+      <CatCard/> 
+      <CatCard/> 
+      <CatCard/> 
+      <CatCard/> 
        <!-- <MainSearch/> -->
     </div>
+
+    
     
   </main>
 </template>

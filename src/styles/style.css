@@ -4,6 +4,15 @@ body {
   background-color: #E9D4C0;
   font-family: inter;
   font-weight: 100;
+  margin: 0;
+}
+
+main {
+  padding: 50px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }
 
 #app {
@@ -11,18 +20,25 @@ body {
   height: 100%;
 }
 
-.background_find {
-  position: fixed;
+header {
+  position: sticky;
   top: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: center;
+  z-index: 3;
+}
+
+.background_find {
   display: flex;
   align-items: center;
-  left: 50%;
-  transform: translateX(-50%);
   width: 1005px;
   height: 117px;
   background-color: #FFFFFF;
   border-radius: 0 0 11px 11px;
-  z-index: 1000;
+  z-index: 2;
 }
 
 .header_icons {
@@ -68,4 +84,16 @@ body {
 .logo_find {
   width: 170px;
   height: 90px;
+}
+
+.background_card {
+  background-color: #FFFFFF;
+  width: 1005px;
+  height: 286px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 11px;
+  justify-content: space-between;
+  padding: 5px;
 }/*# sourceMappingURL=style.css.map */
