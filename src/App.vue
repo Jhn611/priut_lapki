@@ -36,7 +36,7 @@ export default {
     <div class="background_find"> 
       <div class="bg_upper">
         <img class="logo_find" src="./assets/imgs/logo.svg" />
-        <input/>
+        <MainSearch/>
         <div class="header_icons">
           <img class="icon_home" src="./assets/imgs/Home.svg" />
           <img class="icon_heart" src="./assets/imgs/Heart.svg" />
@@ -65,7 +65,6 @@ export default {
       <CatCard/> 
       <CatCard/> 
       <CatCard/> 
-       <!-- <MainSearch/> -->
     </div>
 
     
