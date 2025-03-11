@@ -1,6 +1,5 @@
 <script>
 import CatCard from './components/CatCard.vue';
-import MainSearch from './components/MainSearch.vue';
 export default {
   data() {
     return {
@@ -10,7 +9,6 @@ export default {
   components: {
     //тут импортируются компоненты (например карточка)
     CatCard,
-    MainSearch,
   },
   computed: {
     // тут функции которые что-то считают и возвращают что-то (пока можно не использовать, это для оптимизации)
@@ -51,19 +49,14 @@ export default {
         </div>
 
         <div class="header_text2">
-          <a> Москва 
-            Ул. Софьи Ковалевской 228 </a>
+          <a> Москва Ул. Софьи Ковалевской 228 </a>
         </div>
       </div>
     </div>
   </header>
 
   <main>
-    <div class="background_card">
-      <!-- <CatCard/> -->
-       <!-- <MainSearch/> -->
-    </div>
-    
+    <CatCard/>
   </main>
 </template>
 

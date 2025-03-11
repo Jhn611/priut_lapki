@@ -13,7 +13,7 @@ export default {
 <template>
     <div class="search">
         <div class="search-input_block">
-            <input type="text">
+            <input type="text" placeholder="Поиск с Yandex GPT">
         </div>
         <div class="search-button_block">
             <img src="../assets/imgs/Search.svg" alt="">

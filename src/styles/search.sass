@@ -1,8 +1,48 @@
+:root
+    --
+    
 .search
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: center
+    width: 587px
+    height: 52px
+    background-color: #E5AA6F
+    border-radius: 11px
     &-input_block
-        input
-            all: unset
+        display: flex
+        flex-direction: row
+        align-items: center
+        justify-content: center
+        width: 533px
+        height: 47px
+        border-radius: 11px 0 0 11px
+        background-color: #E5AA6F
+        outline: 3px solid #E5AA6F
+        border: none
 
-    &-img_block
-        img
+        input
+            width: 533px
+            height: 44px
+            border-radius: 10px 
+            border: none
+            outline: none
+            font-size: 16px
+            padding: 0 0 0 12px
+            &:focus
+                box-shadow: none
+                border: none
             
+
+    &-button_block
+        display: flex
+        flex-direction: row
+        align-items: center
+        justify-content: center
+        width: 52px
+        height: 52px
+        background-color: #E5AA6F
+        border-radius: 0 11px 11px 0 
+        img
+
