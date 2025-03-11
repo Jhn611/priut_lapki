@@ -49,14 +49,18 @@ export default {
         </div>
 
         <div class="header_text2">
-          <a> Москва Ул. Софьи Ковалевской 228 </a>
+          <a> Москва 
+            Ул. Софьи Ковалевской 228 </a>
         </div>
       </div>
     </div>
   </header>
 
   <main>
-    <CatCard/>
+    <div class="background_card">
+      <!-- <CatCard/> -->
+    </div>
+    
   </main>
 </template>
 
