@@ -39,12 +39,12 @@ export default {
   <header>
     <div class="background_find"> 
       <div class="bg_upper">
-        <img class="logo_find" src="./assets/imgs/logo.svg" />
+        <img class="logo_find" src="./assets/imgs/logo.svg" @click="changePageToHome" style="cursor: pointer;" />
         <MainSearch/>
         <div class="header_icons">
-          <img class="icon_home" src="./assets/imgs/Home.svg" @click="changePageToHome" />
-          <img class="icon_heart" src="./assets/imgs/Heart.svg" />
-          <img class="icon_user" src="./assets/imgs/User.svg" @click="changePageToProfile" />
+          <img class="icon_home" src="./assets/imgs/Home.svg" @click="changePageToHome" style="cursor: pointer;"/>
+          <img class="icon_heart" src="./assets/imgs/Heart.svg" style="cursor: pointer;"/>
+          <img class="icon_user" src="./assets/imgs/User.svg" @click="changePageToProfile" style="cursor: pointer;"/>
         </div>
       </div>
       <div class="header_text">
