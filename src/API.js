@@ -46,3 +46,10 @@ export async function get_cats(start = 0, end = 12) {
     }
     return req(params, '/cats', 'get');
 };
+
+export async function search_cats(query) {
+    const data = {
+        query,
+    }
+    return req(data, '/search', 'post');
+};
