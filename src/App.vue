@@ -65,6 +65,30 @@ export default {
 
   <main id="main">
     <RouterView/>
+    <div class="background_profile"> 
+
+      <div class="profile_setup"> 
+        <div class="bgr_avatarka"> 
+        <div class="p_NS"> <p> ИТ </p> </div>
+        </div>
+      <div class="Name_Subname"> <p class="Name"> Иван </p> <p class="Subname"> Тимофеев </p> </div>
+      </div>
+
+    <div class="meaning"> 
+    <img src="./assets/imgs/Rectangle 26.svg">
+    <p> Любитель котиков, который может подарить счастливую жизнь и любимый дом коту. </p>
+    </div>
+    <p> (Сгенерированно Yandex GPT) </p>
+
+    <div class="bgr_change_pr"> <a> Изменить профиль </a> </div>
+    <div class="bgr_sobes"> <a> Пройти собеседование </a> </div>
+
+    </div>
+
+    
+    <div class="background_izbr_pr"> 
+
+    </div>
   </main>
 </template>
 
