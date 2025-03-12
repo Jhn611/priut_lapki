@@ -10,6 +10,7 @@ const router = createRouter({
     {
       path: '/home',
       name: 'user_home',
+      props: (route) => ({ command: route.query.command }),
       component: Home,
     },
     {

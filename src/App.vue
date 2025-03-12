@@ -5,6 +5,7 @@ export default {
     return {
       // тут переменные которые будут изменяться или использоваться для отображения или для изменения состояния(видно или не видно блок например)
       cats: [1, 2],
+      command: "",
     }
   },
   components: {
@@ -23,7 +24,6 @@ export default {
       this.$router.push('/home');
     },
   },
-
   async mounted() {
     // то что происходит когда страница создаётся (то есть запуск анимаций которые должны проиграться при открытии страницы и подобное)
     this.$router.push('/home');
@@ -40,7 +40,7 @@ export default {
     <div class="background_find"> 
       <div class="bg_upper">
         <img class="logo_find" src="./assets/imgs/logo.svg" @click="changePageToHome" style="cursor: pointer;" />
-        <MainSearch/>
+        <MainSearch v-model="command"/>
         <div class="header_icons">
           <img class="icon_home" src="./assets/imgs/Home.svg" @click="changePageToHome" style="cursor: pointer;"/>
           <img class="icon_heart" src="./assets/imgs/Heart.svg" style="cursor: pointer;"/>
@@ -64,7 +64,7 @@ export default {
   </header>
 
   <main id="main">
-    <RouterView/>
+    <RouterView :command="command"/>
   </main>
 </template>
 

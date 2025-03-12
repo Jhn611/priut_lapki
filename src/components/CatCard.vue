@@ -5,6 +5,12 @@ export default {
         fav: false,
     }
   },
+  props: {
+    data: {
+      type: Object, 
+      required: true, 
+    },
+},
   methods: {
     scaleOn(){
         const img = this.$refs.cardImg
@@ -31,11 +37,11 @@ export default {
             <img class="card-imgBlock-img" src="../assets/imgs/cat1.jpg" alt="" ref="cardImg">
             <img class="card-imgBlock-like" src="../assets/imgs/Heart.svg" alt="" @click="addFav" ref="cardFav">
             <div class="card-imgBlock-name">
-                <h3>КотоБубсик</h3>
+                <h3>{{ data.name }}</h3>
             </div>
         </div>
         <div class="card-info">
-            <p>Он милашка</p>
+            <p>{{ data.breed }}</p>
         </div>
     </div>
 </template>
