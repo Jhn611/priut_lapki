@@ -1,5 +1,6 @@
 <script>
-import MainSearch from './components/MainSearch.vue';
+import CatCard from '../components/CatCard.vue';
+import { get_cats } from '../API.js';
 export default {
   data() {
     return {
@@ -9,24 +10,26 @@ export default {
   },
   components: {
     //тут импортируются компоненты (например карточка)
-    MainSearch,
+    CatCard,
   },
   computed: {
     // тут функции которые что-то считают и возвращают что-то (пока можно не использовать, это для оптимизации)
   },
   methods: {
     //тут функции которые будем использовать для изменения визуального контента (изменение переменных, добавление стилей, и т. д.) в целом можно все тут писать
-    changePageToProfile(){
-      this.$router.push('/profile');
-    },
-    changePageToHome(){
-      this.$router.push('/home');
-    },
   },
 
   async mounted() {
     // то что происходит когда страница создаётся (то есть запуск анимаций которые должны проиграться при открытии страницы и подобное)
-    this.$router.push('/home');
+    const cats_cards = await get_cats()
+    console.log(cats_cards)
+    if(cats_cards){
+      this.cats = cats_cards
+    }
+    console.log("я здесб")
+    const main = document.querySelector("#main")
+    const height = this.cats.length * 286 + 100
+    main.style.height = `${height}px`
   },
 
   unmounted() {
@@ -36,36 +39,12 @@ export default {
 </script>
 
 <template>
-  <header>
-    <div class="background_find"> 
-      <div class="bg_upper">
-        <img class="logo_find" src="./assets/imgs/logo.svg" />
-        <MainSearch/>
-        <div class="header_icons">
-          <img class="icon_home" src="./assets/imgs/Home.svg" @click="changePageToHome" />
-          <img class="icon_heart" src="./assets/imgs/Heart.svg" />
-          <img class="icon_user" src="./assets/imgs/User.svg" @click="changePageToProfile" />
-        </div>
-      </div>
-      <div class="header_text">
-        <div class="header_text1">
-          <a> Как помочь </a>
-          <a> Нужды приюта </a>
-          <a> Полезные статьи </a>
-          <a> Сдать кошку в приют </a>
-          <a> Контакты </a>
-        </div>
-
-        <div class="header_text2">
-          <a> Москва Ул. Софьи Ковалевской 228 </a>
-        </div>
-      </div>
+  <div class="background_card" v-for="x in cats" :key="x">
+      <CatCard/> 
+      <CatCard/> 
+      <CatCard/> 
+      <CatCard/> 
     </div>
-  </header>
-
-  <main id="main">
-    <RouterView/>
-  </main>
 </template>
 
-<style src="./styles/style.css"> </style>
+<style src="../styles/style.css"> </style>
