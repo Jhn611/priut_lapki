@@ -13,6 +13,7 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  height: var(--mainHeight);
 }
 
 #app {
@@ -35,7 +36,7 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 1005px;
+  width: 1015px;
   height: 117px;
   background-color: #FFFFFF;
   border-radius: 0 0 11px 11px;
@@ -90,6 +91,13 @@ header {
   border-radius: 11px;
   justify-content: space-between;
   padding: 5px;
+}
+.background_card_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--mainHeight);
 }
 
 .background_profile {
@@ -155,4 +163,27 @@ header {
   width: 332px;
   border-radius: 11px;
   color: #5A2F10;
+}
+
+.loader {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  top: 49%;
+  left: 49%;
+}
+.loader img {
+  animation: load_img 1s infinite;
+  filter: invert(0.2);
+}
+
+@keyframes load_img {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
 }/*# sourceMappingURL=style.css.map */

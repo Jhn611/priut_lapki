@@ -6,6 +6,7 @@ export default {
     return {
       // тут переменные которые будут изменяться или использоваться для отображения или для изменения состояния(видно или не видно блок например)
       cats: [1, 2],
+      load: false,
     };
   },
   props: ["command"],
@@ -20,50 +21,69 @@ export default {
     //тут функции которые будем использовать для изменения визуального контента (изменение переменных, добавление стилей, и т. д.) в целом можно все тут писать
   },
   watch: {
-    command(newCommand) {
+    async command(newCommand) {
       if (newCommand) {
-        console.log("Получена команда:", newCommand);
-        const cats_cards = search_cats(newCommand);
-        console.log("searched cats", cats_cards);
-        if (cats_cards) {
-          let x = [];
-          let current = [];
-          for (let i = 0; i < cats_cards.length; i++) {
-            current.push(cats_cards[i]);
-            if (current.length % 4 == 0) {
-              x.push(current);
-              current = [];
+        this.load = true
+        try{
+          console.log("Получена команда:", newCommand);
+          const cats_cards = await search_cats(newCommand);
+          if (cats_cards) {
+            let x = [];
+            let current = [];
+            for (let i = 0; i < cats_cards.length; i++) {
+              current.push(cats_cards[i]);
+              if (current.length % 4 == 0) {
+                x.push(current);
+                current = [];
+              }
             }
+            if(current.length != 0){
+              x.push(current);
+            }
+            this.cats = x;
           }
-          x.push(current);
-          this.cats = x;
+          console.log(this.cats);
+          const height = this.cats.length * 286 + this.cats.length * 50;
+          document.body.style.cssText = `--mainHeight: ${height}px`
+          this.load = false
         }
-        console.log(this.cats);
+        catch{
+          this.load = false
+        }
+        
       }
     },
   },
 
   async mounted() {
-    const cats_cards = await get_cats();
-    console.log(cats_cards);
-    if (cats_cards) {
-      let x = [];
-      let current = [];
-      for (let i = 0; i < cats_cards.length; i++) {
-        current.push(cats_cards[i]);
-        if (current.length % 4 == 0) {
-          x.push(current);
-          current = [];
+    this.load = true  
+    try{
+      const cats_cards = await get_cats();
+      console.log(cats_cards);
+      if (cats_cards) {
+        let x = [];
+        let current = [];
+        for (let i = 0; i < cats_cards.length; i++) {
+          current.push(cats_cards[i]);
+          if (current.length % 4 == 0) {
+            x.push(current);
+            current = [];
+          }
         }
+        if(current.length != 0){
+          x.push(current);
+        }
+        this.cats = x;
       }
-      x.push(current);
-      this.cats = x;
-    }
-    console.log(this.cats);
+      console.log(this.cats);
 
-    const main = document.querySelector("#main");
-    const height = this.cats.length * 286 + this.cats.length * 50;
-    main.style.height = `${height}px`;
+      const height = this.cats.length * 286 + this.cats.length * 50;
+      document.body.style.cssText = `--mainHeight: ${height}px`
+      this.load = false 
+    }catch{
+      this.load = false 
+    }
+    
   },
 
   unmounted() {
@@ -73,9 +93,15 @@ export default {
 </script>
 
 <template>
-  <div class="background_card" v-for="x in cats" :key="x">
-    <CatCard v-for="i in x" :key="i" :data="i" />
+  <div class="background_card_container" v-if="!load">
+    <div class="background_card" v-for="x in cats" :key="x">
+      <CatCard v-for="i in x" :key="i" :data="i" />
+    </div>
   </div>
+  <div class="loader" v-if="load">
+    <img src="../assets/imgs/Loader.svg" alt="">
+  </div>
+  
 </template>
 
 <style src="../styles/style.css"></style>
