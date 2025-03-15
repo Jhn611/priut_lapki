@@ -1,10 +1,3 @@
-@font-face 
-  font-family: 'Inter' 
-  src: url('../assets/fonts/Inter/Inter-VariableFont_opsz,wght.ttf') format('truetype')
-  font-weight: normal
-  font-style: normal
-  font-display: swaplet my_cookie_value
-
 
 body
     width: 100%
@@ -87,6 +80,7 @@ header
     flex-direction: row
     align-items: center
     border-radius: 11px
+    justify-content: space-between
     padding: 5px
     &_container
         display: flex
@@ -102,7 +96,7 @@ header
     border-radius: 11px
     display: flex
     flex-direction: column
-    align-items: start
+    align-items: center
     justify-content: space-between
 
 .bgr_avatarka
@@ -112,9 +106,11 @@ header
     border-radius: 100px
     display: flex
     flex-direction: row
-    align-items: start
+    align-items: center
+    justify-content: center
     color: #FFFFFF
     font-size: 50px
+    margin: 0 20px 0 0
 .p_NS
     display: flex
     flex-direction: row
@@ -130,7 +126,8 @@ header
     display: flex
     flex-direction: row
     align-items: center
-    justify-content: space-between  
+    justify-content: start
+    width: 96%
 
 .bgr_change_pr
     background-color: #FFC58B
@@ -138,13 +135,45 @@ header
     width: 332px
     border-radius: 11px
     color: #5A2F10
+    display: flex
+    align-items: center
+    justify-content: start
+    padding: 0 0 0 10px
 .bgr_sobes
     background-color: #FFC58B
     height: 38px
     width: 332px
     border-radius: 11px
     color: #5A2F10
+    display: flex
+    align-items: center
+    justify-content: start
+    padding: 0 0 0 10px
+.background_izbr_pr
+    background-color: #FFFFFF
+    height: 658px
+    width: 587px
+    border-radius: 11px
+    display: flex
+.background_pr_iz
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: space-between
+    width: 1005px
 
+.meaning
+    position: relative
+.text_mean
+    font-size: 19px
+    position: absolute
+    top: -5px
+    left: 20px
+    right: 3px
+.text_mean_gpt
+    width: 100%
+    display: flex
+    justify-content: end
 .loader
     position: absolute
     display: flex

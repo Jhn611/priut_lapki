@@ -22,7 +22,7 @@ export default {
   },
   watch: {
     async command(newCommand) {
-      if (newCommand && newCommand != "refresh") {
+      if (newCommand) {
         this.load = true
         try{
           console.log("Получена команда:", newCommand);
@@ -51,34 +51,6 @@ export default {
           this.load = false
         }
         
-      }else if(newCommand == "refresh"){
-        this.load = true  
-        try{
-          const cats_cards = await get_cats();
-          console.log(cats_cards);
-          if (cats_cards) {
-            let x = [];
-            let current = [];
-            for (let i = 0; i < cats_cards.length; i++) {
-              current.push(cats_cards[i]);
-              if (current.length % 4 == 0) {
-                x.push(current);
-                current = [];
-              }
-            }
-            if(current.length != 0){
-              x.push(current);
-            }
-            this.cats = x;
-          }
-          console.log(this.cats);
-
-          const height = this.cats.length * 286 + this.cats.length * 50;
-          document.body.style.cssText = `--mainHeight: ${height}px`
-          this.load = false 
-        }catch{
-          this.load = false 
-        }
       }
     },
   },

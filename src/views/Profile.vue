@@ -28,6 +28,7 @@ export default {
 </script>
 
 <template>
+  <div class="background_pr_iz"> 
   <div class="background_profile">
     <div class="profile_setup">
       <div class="bgr_avatarka">
@@ -40,19 +41,18 @@ export default {
     </div>
 
     <div class="meaning">
-      <img src="./assets/imgs/Rectangle 26.svg" />
-      <p>
-        Любитель котиков, который может подарить счастливую жизнь и любимый дом
-        коту.
-      </p>
+      <img src="../assets/imgs/Rectangle.svg" />
+      <p class="text_mean"> Любитель котиков, который может подарить счастливую жизнь и любимый дом
+        коту. </p>
+        <p class="text_mean_gpt">(Сгенерированно Yandex GPT)</p>
     </div>
-    <p>(Сгенерированно Yandex GPT)</p>
 
     <div class="bgr_change_pr"><a> Изменить профиль </a></div>
     <div class="bgr_sobes"><a> Пройти собеседование </a></div>
   </div>
 
-  <div class="background_izbr_pr"></div>
+  <div class="background_izbr_pr"> </div>
+  </div>
 </template>
 
 <style src="../styles/style.css"></style>

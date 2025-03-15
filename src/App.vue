@@ -21,7 +21,6 @@ export default {
       this.$router.push('/profile');
     },
     changePageToHome(){
-      this.command = "refresh";
       this.$router.push('/home');
     },
   },

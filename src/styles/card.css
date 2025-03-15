@@ -8,10 +8,6 @@
   border-radius: 13px;
   background-color: #ebddcf;
   cursor: pointer;
-  margin: 0 60px 0 0;
-}
-.card:last-child {
-  margin: 0;
 }
 .card-imgBlock {
   position: relative;
@@ -42,7 +38,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #dcdcdc;
 }
 .card-imgBlock-name h3 {
   margin: 0;
