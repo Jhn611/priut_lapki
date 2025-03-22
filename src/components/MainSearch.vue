@@ -22,7 +22,7 @@ export default {
 <template>
     <div class="search">
         <div class="search-input_block">
-            <input type="text" placeholder="Поиск с Yandex GPT" v-model="searchString">
+            <input type="text" placeholder="Поиск с GigaChat" v-model="searchString">
         </div>
         <div class="search-button_block">
             <img src="../assets/imgs/Search.svg" alt="" style="cursor: pointer;" @click="updateValue">

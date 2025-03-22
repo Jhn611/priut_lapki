@@ -28,40 +28,28 @@ export default {
 </script>
 
 <template>
-  <div class="background_pr_iz"> 
-  <div class="background_profile">
-    <div class="profile_setup">
-      <div class="bgr_avatarka">
-        <div class="p_NS"><p>ИТ</p></div>
-      </div>
-      <div class="Name_Subname">
-        <p class="Name">Иван</p>
-        <p class="Subname">Тимофеев</p>
-      </div>
+  <div class="contacts_all"> 
+    <div class="bgr_photo_map"> 
+        <div class="image_priyut"> 
+            <div class="metro_adres">
+                <div class="bgr_metro"> <p> м. Селигерская </p></div>
+                <div class="bgr_adres"> <p> ул. Софьи Ковалевской 228 </p></div>
+            </div>
+        </div>
+        <div class="priyut_map"> </div>
     </div>
+    <div class="bgr_info_video"> 
+        <div class="div_ph"> <p> Номер телефона </p></div>
+        <p> +7 (999) 888 33 55 </p>
+        <div class="div_adres"> <p> Адрес </p></div>
+        <p> г. Москва ул. Софьи Ковалевской 228</p>
+        <div class="div_howdobr"> <p> Как добраться? </p></div>
+        <p> Видео как добраться от метро </p>
+        <div class="video"> </div>
 
-    <div class="meaning">
-      <img src="../assets/imgs/Rectangle.svg" />
-      <p class="text_mean"> Любитель котиков, который может подарить счастливую жизнь и любимый дом
-        коту. </p>
-        <p class="text_mean_gpt">(Сгенерированно GigaChat)</p>
     </div>
+  </div>  
 
-    <div class="bgr_change_pr"><a> Изменить профиль </a></div>
-    <div class="bgr_sobes"><a> Пройти собеседование </a></div>
-  </div>
-
-  <div class="background_izbr_pr"> 
-    <div class="bgr_cats_like_you"><a> Котики, которые вам понравились </a></div>
-
-    <div class="izbr_cats">
-      <div class="prizrak"> </div>
-      <div class="prizrak"> </div>
-    </div>
-
-    <div class="bgr_cats_like_you_more"><a> Просмотреть всех понравившихся котиков </a></div>
-  </div>
-  </div>
 </template>
 
 <style src="../styles/style.css"></style>
