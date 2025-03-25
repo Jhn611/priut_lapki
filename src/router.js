@@ -21,6 +21,16 @@ const router = createRouter({
       name: 'user_profile',
       component: Profile,
     },
+    // {
+    //   path: '/profile_changeinfo',
+    //   name: 'user_profile_changeinfo',
+    //   component: Profile_changeinfo,
+    // },
+    // {
+    //   path: '/profile_cats',
+    //   name: 'user_profile_cats',
+    //   component: Profile_cats,
+    // },
     {
       path: '/saved',
       name: 'user_saved',

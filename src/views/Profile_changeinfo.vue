@@ -49,44 +49,29 @@ export default {
 
     <div class="pr_setup_all"> 
 
-      <div class="bgr_ch_pr_with_rb" @click="changePageToProfile_changeinfo" style="cursor: pointer;"> 
+      <div class="bgr_ch_pr_with_rb"> 
         <img src="../assets/imgs/Radio_button_off.svg" class="rad_but">
-        <div class="bgr_change_pr"> <a> Изменить профиль </a></div>
+        <div class="bgr_change_pr"><a> Изменить профиль </a></div>
       </div>
 
-      <div class="bgr_ch_pr_with_rb" @click="changePageToProfile" style="cursor: pointer;"> 
+      <div class="bgr_ch_pr_with_rb"> 
         <img src="../assets/imgs/Radio_button_on.svg" class="rad_but">
-        <div class="bgr_sobes"> <a> Статус собеседования </a></div>
+        <div class="bgr_sobes"><a> Статус собеседования </a></div>
       </div>
 
-      <div class="bgr_ch_pr_with_rb" @click="changePageToProfile_cats" style="cursor: pointer;">
+      <div class="bgr_ch_pr_with_rb">
         <img src="../assets/imgs/Radio_button_off.svg" class="rad_but3">
-        <div class="bgr_catstopriyut"> <a> Коты, сданные в приют </a> </div>
+        <div class="bgr_catstopriyut"><a> Коты, сданные в приют </a></div>
       </div>
 
     </div>
   </div>
 
   <div class="background_profile_right"> 
-    <!-- когда собеседование не пройдено -->
-    <!-- <div class="status_sobes"> <p> Статус собеседования </p> </div>
+    <div class="status_sobes"> <p> Изменение информации профиля </p> </div>
     <div class="bgr_status_sobes"> 
-      <div class="complete_sobes"> <p> Собеседование не пройдено </p> </div>
-      <div class="pass_an_sobes"> <p> Пройти собеседование </p> </div>
-    </div> -->
-    <!-- когда собеседование пройдено успешно -->
-    <!-- <div class="status_sobes"> <p> Статус собеседования </p> </div>
-    <div class="bgr_status_sobes"> 
-      <div class="complete_sobes_sucsess"> <p> Собеседование пройдено успешно! </p> </div>
-      <div class="pass_an_sobes_sucsess"> <p class="pass_text"> Ждем вас в рабочее время приюта на стойке администратора в рабочее время (10:00-20:00) <br> Администратор проведет с вами личную беседу, познакомит с будущем питомцем и, в случае взаимной симпатии, оформит нужные документы. </p> </div>
-    </div> -->
-    <!-- когда собеседование пройдено с фейлом -->
-    <div class="status_sobes"> <p> Статус собеседования </p> </div>
-    <div class="bgr_status_sobes"> 
-      <div class="complete_sobes_fail"> <p> Собеседование провалено </p> </div>
-      <div class="pass_an_sobes_fail"> <p class="pass_text"> К сожалению, вы не будете хорошим хозяином для кошки и мы не сможем отдать в ваши руки животное. <br> <br> Повторная попытка будет доступна date </p> </div>
-    </div>
-    
+      
+    </div>   
   </div>
   </div>
 </template>
