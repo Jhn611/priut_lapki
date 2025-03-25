@@ -363,6 +363,7 @@ header {
   align-items: center;
   justify-content: space-between;
   height: 484px;
+  font-size: 22px;
 }
 
 .saved_cats {
@@ -387,6 +388,11 @@ header {
   align-items: center;
   justify-content: center;
   padding: 0 0 0 10px;
+  text-align: center;
+}
+
+.sce_text {
+  width: 358px;
 }
 
 .bgr_saved_cats {
@@ -406,6 +412,38 @@ header {
   align-items: center;
   justify-content: space-evenly;
   width: 1000px;
+}
+
+.howtohelp_all {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 484px;
+  font-size: 22px;
+}
+
+.howtohelp_text {
+  background-color: #FFC58B;
+  height: 50px;
+  width: 1005px;
+  border-radius: 11px;
+  color: #5A2F10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0 0 10px;
+}
+
+.bgr_saved_cats {
+  background-color: #FFFFFF;
+  height: 321px;
+  width: 1005px;
+  border-radius: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0 0 10px;
 }
 
 .contacts_all {
