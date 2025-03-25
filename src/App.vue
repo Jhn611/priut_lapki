@@ -55,7 +55,7 @@ export default {
       </div>
       <div class="header_text">
         <div class="header_text1">
-          <a> Как помочь </a>
+          <a @click="changePageToHowtohelp" style="cursor: pointer;"> Как помочь </a>
           <a> Нужды приюта </a>
           <a> Полезные статьи </a>
           <a> Сдать кошку в приют </a>

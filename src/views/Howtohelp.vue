@@ -28,18 +28,11 @@ export default {
 </script>
 
 <template>
-  <div class="saved_all"> 
-    <div class="saved_cats"> <a> Котики, которые вам понравились </a></div>
-    <div class="bgr_saved_cats"> 
-        <div class="saved_cats_cards"> 
-            <div class="prizrak"> </div>
-            <div class="prizrak"> </div>
-            <div class="prizrak"> </div>
-            <div class="prizrak"> </div>
-        </div>
+  <div class="howtohelp_all"> 
+    <div class="howtohelp_text"> <a> Как помочь приюту </a></div>
+    <div class="bgr_howtohelp_cats"> 
         
     </div>
-    <div class="saved_cats_else"> <a class="sce_text"> Добавляйте котиков не только в избранное, но и в свой дом! </a></div>
   </div>
 </template>
 
