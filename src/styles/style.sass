@@ -3,11 +3,11 @@ body
     width: 100%
     height: 100%
     background-color: #E9D4C0
-    font-family: inter
-    font-weight: 100
+    font-family: 'Inter', sans-serif
+    font-weight: 400
     margin: 0
 main
-    padding: 50px 0 0 0
+    padding: 20px 0 0 0
     display: flex
     flex-direction: column
     align-items: center
@@ -89,15 +89,26 @@ header
         justify-content: space-between
         height: var(--mainHeight)
 
+//профиль
 .background_profile
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: space-between
+    width: 1005px
+    font-size: 20px
+    color: #5A2F10
+
+//профиль слева
+.background_profile_left
     background-color: #FFFFFF
-    height: 658px
+    height: 648px
     width: 392px
     border-radius: 11px
     display: flex
     flex-direction: column
     align-items: center
-    justify-content: space-between
+    padding: 10px 0 0 0
 
 .bgr_avatarka
     background-color: #FFC58B
@@ -110,7 +121,7 @@ header
     justify-content: center
     color: #FFFFFF
     font-size: 50px
-    margin: 0 20px 0 0
+    margin: 0 15px 0 0
 .p_NS
     display: flex
     flex-direction: row
@@ -128,52 +139,311 @@ header
     align-items: center
     justify-content: start
     width: 96%
+    margin: 0 0 15px 0
 
 .bgr_change_pr
     background-color: #FFC58B
     height: 38px
-    width: 332px
+    width: 313px
     border-radius: 11px
     color: #5A2F10
     display: flex
     align-items: center
     justify-content: start
     padding: 0 0 0 10px
-.bgr_sobes
-    background-color: #FFC58B
-    height: 38px
-    width: 332px
-    border-radius: 11px
-    color: #5A2F10
-    display: flex
-    align-items: center
-    justify-content: start
-    padding: 0 0 0 10px
-.background_izbr_pr
-    background-color: #FFFFFF
-    height: 658px
-    width: 587px
-    border-radius: 11px
-    display: flex
-.background_pr_iz
+    margin: 0 0 10px 0
+.bgr_ch_pr_with_rb
     display: flex
     flex-direction: row
     align-items: center
-    justify-content: space-between
-    width: 1005px
-
+    justify-content: center
+.rad_but
+    padding: 0 7px 7px 0
+.rad_but3
+    padding: 0 7px 0px 0
+.bgr_sobes
+    background-color: #FFC58B
+    height: 38px
+    width: 313px
+    border-radius: 11px
+    color: #5A2F10
+    display: flex
+    align-items: center
+    justify-content: start
+    padding: 0 0 0 10px
+    margin: 0 0 10px 0
+.bgr_catstopriyut
+    background-color: #FFC58B
+    height: 38px
+    width: 313px
+    border-radius: 11px
+    color: #5A2F10
+    display: flex
+    align-items: center
+    justify-content: start
+    padding: 0 0 0 10px
 .meaning
     position: relative
+    margin: 0 0 20px 0
+    height: 160px
+    p
+        margin: 0
+        padding: 0
 .text_mean
     font-size: 19px
     position: absolute
-    top: -5px
+    top: 10px
     left: 20px
     right: 3px
 .text_mean_gpt
     width: 100%
     display: flex
     justify-content: end
+
+//профиль справа
+.background_profile_right
+    background-color: #FFFFFF
+    height: 658px
+    width: 587px
+    border-radius: 11px
+    display: flex 
+    flex-direction: column
+    align-items: center
+    justify-content: space-evenly
+
+.status_sobes
+    background-color: #FFC58B
+    border-radius: 11px
+    height: 50px
+    width: 394px
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: center
+.bgr_status_sobes
+    background-color: #E9D4C0
+    border-radius: 11px
+    height: 443px
+    width: 500px
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+//собес не пройден
+.complete_sobes
+    background-color: #FFFFFF
+    border-radius: 11px
+    height: 50px
+    width: 342px
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: center
+    margin: 0 0 15px 0
+.pass_an_sobes
+    background-color: #FFBE7D
+    border-radius: 11px
+    height: 50px
+    width: 342px
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: center
+//успешный собес
+.complete_sobes_sucsess
+    background-color: #F1FFF2
+    color: #144408
+    border-radius: 11px
+    height: 50px
+    width: 394px
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: center
+    margin: 0 0 15px 0
+.pass_an_sobes_sucsess
+    background-color: #FFFAF5
+    border-radius: 11px
+    height: 314px
+    width: 394px
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    text-align: center
+.pass_text
+    width: 367px
+    height: 208px
+//фейл собес
+.complete_sobes_fail
+    background-color: #FFF1F1
+    color: #440808
+    border-radius: 11px
+    height: 50px
+    width: 394px
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: center
+    margin: 0 0 15px 0
+.pass_an_sobes_fail
+    background-color: #FFFAF5
+    border-radius: 11px
+    height: 314px
+    width: 394px
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    text-align: center
+//для будущих карточек котов   
+.prizrak
+    background-color: #E9D4C0
+    height: 270px
+    width: 215px
+//избранное
+.saved_all
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: space-between
+    height: 484px
+
+.saved_cats
+    background-color: #FFC58B
+    height: 50px
+    width: 1005px
+    border-radius: 11px
+    color: #5A2F10
+    display: flex
+    align-items: center
+    justify-content: center
+    padding: 0 0 0 10px
+.saved_cats_else
+    background-color: #FFC58B
+    height: 71px
+    width: 377px
+    border-radius: 11px
+    color: #5A2F10
+    display: flex
+    align-items: center
+    justify-content: center
+    padding: 0 0 0 10px
+.bgr_saved_cats
+    background-color: #FFFFFF
+    height: 321px
+    width: 1005px
+    border-radius: 11px
+    display: flex
+    align-items: center
+    justify-content: space-between
+    padding: 0 0 0 10px
+.saved_cats_cards
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: space-evenly
+    width: 1000px
+// контакты
+.contacts_all
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: space-between
+    width: 1005px
+.bgr_photo_map
+    background-color: #FFFFFF
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: space-between
+    width: 540px
+    height: 618px    
+    border-radius: 11px
+    padding: 20px 0 20px 0
+.bgr_info_video
+    background-color: #FFFFFF
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: space-between
+    width: 448px
+    height: 638px    
+    border-radius: 11px
+    padding: 10px 0 10px 0
+.image_priyut
+    background-image: url("../assets/imgs/photo_priyut.svg")
+    border-radius: 11px
+    height: 313px 
+    width: 487px
+    display: flex
+    align-items: end
+    padding: 0 0 10px 0
+.metro_adres
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: space-evenly
+    width: 100%
+.bgr_metro
+    background-color: #FFEFE0
+    border-radius: 11px
+    width: 184px
+    height: 51px
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: center
+.bgr_adres
+    background-color: #FFEFE0
+    border-radius: 11px
+    width: 273px
+    height: 51px
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: center
+.priyut_map
+    background-color: #7a4343
+    border-radius: 11px
+    width: 487px
+    height: 270px
+.div_ph
+    background-color: #FFC58B
+    border-radius: 11px
+    width: 406px
+    height: 51px
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: center
+.div_adres
+    background-color: #FFC58B
+    border-radius: 11px
+    width: 406px
+    height: 51px
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: center
+.div_howdobr
+    background-color: #FFC58B
+    border-radius: 11px
+    width: 406px
+    height: 51px
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: center
+.video
+    background-color: #FFC58B
+    border-radius: 11px
+    width: 406px
+    height: 274px
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: center
 .loader
     position: absolute
     display: flex

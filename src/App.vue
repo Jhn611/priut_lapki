@@ -23,6 +23,12 @@ export default {
     changePageToHome(){
       this.$router.push('/home');
     },
+    changePageToSaved(){
+      this.$router.push('/saved');
+    },
+    changePageToContacts(){
+      this.$router.push('/contacts');
+    },
   },
   async mounted() {
     // то что происходит когда страница создаётся (то есть запуск анимаций которые должны проиграться при открытии страницы и подобное)
@@ -43,7 +49,7 @@ export default {
         <MainSearch v-model="command"/>
         <div class="header_icons">
           <img class="icon_home" src="./assets/imgs/Home.svg" @click="changePageToHome" style="cursor: pointer;"/>
-          <img class="icon_heart" src="./assets/imgs/Heart.svg" style="cursor: pointer;"/>
+          <img class="icon_heart" src="./assets/imgs/Heart.svg" @click="changePageToSaved" style="cursor: pointer;"/>
           <img class="icon_user" src="./assets/imgs/User.svg" @click="changePageToProfile" style="cursor: pointer;"/>
         </div>
       </div>
@@ -53,7 +59,7 @@ export default {
           <a> Нужды приюта </a>
           <a> Полезные статьи </a>
           <a> Сдать кошку в приют </a>
-          <a> Контакты </a>
+          <a @click="changePageToContacts" style="cursor: pointer;"> Контакты </a> 
         </div>
 
         <div class="header_text2">
