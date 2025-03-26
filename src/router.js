@@ -7,6 +7,7 @@ import Profile_changeinfo from './views/Profile_changeinfo.vue';
 import Profile_cats from './views/Profile_cats.vue';
 import Howtohelp from './views/Howtohelp.vue';
 import Surrender_a_cat from './views/Surrender_a_cat.vue';
+import Sobes from './views/Sobes.vue';
 
 const routes = [
 ];
@@ -54,6 +55,11 @@ const router = createRouter({
       path: '/surrender_a_cat',
       name: 'surrender_a_cat',
       component: Surrender_a_cat,
+    },
+    {
+      path: '/sobes',
+      name: 'sobes',
+      component: Sobes,
     },
   ]
 });

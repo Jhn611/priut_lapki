@@ -306,36 +306,15 @@ header
     justify-content: center
     text-align: center
 //изменение профиля
-.change_name
+.custom-input2
     background-color: #FFFAF5
-    border-radius: 11px
-    height: 50px
-    width: 461px
-    display: flex
-    flex-direction: column
-    align-items: center
-    justify-content: center
-    text-align: center
-.change_lastname
-    background-color: #FFFAF5
-    border-radius: 11px
-    height: 50px
-    width: 461px
-    display: flex
-    flex-direction: column
-    align-items: center
-    justify-content: center
-    text-align: center
-.change_ph_number
-    background-color: #FFFAF5
-    border-radius: 11px
-    height: 50px
-    width: 461px
-    display: flex
-    flex-direction: column
-    align-items: center
-    justify-content: center
-    text-align: center
+    color: #5A2F10
+    border: 1px solid #5A2F10
+    padding: 8px
+    width: 406px
+    height: 40px
+    border-radius: 5px
+    font-size: 16px
 //коты сданные в приют
 .cats1
     display: flex
@@ -356,6 +335,16 @@ header
     flex-direction: row
     justify-content: center
     align-items: center
+.bgr_status_cat_success
+    background-color: #B7FFAD
+    border-radius: 11px
+    height: 41px
+    width: 183px
+    display: flex
+    flex-direction: row
+    justify-content: center
+    align-items: center
+    color: #011D00
 //для будущих карточек котов в избранном 
 .prizrak
     background-color: #E9D4C0
@@ -407,6 +396,70 @@ header
     align-items: center
     justify-content: space-evenly
     width: 1000px
+//страница прохождения собеседования
+.sobesedodanie_all
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: space-evenly
+    height: 594px
+    font-size: 22px
+.sobesedovanie_text
+    background-color: #FFC58B
+    height: 55px
+    width: 394px
+    border-radius: 11px
+    color: #5A2F10
+    display: flex
+    align-items: center
+    justify-content: center
+    padding: 0 0 0 10px
+    margin: 20px 0 20px 0
+    font-size: 24px
+.sobesedovanie_predict
+    background-color: #ffe7cf
+    height: 50px
+    width: 584px
+    color: #4f2609
+    border-radius: 11px
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: center
+    text-align: center
+    padding: 0 0 0 0
+.bgr_sobesedovanie
+    color: #5A2F10
+    overflow-y: scroll
+    background-color: #FFFFFF
+    height: 594px
+    width: 1005px
+    border-radius: 11px
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: space-between
+    padding: 0 0 0 0
+.sobesedovanie_anketa_all
+    width: 726px
+    height: 100%
+.custom-input3
+    background-color: #E9D4C0
+    color: #5A2F10
+    border: 1px solid #5A2F10
+    padding: 8px
+    width: 726px
+    height: 102px
+    border-radius: 5px
+    font-size: 16px
+.custom-select 
+    background-color: #E9D4C0
+    color: #5A2F10
+    border: 1px solid #5A2F10
+    padding: 8px
+    border-radius: 5px
+    font-size: 16px
+    width: 100%
 //как помочь
 .howtohelp_all
     display: flex
@@ -584,16 +637,31 @@ header
     align-items: center
     justify-content: center
 .background_surrender_right
+    overflow-y: scroll
     background-color: #FFFFFF
     height: 604px
     width: 448px
     border-radius: 11px
-    display: flex 
+    display: flex
     flex-direction: column
     align-items: start
     justify-content: space-evenly
-    padding: 0 0 0 0px
+    padding: 0
+    &::-webkit-scrollbar
+        width: 6px // Ширина скроллбара
+        padding: 0 5px 0 0
 
+    &::-webkit-scrollbar-thumb
+        background-color: #ad9782 // Цвет ползунка
+        border-radius: 4px // Закругление углов
+
+    &::-webkit-scrollbar-track
+        background: #FFFFFF // Цвет фона скроллбара
+        border-radius: 11px
+.anketa2_all
+    width: 406px
+    height: 800px
+    padding: 0 0 10px 10px
 .surrender_zag
     background-color: #FFC58B
     border-radius: 11px
@@ -635,7 +703,9 @@ label
     align-items: center
     gap: 5px
     margin-bottom: 5px
-
+.radio-label
+    color: #5A2F10
+    font-weight: 400
 .loader
     position: absolute
     display: flex

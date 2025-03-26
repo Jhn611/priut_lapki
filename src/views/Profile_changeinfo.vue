@@ -92,11 +92,11 @@ export default {
     <div class="status_sobes"> <p> Изменение информации профиля </p> </div>
     <div class="bgr_status_sobes"> 
       <p> Имя </p>
-      <div class="change_name"> </div>
+      <input type="text" class="custom-input2" placeholder="Иван">
       <p> Фамилия </p>
-      <div class="change_lastname"> </div>
+      <input type="text" class="custom-input2" placeholder="Иванов">
       <p> Номер телефона </p>
-      <div class="change_ph_number"> </div>
+      <input type="text" class="custom-input2" placeholder="+7 (___) ___-__-__">
     </div>   
   </div>
   </div>

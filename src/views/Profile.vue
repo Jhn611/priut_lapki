@@ -35,6 +35,9 @@ export default {
     changePageToProfile_cats(){
       this.$router.push('/profile_cats');
     },
+    changePageToSobes(){
+      this.$router.push('/sobes');
+    },
     //тут функции которые будем использовать для изменения визуального контента (изменение переменных, добавление стилей, и т. д.) в целом можно все тут писать
   },
 
@@ -102,7 +105,7 @@ export default {
       <div class="pass_an_sobes_sucsess"> <p class="pass_text"> Ждем вас в рабочее время приюта на стойке администратора в рабочее время (10:00-20:00) <br> Администратор проведет с вами личную беседу, познакомит с будущем питомцем и, в случае взаимной симпатии, оформит нужные документы. </p> </div>
     </div> -->
     <!-- когда собеседование пройдено с фейлом -->
-    <div class="status_sobes"> <p> Статус собеседования </p> </div>
+    <div class="status_sobes" @click="changePageToSobes" style="cursor: pointer;"> <p> Статус собеседования </p> </div>
     <div class="bgr_status_sobes"> 
       <div class="complete_sobes_fail"> <p> Собеседование провалено </p> </div>
       <div class="pass_an_sobes_fail"> <p class="pass_text"> К сожалению, вы не будете хорошим хозяином для кошки и мы не сможем отдать в ваши руки животное. <br> <br> Повторная попытка будет доступна date </p> </div>

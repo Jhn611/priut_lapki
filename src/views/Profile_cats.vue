@@ -96,6 +96,7 @@ export default {
         <div class="cats1_photo"> </div>
         <p> Статус </p>
         <div class="bgr_status_cat"> <p> На рассмотрении </p> </div>
+        <!-- <div class="bgr_status_cat_success"> <p> Завершен </p> </div> -->
       </div>
     </div>
   </div>
