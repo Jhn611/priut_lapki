@@ -1,3 +1,6 @@
+body
+    overflow-x: hidden
+    position: relative
 .card
     display: flex
     flex-direction: column
@@ -54,3 +57,75 @@
         //background-color: #f0f0f0b3
         p
             margin: 0
+
+    &-infoBlock
+        display: flex
+        flex-direction: column
+        align-items: center
+        justify-content: space-evenly
+        height: 100%
+        &-name
+            display: flex
+            align-items: center
+            justify-content: center
+            width: 223px
+            height: 55px
+            background-color: #D9D9D9
+            border-radius: 11px
+            p
+                font-size: 30px
+        &-discription
+            display: flex
+            flex-direction: column
+            align-items: center
+            justify-content: start
+            width: 434px
+            height: 485px
+            background-color: #c4c4c4
+            border-radius: 11px
+            .discription
+                width: 98%
+                font-size: 24px
+            p
+                font-size: 30px
+                margin: 0 0 20px 0
+        &-btn
+            display: flex
+            align-items: center
+            justify-content: center
+            width: 223px
+            height: 55px
+            background-color: #E5AA6F
+            border-radius: 11px
+            p
+                font-size: 30px
+
+        
+
+
+.opened-card
+    width: 510px
+    height: 619px
+
+.open-card
+    position: absolute
+    top: 5vh
+    left: var(--cardpad)
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: space-evenly
+    background-color: #ffffff
+    border-radius: 11px
+    width: 1005px
+    height: 647px
+    z-index: 1001
+
+.black-bg
+    top: 0
+    left: 0
+    position: absolute
+    width: var(--cardblackbgwidth)
+    height: var(--cardblackbgheight)
+    background-color: #00000023
+    z-index: 1000

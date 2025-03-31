@@ -3,6 +3,7 @@ export default {
   data() {
     return {
         fav: false,
+        isVisible: false,
     }
   },
   props: {
@@ -27,12 +28,22 @@ export default {
             // хз пока чё тут
         }
     },
+    openCard(){
+        const body = document.body,  html = document.documentElement;
+        const height = Math.max( body.scrollHeight, body.offsetHeight,
+                            html.clientHeight, html.scrollHeight, html.offsetHeight );
+        this.isVisible = !this.isVisible
+        const pad = (window.innerWidth - 1005) / 2
+        const currentStyles = document.body.style.cssText;
+        document.body.style.cssText =  currentStyles  + `--cardpad: ${pad}px; --cardblackbgwidth: ${window.innerWidth}px; --cardblackbgheight: ${height}px`
+        console.log(pad, window.innerWidth, height)
+    },
   },
 }
 </script>
 
 <template>
-    <div class="card" @mouseenter="scaleOn" @mouseleave="scaleOff">
+    <div class="card" @mouseenter="scaleOn" @mouseleave="scaleOff" @click="openCard">
         <div class="card-imgBlock">
             <img class="card-imgBlock-img" src="../assets/imgs/cat1.jpg" alt="" ref="cardImg">
             <img class="card-imgBlock-like" src="../assets/imgs/Heart.svg" alt="" @click="addFav" ref="cardFav">
@@ -42,6 +53,19 @@ export default {
         </div>
         <div class="card-info">
             <p>{{ data.breed }}</p>
+        </div>
+        <div class="black-bg" v-if="isVisible">
+            <div class="open-card">
+                <div class="card-imgBlock opened-card">
+                    <img class="card-imgBlock-img" src="../assets/imgs/cat1.jpg" alt="" ref="cardImg">
+                    <img class="card-imgBlock-like" src="../assets/imgs/Heart.svg" alt="" @click="addFav" ref="cardFav">
+                </div>
+                <div class="card-infoBlock">
+                    <div class="card-infoBlock-name"><p>{{data.name}}</p></div>
+                    <div class="card-infoBlock-discription"><p>Описание</p><p class="discription">{{data.discription}}</p></div>
+                    <div class="card-infoBlock-btn"><p>Приютить</p></div>
+                </div>
+            </div>
         </div>
     </div>
 </template>

@@ -44,7 +44,8 @@ export default {
           }
           console.log(this.cats);
           const height = this.cats.length * 286 + this.cats.length * 50;
-          document.body.style.cssText = `--mainHeight: ${height}px`
+          const currentStyles = document.body.style.cssText;
+          document.body.style.cssText = currentStyles + `--mainHeight: ${height}px`
           this.load = false
         }
         catch{
@@ -78,7 +79,8 @@ export default {
       console.log(this.cats);
 
       const height = this.cats.length * 286 + this.cats.length * 50;
-      document.body.style.cssText = `--mainHeight: ${height}px`
+      const currentStyles = document.body.style.cssText;
+      document.body.style.cssText = currentStyles + `--mainHeight: ${height}px`
       this.load = false 
     }catch{
       this.load = false 
