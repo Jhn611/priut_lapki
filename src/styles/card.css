@@ -99,7 +99,7 @@ body {
 }
 .card-infoBlock-discription .discription {
   width: 98%;
-  font-size: 24px;
+  font-size: 20px;
 }
 .card-infoBlock-discription p {
   font-size: 30px;
@@ -133,7 +133,7 @@ body {
   justify-content: space-evenly;
   background-color: #ffffff;
   border-radius: 11px;
-  width: 1005px;
+  width: 1025px;
   height: 647px;
   z-index: 1001;
 }
@@ -144,6 +144,6 @@ body {
   position: absolute;
   width: var(--cardblackbgwidth);
   height: var(--cardblackbgheight);
-  background-color: rgba(0, 0, 0, 0.137254902);
+  background-color: rgba(0, 0, 0, 0.2666666667);
   z-index: 1000;
 }/*# sourceMappingURL=card.css.map */

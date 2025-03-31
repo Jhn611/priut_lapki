@@ -70,61 +70,35 @@ export default {
 
     <div class="pr_setup_all"> 
 
-      <div class="bgr_ch_pr_with_rb" @click="changePageToProfile_changeinfo" style="cursor: pointer;"> 
-        <img src="../assets/imgs/Radio_button_on.svg" class="rad_but">
-        <div class="bgr_change_pr"> <a> Изменить профиль </a></div>
-      </div>
+      <div class="pr_setup_all"> 
+        <div class="bgr_ch_pr_with_rb" @click="changePageToProfile_changeinfo" style="cursor: pointer;"> 
+          <img src="../assets/imgs/Radio_button_off.svg" class="rad_but">
+          <div class="bgr_change_pr"> <a> Изменить профиль </a></div>
+        </div>
 
-      <div class="bgr_ch_pr_with_rb" @click="changePageToProfile" style="cursor: pointer;"> 
-        <img src="../assets/imgs/Radio_button_off.svg" class="rad_but">
-        <div class="bgr_sobes"> <a> Статус собеседования </a></div>
-      </div>
+        <div class="bgr_ch_pr_with_rb" @click="changePageToProfile" style="cursor: pointer;"> 
+          <img src="../assets/imgs/Radio_button_off.svg" class="rad_but">
+          <div class="bgr_sobes"> <a> Статус собеседования </a></div>
+        </div>
 
-      <div class="bgr_ch_pr_with_rb" @click="changePageToProfile_cats" style="cursor: pointer;">
-        <img src="../assets/imgs/Radio_button_off.svg" class="rad_but3">
-        <div class="bgr_catstopriyut"> <a> Коты, сданные в приют </a> </div>
+        <div class="bgr_ch_pr_with_rb" @click="changePageToProfile_cats" style="cursor: pointer;">
+          <img src="../assets/imgs/Radio_button_on.svg" class="rad_but3">
+          <div class="bgr_catstopriyut"> <a> Коты, сданные в приют </a> </div>
+        </div>
       </div>
-
     </div>
   </div>
 
   <div class="background_profile_right"> 
-    <div class="status_sobes"> <p> Изменение информации профиля </p> </div>
-    <div class="bgr_status_sobes"> 
-      <p> Имя </p>
-      <label class="input">
-            <input
-              
-              class="input__field"
-              type="number"
-              placeholder=" "
-            />
-            <span class="input__label">Иван</span>
-      </label>
-    
-      <p> Фамилия </p>
-      <label class="input">
-            <input
-              
-              class="input__field"
-              type="number"
-              placeholder=" "
-            />
-            <span class="input__label">Иванов</span>
-      </label>
-      
-      <p> Номер телефона </p>
-      <label class="input">
-            <input
-              
-              class="input__field"
-              type="number"
-              placeholder=" "
-            />
-            <span class="input__label">+7 (___) ___-__-__</span>
-      </label>
-      
-    </div>   
+    <div class="status_sobes"> <p> Коты, сданные в приют </p> </div>  
+    <div class="cats_to_priyut">
+      <div class="cats1">
+        <div class="cats1_photo"> </div>
+        <p> Статус </p>
+        <div class="bgr_status_cat"> <p> На рассмотрении </p> </div>
+        <!-- <div class="bgr_status_cat_success"> <p> Завершен </p> </div> -->
+      </div>
+    </div>
   </div>
   </div>
 </template>

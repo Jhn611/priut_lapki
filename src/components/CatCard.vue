@@ -33,7 +33,7 @@ export default {
         const height = Math.max( body.scrollHeight, body.offsetHeight,
                             html.clientHeight, html.scrollHeight, html.offsetHeight );
         this.isVisible = !this.isVisible
-        const pad = (window.innerWidth - 1005) / 2
+        const pad = (window.innerWidth - 1040) / 2
         const currentStyles = document.body.style.cssText;
         document.body.style.cssText =  currentStyles  + `--cardpad: ${pad}px; --cardblackbgwidth: ${window.innerWidth}px; --cardblackbgheight: ${height}px`
         console.log(pad, window.innerWidth, height)
@@ -62,7 +62,8 @@ export default {
                 </div>
                 <div class="card-infoBlock">
                     <div class="card-infoBlock-name"><p>{{data.name}}</p></div>
-                    <div class="card-infoBlock-discription"><p>Описание</p><p class="discription">{{data.discription}}</p></div>
+                    <div class="card-infoBlock-discription"><p>Описание</p><p class="discription">{{data.description}}</p>
+                        <p class="discription">Порода: {{data.breed}}, Пол: {{data.gender}}, Возраст: {{data.age}}, Цвет: {{data.color}}.</p></div>
                     <div class="card-infoBlock-btn"><p>Приютить</p></div>
                 </div>
             </div>

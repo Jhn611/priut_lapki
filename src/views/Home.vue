@@ -60,7 +60,7 @@ export default {
     this.load = true  
     try{
       const cats_cards = await get_cats();
-      console.log(cats_cards);
+      console.log("карточки: ", cats_cards);
       if (cats_cards) {
         let x = [];
         let current = [];
@@ -85,7 +85,6 @@ export default {
     }catch{
       this.load = false 
     }
-    
   },
 
   unmounted() {

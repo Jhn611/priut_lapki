@@ -59,10 +59,26 @@ export default {
   <div class="background_surrender_right"> 
     <div class="anketa2_all"> 
         <p>Расскажите, почему отдаете кошку</p>
-        <input type="text" class="custom-input" placeholder="Например, переезд или нашли на улице">
+        <label class="input">
+            <input
+              
+              class="input__field color2"
+              type="text"
+              placeholder=" "
+            />
+            <span class="input__label">Например, переезд или нашли на улице</span>
+        </label>
 
         <p>Расскажите, какими болезнями болела/болеет кошка</p>
-        <input type="text" class="custom-input" placeholder="Важны все болезни">
+        <label class="input">
+            <input
+              
+              class="input__field color2"
+              type="text"
+              placeholder=" "
+            />
+            <span class="input__label">Важны все болезни</span>
+        </label>
 
         <p>Питомец стерилизован/кастрирован?</p>
         <label>
@@ -73,10 +89,26 @@ export default {
         </label>
 
         <p>Делалась ли прививка от бешенства, если да, то когда?</p>
-        <input type="text" class="custom-input" placeholder="Например, сентябрь 2023 года">
+        <label class="input">
+            <input
+              
+              class="input__field color2"
+              type="text"
+              placeholder=" "
+            />
+            <span class="input__label">Например, сентябрь 2023 года</span>
+        </label>
 
         <p>Ваш номер телефона для связи</p>
-        <input type="tel" class="custom-input" placeholder="+7 (___) ___-__-__">
+        <label class="input">
+            <input
+              
+              class="input__field color2"
+              type="text"
+              placeholder=" "
+            />
+            <span class="input__label">+7 (___) ___-__-__</span>
+        </label>
     </div>
     <!-- <div class="bgr_status_sobes"> 
     </div> -->
