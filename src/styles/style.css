@@ -121,6 +121,17 @@ header {
   padding: 10px 0 0 0;
 }
 
+.background_profile_left {
+  background-color: #FFFFFF;
+  height: 648px;
+  width: 392px;
+  border-radius: 11px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0 0 0;
+}
+
 .bgr_avatarka {
   background-color: #FFC58B;
   height: 137px;
@@ -351,6 +362,54 @@ header {
   text-align: center;
 }
 
+.custom-input2 {
+  background-color: #FFFAF5;
+  color: #5A2F10;
+  border: 1px solid #5A2F10;
+  padding: 8px;
+  width: 406px;
+  height: 40px;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.cats1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.cats1_photo {
+  background-color: #E9D4C0;
+  border-radius: 11px;
+  height: 206px;
+  width: 183px;
+}
+
+.bgr_status_cat {
+  background-color: #FFD6AD;
+  border-radius: 11px;
+  height: 41px;
+  width: 183px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.bgr_status_cat_success {
+  background-color: #B7FFAD;
+  border-radius: 11px;
+  height: 41px;
+  width: 183px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: #011D00;
+}
+
 .prizrak {
   background-color: #E9D4C0;
   height: 270px;
@@ -414,13 +473,90 @@ header {
   width: 1000px;
 }
 
+.sobesedodanie_all {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 594px;
+  font-size: 22px;
+}
+
+.sobesedovanie_text {
+  background-color: #FFC58B;
+  height: 55px;
+  width: 394px;
+  border-radius: 11px;
+  color: #5A2F10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0 0 10px;
+  margin: 20px 0 20px 0;
+  font-size: 24px;
+}
+
+.sobesedovanie_predict {
+  background-color: #ffe7cf;
+  height: 50px;
+  width: 584px;
+  color: #4f2609;
+  border-radius: 11px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 0 0 0;
+}
+
+.bgr_sobesedovanie {
+  color: #5A2F10;
+  overflow-y: scroll;
+  background-color: #FFFFFF;
+  height: 594px;
+  width: 1005px;
+  border-radius: 11px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0 0 0;
+}
+
+.sobesedovanie_anketa_all {
+  width: 726px;
+  height: 100%;
+}
+
+.custom-input3 {
+  background-color: #E9D4C0;
+  color: #5A2F10;
+  border: 1px solid #5A2F10;
+  padding: 8px;
+  width: 726px;
+  height: 102px;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.custom-select {
+  background-color: #E9D4C0;
+  color: #5A2F10;
+  border: 1px solid #5A2F10;
+  padding: 8px;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 100%;
+}
+
 .howtohelp_all {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  height: 484px;
   font-size: 22px;
+  color: #5A2F10;
 }
 
 .howtohelp_text {
@@ -433,17 +569,39 @@ header {
   align-items: center;
   justify-content: center;
   padding: 0 0 0 10px;
+  margin: 0 0 20px 0;
 }
 
-.bgr_saved_cats {
+.bgr_howtohelp_cats {
   background-color: #FFFFFF;
-  height: 321px;
+  height: 588px;
   width: 1005px;
   border-radius: 11px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 0 0 0 10px;
+  text-align: center;
+}
+
+.bgr_helps {
+  display: flex;
+  flex-direction: row;
+}
+
+.bgr_help1 {
+  background-color: #E9D4C0;
+  height: 401px;
+  width: 429px;
+  border-radius: 11px;
+  margin: 0 51px 50px 0;
+}
+
+.bgr_help2 {
+  background-color: #E9D4C0;
+  height: 401px;
+  width: 429px;
+  border-radius: 11px;
 }
 
 .contacts_all {
@@ -567,6 +725,139 @@ header {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+}
+
+.background_surrender {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 1005px;
+  font-size: 20px;
+  color: #5A2F10;
+}
+
+.background_surrender_left {
+  background-color: #FFFFFF;
+  height: 594px;
+  width: 530px;
+  border-radius: 11px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 10px 0 0;
+}
+
+.anketa1_all {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.photo_cat_bgr {
+  background-color: #FFC58B;
+  height: 51px;
+  width: 169px;
+  border-radius: 11px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.background_surrender_right {
+  overflow-y: scroll;
+  background-color: #FFFFFF;
+  height: 604px;
+  width: 448px;
+  border-radius: 11px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-evenly;
+  padding: 0;
+}
+.background_surrender_right::-webkit-scrollbar {
+  width: 6px;
+  padding: 0 5px 0 0;
+}
+.background_surrender_right::-webkit-scrollbar-thumb {
+  background-color: #ad9782;
+  border-radius: 4px;
+}
+.background_surrender_right::-webkit-scrollbar-track {
+  background: #FFFFFF;
+  border-radius: 11px;
+}
+
+.anketa2_all {
+  width: 406px;
+  height: 800px;
+  padding: 0 0 10px 10px;
+}
+
+.surrender_zag {
+  background-color: #FFC58B;
+  border-radius: 11px;
+  height: 50px;
+  width: 487px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.bgr_status_sobes {
+  background-color: #E9D4C0;
+  border-radius: 11px;
+  height: 443px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-input {
+  background-color: #E9D4C0;
+  color: #5A2F10;
+  border: 1px solid #5A2F10;
+  padding: 8px;
+  width: 406px;
+  height: 40px;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.custom-input::-moz-placeholder {
+  color: #5A2F10;
+  opacity: 0.7;
+}
+
+.custom-input::placeholder {
+  color: #5A2F10;
+  opacity: 0.7;
+}
+
+.custom-radio {
+  accent-color: #5A2F10;
+  margin-right: 5px;
+}
+
+label {
+  color: #5A2F10;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 5px;
+}
+
+.radio-label {
+  color: #5A2F10;
+  font-weight: 400;
 }
 
 .loader {

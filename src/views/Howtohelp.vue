@@ -31,8 +31,13 @@ export default {
   <div class="howtohelp_all"> 
     <div class="howtohelp_text"> <a> Как помочь приюту </a></div>
     <div class="bgr_howtohelp_cats"> 
-        
+        <p> Самая необходимая нужда приюта, как и самый легкий путь помощи - материально поддержать наш проект. <br> Вы можете сделать пожертвование следующими способами  </p>
+        <div class="bgr_helps">
+          <div class="bgr_help1"> </div>
+          <div class="bgr_help2"> </div>
+        </div>
     </div>
+    
   </div>
 </template>
 

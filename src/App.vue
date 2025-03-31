@@ -29,6 +29,12 @@ export default {
     changePageToContacts(){
       this.$router.push('/contacts');
     },
+    changePageToHowtohelp(){
+      this.$router.push('/howtohelp');
+    },
+    changePageToSurrenderaCat(){
+      this.$router.push('/surrender_a_cat');
+    },
   },
   async mounted() {
     // то что происходит когда страница создаётся (то есть запуск анимаций которые должны проиграться при открытии страницы и подобное)
@@ -58,7 +64,7 @@ export default {
           <a @click="changePageToHowtohelp" style="cursor: pointer;"> Как помочь </a>
           <a> Нужды приюта </a>
           <a> Полезные статьи </a>
-          <a> Сдать кошку в приют </a>
+          <a @click="changePageToSurrenderaCat" style="cursor: pointer;"> Сдать кошку в приют </a>
           <a @click="changePageToContacts" style="cursor: pointer;"> Контакты </a> 
         </div>
 
