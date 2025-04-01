@@ -1,4 +1,7 @@
-
+@font-face
+    font-family: 'Inter' 
+    src: url("../assets/fonts/Inter/Inter-VariableFont_opsz,wght.ttf")
+    
 body
     width: 100%
     height: 100%
@@ -6,6 +9,7 @@ body
     font-family: 'Inter', sans-serif
     font-weight: 400
     margin: 0
+
 main
     padding: 20px 0 0 0
     display: flex
@@ -442,9 +446,25 @@ header
     align-items: center
     justify-content: space-between
     padding: 0 0 0 0
+    &::-webkit-scrollbar
+        width: 6px // Ширина скроллбара
+        padding: 0 5px 0 0
+
+    &::-webkit-scrollbar-thumb
+        background-color: #ad9782 // Цвет ползунка
+        border-radius: 4px // Закругление углов
+
+    &::-webkit-scrollbar-track
+        background: #FFFFFF // Цвет фона скроллбара
+        border-radius: 11px
+
 .sobesedovanie_anketa_all
     width: 726px
     height: 100%
+    .empty
+        height: 20px
+    
+
 .custom-input3
     background-color: #E9D4C0
     color: #5A2F10
@@ -569,6 +589,16 @@ header
     border-radius: 11px
     width: 487px
     height: 270px
+    overflow: hidden
+    div
+        width: 100%
+        height: 100%
+    a
+        width: 100%
+        height: 100%
+    iframe
+        width: 100%
+        height: 100%
 .div_ph
     background-color: #FFC58B
     border-radius: 11px
@@ -623,6 +653,7 @@ header
     flex-direction: column
     align-items: center
     padding: 10px 10px 0 0
+    justify-content: space-between
 .anketa1_all
     display: flex
     flex-direction: column
@@ -683,7 +714,27 @@ header
     display: flex
     flex-direction: column
     align-items: center
+    justify-content: space-evenly
+    
+
+//кнопка для отправки формы/изменения профиля
+.btn
+    display: flex
+    align-items: center
     justify-content: center
+    background-color: #FFC58B
+    height: 40px
+    width: 140px
+    border-radius: 11px
+    //padding: 0 5px
+    cursor: pointer
+    font-size: 24px
+    margin: 20px 0 
+    &:hover
+        font-size: 25px
+    &:active
+        background-color: #ffb56a
+
 // анкета справа
 .custom-input
     background-color: #E9D4C0
@@ -796,10 +847,72 @@ label
         &:focus,
         &:not(:placeholder-shown) 
             & + .input__label 
-                transform: translate(.25rem, -185%) scale(.8)
+                transform: translate(-0.45rem, -185%) scale(.8)
                 color: #5A2F10
     &__date
         width: 362px
 
 input[type='date']::-webkit-calendar-picker-indicator 
     filter: invert(var(--img))
+
+
+.loginBlock
+    position: absolute
+    top: 5vh
+    left: var(--cardpad)
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: start
+    background-color: #ffffff
+    border-radius: 11px
+    width: 625px
+    height: auto
+    z-index: 1001
+
+.black-bg
+    top: 0
+    left: 0
+    position: absolute
+    width: var(--cardblackbgwidth)
+    height: var(--cardblackbgheight)
+    background-color: #00000044
+    z-index: 1000
+
+.choose-logregin
+    color: #5a2f108f 
+    display: flex
+    flex-direction: row
+    justify-content: space-evenly
+    align-items: center
+    width: 400px
+    p
+        cursor: pointer
+        
+
+.loginActive
+    color: #5A2F10
+    text-decoration: underline
+
+.regin
+    display: flex
+    flex-direction: column
+    align-items: start
+    justify-content: space-evenly
+    height: 600px
+    p
+        color: #5A2F10
+    .btn
+        width: 260px
+
+.login
+    display: flex
+    flex-direction: column
+    align-items: start
+    justify-content: space-evenly
+    height: 379px
+    p
+        color: #5A2F10
+    .btn
+        width: 100px
+

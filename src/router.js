@@ -8,6 +8,7 @@ import Profile_cats from './views/Profile_cats.vue';
 import Howtohelp from './views/Howtohelp.vue';
 import Surrender_a_cat from './views/Surrender_a_cat.vue';
 import Sobes from './views/Sobes.vue';
+import LogRegIn from './views/LogRegIn.vue';
 
 const routes = [
 ];
@@ -60,6 +61,11 @@ const router = createRouter({
       path: '/sobes',
       name: 'sobes',
       component: Sobes,
+    },
+    {
+      path: '/auth',
+      name: 'auth',
+      component: LogRegIn,
     },
   ]
 });

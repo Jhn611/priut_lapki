@@ -17,18 +17,6 @@ export default {
     changePageToProfile(){
       this.$router.push('/profile');
     },
-    changePageToHome(){
-      this.$router.push('/home');
-    },
-    changePageToSaved(){
-      this.$router.push('/saved');
-    },
-    changePageToContacts(){
-      this.$router.push('/contacts');
-    },
-    changePageToHowtohelp(){
-      this.$router.push('/howtohelp');
-    },
     changePageToProfile_changeinfo(){
       this.$router.push('/profile_changeinfo');
     },
@@ -96,7 +84,7 @@ export default {
             <input
               
               class="input__field"
-              type="number"
+              type="text"
               placeholder=" "
             />
             <span class="input__label">Иван</span>
@@ -107,7 +95,7 @@ export default {
             <input
               
               class="input__field"
-              type="number"
+              type="text"
               placeholder=" "
             />
             <span class="input__label">Иванов</span>
@@ -118,12 +106,15 @@ export default {
             <input
               
               class="input__field"
-              type="number"
+              type="text"
               placeholder=" "
             />
             <span class="input__label">+7 (___) ___-__-__</span>
       </label>
-      
+
+      <div class="btn">
+        <p>Изменить</p>
+      </div>
     </div>   
   </div>
   </div>

@@ -36,7 +36,7 @@ export default {
                 <div class="bgr_adres"> <p> ул. Софьи Ковалевской 228 </p></div>
             </div>
         </div>
-        <div class="priyut_map"> </div>
+        <div class="priyut_map"><div style="position:relative;overflow:hidden;"><a href="https://yandex.ru/maps/213/moscow/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;"></a><a href="https://yandex.ru/maps/213/moscow/geo/ulitsa_sofyi_kovalevskoy/10050700/?ll=37.534693%2C55.884878&utm_medium=mapframe&utm_source=maps&z=14.22" style="color:#eee;font-size:12px;position:absolute;top:14px;"></a><iframe src="https://yandex.ru/map-widget/v1/?ll=37.534693%2C55.884878&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCggxMDA1MDcwMBJI0KDQvtGB0YHQuNGPLCDQnNC-0YHQutCy0LAsINGD0LvQuNGG0LAg0KHQvtGE0YzQuCDQmtC-0LLQsNC70LXQstGB0LrQvtC5IgoN9SIWQhVbi19C&z=14.22" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe></div> </div>
     </div>
     <div class="bgr_info_video"> 
         <div class="div_ph"> <p> Номер телефона </p></div>

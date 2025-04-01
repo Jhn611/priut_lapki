@@ -54,6 +54,9 @@ export default {
         <p> Имя питомца </p>
         <div class="photo_cat_bgr"> <p> Фото питомца </p> </div>
     </div>
+    <div class="btn">
+          <p>Отправить</p>
+    </div>
   </div>
 
   <div class="background_surrender_right"> 
@@ -107,7 +110,7 @@ export default {
               type="text"
               placeholder=" "
             />
-            <span class="input__label">+7 (___) ___-__-__</span>
+            <span class="input__label">Например: +79321112723</span>
         </label>
     </div>
     <!-- <div class="bgr_status_sobes"> 

@@ -1,3 +1,7 @@
+@font-face {
+  font-family: "Inter";
+  src: url("../assets/fonts/Inter/Inter-VariableFont_opsz,wght.ttf");
+}
 body {
   width: 100%;
   height: 100%;
@@ -522,10 +526,25 @@ header {
   justify-content: space-between;
   padding: 0 0 0 0;
 }
+.bgr_sobesedovanie::-webkit-scrollbar {
+  width: 6px;
+  padding: 0 5px 0 0;
+}
+.bgr_sobesedovanie::-webkit-scrollbar-thumb {
+  background-color: #ad9782;
+  border-radius: 4px;
+}
+.bgr_sobesedovanie::-webkit-scrollbar-track {
+  background: #FFFFFF;
+  border-radius: 11px;
+}
 
 .sobesedovanie_anketa_all {
   width: 726px;
   height: 100%;
+}
+.sobesedovanie_anketa_all .empty {
+  height: 20px;
 }
 
 .custom-input3 {
@@ -680,6 +699,19 @@ header {
   border-radius: 11px;
   width: 487px;
   height: 270px;
+  overflow: hidden;
+}
+.priyut_map div {
+  width: 100%;
+  height: 100%;
+}
+.priyut_map a {
+  width: 100%;
+  height: 100%;
+}
+.priyut_map iframe {
+  width: 100%;
+  height: 100%;
 }
 
 .div_ph {
@@ -745,6 +777,7 @@ header {
   flex-direction: column;
   align-items: center;
   padding: 10px 10px 0 0;
+  justify-content: space-between;
 }
 
 .anketa1_all {
@@ -819,7 +852,26 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-evenly;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
   justify-content: center;
+  background-color: #FFC58B;
+  height: 40px;
+  width: 140px;
+  border-radius: 11px;
+  cursor: pointer;
+  font-size: 24px;
+  margin: 20px 0;
+}
+.btn:hover {
+  font-size: 25px;
+}
+.btn:active {
+  background-color: #ffb56a;
 }
 
 .custom-input {
@@ -950,11 +1002,11 @@ label {
   cursor: text;
 }
 .input__field:not(:-moz-placeholder-shown) + .input__label {
-  transform: translate(0.25rem, -185%) scale(0.8);
+  transform: translate(-0.45rem, -185%) scale(0.8);
   color: #5A2F10;
 }
 .input__field:focus + .input__label, .input__field:not(:placeholder-shown) + .input__label {
-  transform: translate(0.25rem, -185%) scale(0.8);
+  transform: translate(-0.45rem, -185%) scale(0.8);
   color: #5A2F10;
 }
 .input__date {
@@ -963,4 +1015,74 @@ label {
 
 input[type=date]::-webkit-calendar-picker-indicator {
   filter: invert(var(--img));
+}
+
+.loginBlock {
+  position: absolute;
+  top: 5vh;
+  left: var(--cardpad);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  background-color: #ffffff;
+  border-radius: 11px;
+  width: 625px;
+  height: auto;
+  z-index: 1001;
+}
+
+.black-bg {
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: var(--cardblackbgwidth);
+  height: var(--cardblackbgheight);
+  background-color: rgba(0, 0, 0, 0.2666666667);
+  z-index: 1000;
+}
+
+.choose-logregin {
+  color: rgba(90, 47, 16, 0.5607843137);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 400px;
+}
+.choose-logregin p {
+  cursor: pointer;
+}
+
+.loginActive {
+  color: #5A2F10;
+  text-decoration: underline;
+}
+
+.regin {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-evenly;
+  height: 600px;
+}
+.regin p {
+  color: #5A2F10;
+}
+.regin .btn {
+  width: 260px;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-evenly;
+  height: 379px;
+}
+.login p {
+  color: #5A2F10;
+}
+.login .btn {
+  width: 100px;
 }/*# sourceMappingURL=style.css.map */

@@ -32,12 +32,20 @@ export default {
         const body = document.body,  html = document.documentElement;
         const height = Math.max( body.scrollHeight, body.offsetHeight,
                             html.clientHeight, html.scrollHeight, html.offsetHeight );
-        this.isVisible = !this.isVisible
+        this.isVisible = true;
         const pad = (window.innerWidth - 1040) / 2
         const currentStyles = document.body.style.cssText;
         document.body.style.cssText =  currentStyles  + `--cardpad: ${pad}px; --cardblackbgwidth: ${window.innerWidth}px; --cardblackbgheight: ${height}px`
         console.log(pad, window.innerWidth, height)
     },
+    closeCat(e) {
+      if (!this.$el.contains(e.target) && !e.target.closest('.open-card') && !e.target.closest('.card')) { 
+        this.isVisible = false;
+      }
+    },
+  },
+  async mounted() {
+    document.addEventListener('click', this.closeCat.bind(this))
   },
 }
 </script>
@@ -54,18 +62,18 @@ export default {
         <div class="card-info">
             <p>{{ data.breed }}</p>
         </div>
-        <div class="black-bg" v-if="isVisible">
-            <div class="open-card">
-                <div class="card-imgBlock opened-card">
-                    <img class="card-imgBlock-img" src="../assets/imgs/cat1.jpg" alt="" ref="cardImg">
-                    <img class="card-imgBlock-like" src="../assets/imgs/Heart.svg" alt="" @click="addFav" ref="cardFav">
-                </div>
-                <div class="card-infoBlock">
-                    <div class="card-infoBlock-name"><p>{{data.name}}</p></div>
-                    <div class="card-infoBlock-discription"><p>Описание</p><p class="discription">{{data.description}}</p>
-                        <p class="discription">Порода: {{data.breed}}, Пол: {{data.gender}}, Возраст: {{data.age}}, Цвет: {{data.color}}.</p></div>
-                    <div class="card-infoBlock-btn"><p>Приютить</p></div>
-                </div>
+    </div>
+    <div class="black-bg" v-if="isVisible">
+        <div class="open-card">
+            <div class="card-imgBlock opened-card">
+                <img class="card-imgBlock-img" src="../assets/imgs/cat1.jpg" alt="" ref="cardImg">
+                <img class="card-imgBlock-like" src="../assets/imgs/Heart.svg" alt="" @click="addFav" ref="cardFav">
+            </div>
+            <div class="card-infoBlock">
+                <div class="card-infoBlock-name"><p>{{data.name}}</p></div>
+                <div class="card-infoBlock-discription"><p>Описание</p><p class="discription">{{data.description}}</p>
+                    <p class="discription">Порода: {{data.breed}}, Пол: {{data.gender}}, Возраст: {{data.age}}, Цвет: {{data.color}}.</p></div>
+                <div class="card-infoBlock-btn"><p>Приютить</p></div>
             </div>
         </div>
     </div>
