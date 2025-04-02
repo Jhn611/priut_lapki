@@ -33,7 +33,7 @@ export default {
       this.load = true;
       try {
         const reg = await update_profile(this.name, this.last_name, this.phone, this.token);
-        if(reg != 401){
+        if(json != 401 || typeof json != 'undefined'){
           localStorage.setItem("name", this.name);
           localStorage.setItem("last_name", this.last_name);
           localStorage.setItem("phone", this.phone );
@@ -54,7 +54,7 @@ export default {
       this.last_name = localStorage.getItem("last_name");
       this.phone = localStorage.getItem("phone");
       const json = await get_interview_status(this.token);
-      if(json == 401){
+      if(json == 401 || typeof json == 'undefined'){
         localStorage.setItem("token", '') 
       }else{
         this.login = true;

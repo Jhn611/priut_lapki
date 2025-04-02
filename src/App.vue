@@ -115,7 +115,7 @@ export default {
   },
   async mounted() {
     // то что происходит когда страница создаётся (то есть запуск анимаций которые должны проиграться при открытии страницы и подобное)
-    this.$router.push("/home");
+    // this.$router.push("/home");
     document.addEventListener("click", this.close.bind(this));
   },
 

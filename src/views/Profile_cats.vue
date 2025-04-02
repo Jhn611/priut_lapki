@@ -48,7 +48,7 @@ export default {
       this.name = localStorage.getItem("name");
         this.last_name = localStorage.getItem("last_name");
       const json = await get_interview_status(this.token);
-      if(json == 401){
+      if(json == 401 || typeof json == 'undefined'){
         localStorage.setItem("token", '') 
       }else{
         this.login = true;

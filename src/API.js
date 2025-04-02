@@ -135,3 +135,7 @@ export async function bind_cat(id, token) {
   };
   return req(data, `/cats/${id}/book`, "post", token);
 }
+
+export async function get_book_cats(token) {
+  return req("", `/admin/booked-cats`, "get", token);
+}
