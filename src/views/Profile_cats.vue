@@ -40,6 +40,17 @@ export default {
 
   async mounted() {
     // то что происходит когда страница создаётся (то есть запуск анимаций которые должны проиграться при открытии страницы и подобное)
+    this.token = localStorage.getItem("token");
+    if (this.token && this.token != "") {
+      const json = await get_interview_status(this.token);
+      if(json == 401){
+        localStorage.setItem("token", '') 
+      }else{
+        this.name = localStorage.getItem("name");
+        this.last_name = localStorage.getItem("last_name");
+        this.login = true;
+      }
+    }
   },
 
   unmounted() {
@@ -52,14 +63,16 @@ export default {
   <div class="background_profile"> 
   <div class="background_profile_left">
     <div class="profile_setup">
-      <div class="bgr_avatarka">
-        <div class="p_NS"><p>ИТ</p></div>
+        <div class="bgr_avatarka">
+          <div class="p_NS">
+            <p>{{ name[0] + last_name[0] }}</p>
+          </div>
+        </div>
+        <div class="Name_Subname">
+          <p class="Name">{{ name }}</p>
+          <p class="Subname">{{ last_name }}</p>
+        </div>
       </div>
-      <div class="Name_Subname">
-        <p class="Name">Иван</p>
-        <p class="Subname">Тимофеев</p>
-      </div>
-    </div>
 
     <div class="meaning">
       <img src="../assets/imgs/Rectangle.svg" />

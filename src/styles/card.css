@@ -113,6 +113,13 @@ body {
   height: 55px;
   background-color: #E5AA6F;
   border-radius: 11px;
+  cursor: pointer;
+}
+.card-infoBlock-btn:active {
+  outline: 3px solid #5A2F10;
+}
+.card-infoBlock-btn:hover {
+  background-color: #f1bc86;
 }
 .card-infoBlock-btn p {
   font-size: 30px;

@@ -45,7 +45,7 @@ export async function req(params, request, type, API_TOKEN) {
     return response.data;
   } catch (error) {
     console.error("Ошибка при запросе:", error.message);
-    return null;
+    return error.status;
   }
 }
 
@@ -127,4 +127,11 @@ export async function post_interview(
 
 export async function get_interview_status(token) {
   return req("", "/interview/status", "get", token);
+}
+
+export async function bind_cat(id, token) {
+  const data = {
+    cat_id: id,
+  };
+  return req(data, `/cats/${id}/book`, "post", token);
 }

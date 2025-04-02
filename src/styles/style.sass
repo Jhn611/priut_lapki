@@ -730,10 +730,10 @@ header
     cursor: pointer
     font-size: 24px
     margin: 20px 0 
-    &:hover
-        font-size: 25px
     &:active
-        background-color: #ffb56a
+        outline: 3px solid #5A2F10
+    &:hover
+        background-color: #f1bc86
 
 // анкета справа
 .custom-input
@@ -916,3 +916,20 @@ input[type='date']::-webkit-calendar-picker-indicator
     .btn
         width: 100px
 
+.z1002
+    z-index: 1004
+
+.binded-cat
+    z-index: 1005
+    position: absolute
+    left: var(--padbind)
+    top: 25vh
+    display: flex
+    align-items: center
+    justify-content: center
+    background-color: #ffffff
+    border-radius: 11px
+    width: 900px
+    height: 250px
+    p
+        width: 800px

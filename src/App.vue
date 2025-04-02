@@ -94,6 +94,7 @@ export default {
         localStorage.setItem("token", this.token)
         localStorage.setItem("name", this.name)
         localStorage.setItem("last_name", this.last_name)
+        location.reload()
         this.load = false;
       } catch {
         this.load = false;

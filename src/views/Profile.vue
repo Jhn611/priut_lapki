@@ -40,14 +40,16 @@ export default {
     // то что происходит когда страница создаётся (то есть запуск анимаций которые должны проиграться при открытии страницы и подобное)
     this.token = localStorage.getItem("token");
     if (this.token && this.token != "") {
-      this.name = localStorage.getItem("name");
-      this.last_name = localStorage.getItem("last_name");
       const json = await get_interview_status(this.token);
-      this.status = json['status'];
-      this.login = true;
+      if(json == 401){
+        localStorage.setItem("token", '') 
+      }else{
+        this.name = localStorage.getItem("name");
+        this.last_name = localStorage.getItem("last_name");
+        this.status = json['status'];
+        this.login = true;
+      }
     }
-    
-
   },
 
   unmounted() {
