@@ -941,6 +941,7 @@ label {
   align-items: center;
   justify-content: space-between;
   text-align: center;
+  overflow-y: scroll;
 }
 
 .text_broni {
