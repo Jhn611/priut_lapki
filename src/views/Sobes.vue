@@ -26,6 +26,21 @@ export default {
     // тут функции которые что-то считают и возвращают что-то (пока можно не использовать, это для оптимизации)
   },
   methods: {
+    changePageToProfile(){
+      this.$router.push('/profile');
+    },
+    changePageToHome(){
+      this.$router.push('/home');
+    },
+    changePageToSaved(){
+      this.$router.push('/saved');
+    },
+    changePageToContacts(){
+      this.$router.push('/contacts');
+    },
+    changePageToHowtohelp(){
+      this.$router.push('/howtohelp');
+    },
     //тут функции которые будем использовать для изменения визуального контента (изменение переменных, добавление стилей, и т. д.) в целом можно все тут писать
     async send(){
       const interview = await post_interview(this.why, this.animalBefore, this.choose,this.selectedHousing,this.selectedFood,this.reaction,this.wool, this.healthCare,this.shelterRights,this.contractAgreement, this.token);

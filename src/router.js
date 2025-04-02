@@ -9,6 +9,7 @@ import Howtohelp from './views/Howtohelp.vue';
 import Surrender_a_cat from './views/Surrender_a_cat.vue';
 import Sobes from './views/Sobes.vue';
 import LogRegIn from './views/LogRegIn.vue';
+import Admin from './views/Admin.vue';
 
 const routes = [
 ];
@@ -66,6 +67,11 @@ const router = createRouter({
       path: '/auth',
       name: 'auth',
       component: LogRegIn,
+    },
+    {
+      path: '/admin',
+      name: 'admin',
+      component: Admin,
     },
   ]
 });
