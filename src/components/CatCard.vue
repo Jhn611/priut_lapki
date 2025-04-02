@@ -86,20 +86,20 @@ export default {
 <template>
     <div class="card" @mouseenter="scaleOn" @mouseleave="scaleOff" @click="openCard">
         <div class="card-imgBlock">
-            <img class="card-imgBlock-img" src="../assets/imgs/cat1.jpg" alt="" ref="cardImg">
+            <img class="card-imgBlock-img" :src="`http://26.48.41.80:8000/static/photos/${data.photo_url}`"  alt="" ref="cardImg">
             <img class="card-imgBlock-like" src="../assets/imgs/Heart.svg" alt="" @click="addFav" ref="cardFav">
             <div class="card-imgBlock-name">
                 <h3>{{ data.name }}</h3>
             </div>
         </div>
         <div class="card-info">
-            <p>{{ data.breed }}</p>
+            <p>{{ data.breed }} </p>
         </div>
     </div>
     <div class="black-bg" v-if="isVisible">
         <div class="open-card">
             <div class="card-imgBlock opened-card">
-                <img class="card-imgBlock-img" src="../assets/imgs/cat1.jpg" alt="" ref="cardImg">
+                <img class="card-imgBlock-img" :src="`http://26.48.41.80:8000/static/photos/${data.photo_url}`" alt="" ref="cardImg">
                 <img class="card-imgBlock-like" src="../assets/imgs/Heart.svg" alt="" @click="addFav" ref="cardFav">
             </div>
             <div class="card-infoBlock">

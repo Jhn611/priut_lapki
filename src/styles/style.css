@@ -68,7 +68,7 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 620px;
+  width: 350px;
 }
 
 .bg_upper {
@@ -256,6 +256,7 @@ header {
 }
 
 .background_profile_right {
+  position: relative;
   background-color: #FFFFFF;
   height: 658px;
   width: 587px;
@@ -264,6 +265,10 @@ header {
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+}
+.background_profile_right .loader {
+  top: 46%;
+  left: 46%;
 }
 
 .status_sobes {
@@ -286,6 +291,9 @@ header {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+.bgr_status_sobes p {
+  margin: 20px 0 24px 0;
 }
 
 .complete_sobes {
@@ -871,7 +879,7 @@ header {
   outline: 3px solid #5A2F10;
 }
 .btn:hover {
-  background-color: #f1bc86;
+  background-color: #f6cca2;
 }
 
 .custom-input {

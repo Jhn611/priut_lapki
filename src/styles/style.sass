@@ -62,7 +62,7 @@ header
         display: flex
         flex-direction: row
         justify-content: space-between
-        width: 620px
+        width: 350px
 
 .bg_upper
     display: flex
@@ -215,6 +215,7 @@ header
 
 //профиль справа
 .background_profile_right
+    position: relative
     background-color: #FFFFFF
     height: 658px
     width: 587px
@@ -223,6 +224,9 @@ header
     flex-direction: column
     align-items: center
     justify-content: space-evenly
+    .loader
+        top: 46%
+        left: 46%
 
 .status_sobes
     background-color: #FFC58B
@@ -242,6 +246,9 @@ header
     flex-direction: column
     align-items: center
     justify-content: center
+    p
+        margin: 20px 0 24px 0
+            
 //собес не пройден
 .complete_sobes
     background-color: #FFFFFF
@@ -733,7 +740,7 @@ header
     &:active
         outline: 3px solid #5A2F10
     &:hover
-        background-color: #f1bc86
+        background-color: #f6cca2
 
 // анкета справа
 .custom-input

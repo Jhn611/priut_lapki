@@ -91,9 +91,11 @@ export default {
         this.token = json['access_token']
         this.name = json['first_name']
         this.last_name = json['last_name']
+        this.phone = json['phone_number']
         localStorage.setItem("token", this.token)
         localStorage.setItem("name", this.name)
         localStorage.setItem("last_name", this.last_name)
+        localStorage.setItem("phone", this.phone)
         location.reload()
         this.load = false;
       } catch {
@@ -160,8 +162,6 @@ export default {
           <a @click="changePageToHowtohelp" style="cursor: pointer">
             Как помочь
           </a>
-          <a> Нужды приюта </a>
-          <a> Полезные статьи </a>
           <a @click="changePageToSurrenderaCat" style="cursor: pointer">
             Сдать кошку в приют
           </a>

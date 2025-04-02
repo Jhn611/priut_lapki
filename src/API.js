@@ -61,7 +61,7 @@ export async function search_cats(query) {
   const data = {
     query,
   };
-  return req(data, "/search", "post", "");
+  return req(data, "/search_cats", "post", "");
 }
 
 export async function register(first_name, last_name, phone_number, password) {
