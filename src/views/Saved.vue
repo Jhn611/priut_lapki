@@ -56,6 +56,8 @@ export default {
     </div>
     <div class="saved_cats_else"> <a class="sce_text"> Добавляйте котиков не только в избранное, но и в свой дом! </a></div>
   </div>
+
+  
 </template>
 
 <style src="../styles/style.css"></style>
