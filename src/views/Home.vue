@@ -1,22 +1,33 @@
 <script>
 import CatCard from "../components/CatCard.vue";
-import { get_cats, search_cats, get_cat } from "../API.js";
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import { Navigation, Pagination, A11y } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import {
+  get_cats,
+  search_cats,
+  get_cat,
+  get_interview_status,
+  add_fav,
+  bind_cat,
+} from "../API.js";
+import { Swiper, SwiperSlide } from "swiper/vue";
+import { Navigation, Pagination, A11y } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 export default {
   data() {
     return {
       cats: [1, 2],
       load: false,
-      token: '',
+      token: "",
       cat: [],
       fav: false,
       isVisible: false,
       load2: false,
+      binded: false,
+      isBinded: false,
+      lastClickTime: 0,
+      changed: false,
       modules: [Navigation, Pagination, A11y],
       swiperOptions: {
         slidesPerView: 3,
@@ -24,24 +35,24 @@ export default {
         spaceBetween: 30,
         loop: true,
         navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
         },
         breakpoints: {
           640: {
             slidesPerView: 1.3,
-            centeredSlides: true
+            centeredSlides: true,
           },
           768: {
             slidesPerView: 2,
-            centeredSlides: true
+            centeredSlides: true,
           },
           1024: {
             slidesPerView: 3,
-            centeredSlides: true
-          }
+            centeredSlides: true,
+          },
         },
-      }
+      },
     };
   },
   props: ["command"],
@@ -57,83 +68,104 @@ export default {
     onSlideChange() {
       console.log("slide change");
     },
-    async addFav(){
-        this.fav = !this.fav
-        if(this.fav){
-            this.imageUrl = new URL("../assets/imgs/HeartFill.svg", import.meta.url).href
-        }
-        else{
-            this.imageUrl = new URL("../assets/imgs/Heart.svg", import.meta.url).href
-        }
-        try{
-            this.token = localStorage.getItem('token')
-            if(this.token && this.token != ''){
-                const json = await get_interview_status(this.token);
-                if(json == 401){
-                    localStorage.setItem("token", '') 
-                }else{
-                    await add_fav(this.data.id, this.token)
-                }
+    async addFav(id) {
+      this.fav = !this.fav;
+      try {
+        this.token = localStorage.getItem("token");
+        if (this.token && this.token != "") {
+          const json = await get_interview_status(this.token);
+          if (json == 401) {
+            localStorage.setItem("token", "");
+            this.fav = !this.fav;
+          } else {
+            console.log("Я ТУТА");
+            if (typeof id == "number") {
+              this.changed = true;
+              await add_fav(id, this.token);
             }
-        }catch{
-
+          }
         }
+      } catch {}
     },
-    async openCard(id){
-        const body = document.body,  html = document.documentElement;
-        const height = Math.max( body.scrollHeight, body.offsetHeight,
-                            html.clientHeight, html.scrollHeight, html.offsetHeight );
-        
-        const pad = (window.innerWidth - 1040) / 2
-        const padBind = (window.innerWidth - 900) / 2
-        const currentStyles = document.body.style.cssText;
-        document.body.style.cssText =  currentStyles  + `--cardpad: ${pad}px; --padbind: ${padBind}px; --cardblackbgwidth: ${window.innerWidth}px; --cardblackbgheight: ${height}px`
-        console.log(pad, window.innerWidth, height)
+    async openCard(id) {
+      const body = document.body,
+        html = document.documentElement;
+      const height = Math.max(
+        body.scrollHeight,
+        body.offsetHeight,
+        html.clientHeight,
+        html.scrollHeight,
+        html.offsetHeight
+      );
 
+      const pad = (window.innerWidth - 1040) / 2;
+      const padBind = (window.innerWidth - 900) / 2;
+      const currentStyles = document.body.style.cssText;
+      document.body.style.cssText =
+        currentStyles +
+        `--cardpad: ${pad}px; --padbind: ${padBind}px; --cardblackbgwidth: ${window.innerWidth}px; --cardblackbgheight: ${height}px`;
+      console.log(pad, window.innerWidth, height);
+      if (typeof id == "number") {
         this.load2 = true;
-        try{
+        try {
+          this.cat = [];
           this.cat = await get_cat(id, this.token);
-          console.log(this.cat)
+
+          console.log(this.cat);
+          this.fav = this.cat.is_favorite;
           this.isVisible = true;
           this.load2 = false;
-        }catch{
-          console.log("PIZDARIKI")
+        } catch {
           this.load2 = false;
           this.isVisible = false;
         }
-    },
-    closeCat(e) {
-      if (!this.$el.contains(e.target) && !e.target.closest('.open-card') && !e.target.closest('.card')) { 
-        this.isVisible = false;
       }
     },
-    async bindCat(){
-        this.token = localStorage.getItem("token");
-        if (this.token && this.token != "") {
-            const json = await get_interview_status(this.token);
-        if(json == 401){
-            localStorage.setItem("token", '') 
-        }else{
-            this.status = json['status'];
-            if(this.status == 'passed'){
-                const json = await bind_cat(this.data.id, this.token);
-                this.isBinded = true
+    closeCat(e) {
+      if (
+        !this.$el.contains(e.target) &&
+        !e.target.closest(".open-card") &&
+        !e.target.closest(".card") &&
+        !e.target.closest(".button-to-saved")
+      ) {
+        this.isVisible = false;
+        if (this.changed) {
+          window.location.reload();
+        }
+      }
+    },
+    async bindCat(id) {
+      this.token = localStorage.getItem("token");
+      if (this.token && this.token != "") {
+        const json = await get_interview_status(this.token);
+        if (json == 401) {
+          localStorage.setItem("token", "");
+        } else {
+          this.status = json["status"];
+          if (this.status == "passed") {
+            if (typeof id == "number") {
+              this.changed = true;
+              const json = await bind_cat(id, this.token);
             }
+            this.isBinded = true;
+          }
         }
-        }
+      }
     },
     closeBind(e) {
       if (
         !this.$el.contains(e.target) &&
         !e.target.closest(".binded-cat") &&
-        !e.target.closest(".card-infoBlock-btn")
-        &&
+        !e.target.closest(".card-infoBlock-btn") &&
         !e.target.closest(".card") &&
-        !e.target.closest(".open-card") 
+        !e.target.closest(".open-card") &&
+        !e.target.closest(".button-to-saved")
       ) {
         this.isVisible = false;
         this.isBinded = false;
-        
+        if (this.changed) {
+          window.location.reload();
+        }
       }
     },
   },
@@ -142,7 +174,7 @@ export default {
       if (newCommand) {
         this.load = true;
         try {
-          this.token = localStorage.getItem("token")
+          this.token = localStorage.getItem("token");
           console.log("Получена команда:", newCommand);
           const cats_cards = await search_cats(newCommand, this.token);
           if (cats_cards) {
@@ -176,7 +208,7 @@ export default {
   async mounted() {
     this.load = true;
     try {
-      this.token = localStorage.getItem("token")
+      this.token = localStorage.getItem("token");
       const cats_cards = await get_cats(0, 12, this.token);
       console.log("карточки: ", cats_cards);
       if (cats_cards) {
@@ -204,13 +236,7 @@ export default {
       this.load = false;
     }
 
-    if(this.fav){
-        this.imageUrl = new URL("../assets/imgs/HeartFill.svg", import.meta.url).href
-    }
-    else{
-        this.imageUrl = new URL("../assets/imgs/Heart.svg", import.meta.url).href
-    }
-    document.addEventListener('click', this.closeCat.bind(this))
+    document.addEventListener("click", this.closeCat.bind(this));
     document.addEventListener("click", this.closeBind.bind(this));
   },
 };
@@ -230,7 +256,7 @@ export default {
           <swiper-slide v-for="(slide, slideIndex) in x" :key="slideIndex">
             <CatCard :data="slide" @click="openCard" />
           </swiper-slide>
-          
+
           <div class="swiper-button-prev"></div>
           <div class="swiper-button-next"></div>
         </swiper>
@@ -238,25 +264,93 @@ export default {
     </div>
   </div>
   <div class="black-bg" v-if="isVisible">
-        <div class="open-card">
-            <div class="card-imgBlock opened-card">
-                <img class="card-imgBlock-img" :src="`http://26.48.41.80:8000/static/photos/${cat.photo_url}`" alt="" ref="cardImg">
-                <img class="card-imgBlock-like" src="../assets/imgs/Heart.svg" alt="" @click="addFav" ref="cardFav">
-            </div>
-            <div class="card-infoBlock">
-                <div class="card-infoBlock-name"><p>{{cat.name}}</p></div>
-                <div class="card-infoBlock-discription"><p>Описание</p><p class="discription">{{cat.description}}</p>
-                    <p class="discription">Порода: {{cat.breed}}, Пол: {{cat.gender}}, Возраст: {{cat.age}}, Цвет: {{cat.color}}.</p></div>
-                <div class="card-infoBlock-btn" @click="bindCat"><p>Приютить</p></div>
-            </div>
-        </div>
-        
-        </div>
-        <div class="black-bg z1002" v-if="isBinded">
-            <div class="binded-cat" >
-            <p>Котик забронирован за вами,<br> ждем вас в рабочее время приюта на стойке администратора в рабочее время (10:00-20:00) <br> Администратор проведет с вами личную беседу, познакомит с будущем питомцем и, в случае взаимной симпатии, оформит нужные документы.  </p>
-        </div>
+    <div class="loader" v-if="load2">
+      <img src="../assets/imgs/Loader.svg" alt="" />
     </div>
+    <div class="open-card" v-if="!load2">
+      <div class="card-open-cat">
+        <img
+          class="card-imgBlock-img"
+          :src="`http://26.48.41.80:8000/static/photos/${cat.photo_url}`"
+          alt=""
+          ref="cardImg"
+        />
+      </div>
+      <div class="oc-right">
+        <p class="kotkoshka">{{ cat.gender }}</p>
+        <p class="kotname">
+          <b> {{ cat.name }} </b>
+        </p>
+        <div class="oc-zag">
+          <p style="cursor: pointer">Информация</p>
+          <p style="cursor: pointer">Описание</p>
+          <p style="cursor: pointer">История</p>
+        </div>
+        <div class="oc-zag-polos">
+          <div class="polos1"></div>
+          <div class="polos2"></div>
+          <div class="polos3"></div>
+        </div>
+        <div class="charact_cat">
+          <!-- <p> описание описания </p> -->
+          <!-- <p> рассказ истории </p> -->
+          <p>Пол: {{ cat.gender }}</p>
+          <div class="pol"></div>
+          <p>Возраст: {{ cat.age }}</p>
+          <div class="pol-s1"></div>
+          <p>Порода: {{ cat.breed }}</p>
+          <div class="pol-s2"></div>
+          <p>Стерилизация/кастрация: {{ cat.is_sterilized }}</p>
+          <div class="pol-s3"></div>
+          <p>Прививка от бешенства: {{ cat.has_rabies_vaccine }}</p>
+          <div class="pol-s4"></div>
+        </div>
+        <div class="buttons-catcard">
+          <div
+            class="button-to-saved"
+            style="cursor: pointer"
+            v-if="!fav"
+            @click="addFav(cat.id)"
+          >
+            <p>Добавить в избранное</p>
+          </div>
+          <div
+            class="button-to-saved"
+            style="cursor: pointer"
+            v-if="fav"
+            @click="addFav(cat.id)"
+          >
+            <p>Удалить из избранного</p>
+          </div>
+          <div
+            class="button-to-priyutit"
+            style="cursor: pointer"
+            @click="bindCat(cat.id)"
+          >
+            <p>Приютить кота</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="card-infoBlock">
+                <div class="card-infoBlock-name"><p>{{data.name}}</p></div>
+                <div class="card-infoBlock-discription"><p>Описание</p><p class="discription">{{data.description}}</p>
+                    <p class="discription">Порода: {{data.breed}}, Пол: {{data.gender}}, Возраст: {{data.age}}, Цвет: {{data.color}}.</p></div>
+                <div class="card-infoBlock-btn" @click="bindCat"><p>Приютить</p></div>
+            </div> -->
+    </div>
+  </div>
+  <div class="black-bg z1002" v-if="isBinded">
+    <div class="binded-cat">
+      <p>
+        Котик забронирован за вами,<br />
+        ждем вас в рабочее время приюта на стойке администратора в рабочее время
+        (10:00-20:00) <br />
+        Администратор проведет с вами личную беседу, познакомит с будущем
+        питомцем и, в случае взаимной симпатии, оформит нужные документы.
+      </p>
+    </div>
+  </div>
   <div class="loader" v-if="load">
     <img src="../assets/imgs/Loader.svg" alt="" />
   </div>

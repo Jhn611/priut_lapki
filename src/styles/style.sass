@@ -80,7 +80,7 @@ header
 .background_card
     // background-color: #FFFFFF
     width: 1005px
-    height: 650px
+    height: calc(var(--mainHeight) + 200px)
     display: flex
     align-items: center
     justify-content: center
@@ -97,6 +97,7 @@ footer
     align-items: center
     justify-content: center
     background-color: #FFF1E3
+    color: #793F3F
     
 .bgr_footer
     height: 435px 
@@ -166,11 +167,12 @@ footer
 .p_bottom_footer
     display: flex
     flex-direction: row
-    align-items: start
+    justify-content: space-between
+    width: 970px
 .p_bottom_right_footer
     display: flex
     flex-direction: row
-    align-items: end
+
 //профиль
 .background_profile
     display: flex
@@ -447,7 +449,7 @@ footer
     flex-direction: column
     align-items: center
     justify-content: space-between
-    height: calc(var(--mainHeight) + 200px)
+    height: auto
     // font-size: 22px
     .loader
         top: 30%

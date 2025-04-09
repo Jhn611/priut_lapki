@@ -7,6 +7,7 @@ export default {
         isVisible: false,
         isBinded: false,
         token: '',
+        lastClickTime: 0,
         imageUrl: new URL("../assets/imgs/Heart.svg", import.meta.url).href,
     }
   },
@@ -78,6 +79,14 @@ export default {
         }
         }
     },
+    getCat(){
+        const now = Date.now();
+        if (now - this.lastClickTime < 2000){
+            this.lastClickTime = now;
+            return;
+        };
+        this.$emit('click', this.data.id)
+    },
     closeBind(e) {
       if (
         !this.$el.contains(e.target) &&
@@ -110,41 +119,20 @@ export default {
 
     <div class="card" @mouseenter="scaleOn" @mouseleave="scaleOff">
         <div class="card-imgBlock">
-            <img class="card-imgBlock-img" @click="$emit('click', this.data.id)" :src="`http://26.48.41.80:8000/static/photos/${data.photo_url}`"  alt="" ref="cardImg">
+            <img class="card-imgBlock-img" @click="getCat" :src="`http://26.48.41.80:8000/static/photos/${data.photo_url}`"  alt="" ref="cardImg">
         </div>
         <img class="card-imgBlock-like" :src="imageUrl" alt="" @click="addFav">
-        <div class="card-imgBlock-name" @click="$emit('click', this.data.id)">
+        <div class="card-imgBlock-name" @click="getCat">
                 <h3>{{ data.name }}</h3>
         </div>
-        <div class="card-info" @click="$emit('click', this.data.id)">
+        <div class="card-info" @click="getCat">
             <p>{{ data.breed }} </p>
         </div>
-        <div class="card-info-age" @click="$emit('click', this.data.id)">
+        <div class="card-info-age" @click="getCat">
             <p>{{ data.age }} </p>
         </div>
-        <div class="card-button" @click="$emit('click', this.data.id)">
+        <div class="card-button" @click="getCat" style="cursor: pointer">
             <p> Приютить </p>
-        </div>
-    </div>
-
-    <div class="black-bg" v-if="isVisible">
-        <div class="open-card">
-            <div class="card-imgBlock opened-card">
-                <img class="card-imgBlock-img" :src="`http://26.48.41.80:8000/static/photos/${data.photo_url}`" alt="" ref="cardImg">
-                <img class="card-imgBlock-like" src="../assets/imgs/Heart.svg" alt="" @click="addFav" ref="cardFav">
-            </div>
-            <div class="card-infoBlock">
-                <div class="card-infoBlock-name"><p>{{data.name}}</p></div>
-                <div class="card-infoBlock-discription"><p>Описание</p><p class="discription">{{data.description}}</p>
-                    <p class="discription">Порода: {{data.breed}}, Пол: {{data.gender}}, Возраст: {{data.age}}, Цвет: {{data.color}}.</p></div>
-                <div class="card-infoBlock-btn" @click="bindCat"><p>Приютить</p></div>
-            </div>
-        </div>
-        
-        </div>
-        <div class="black-bg z1002" v-if="isBinded">
-            <div class="binded-cat" >
-            <p>Котик забронирован за вами,<br> ждем вас в рабочее время приюта на стойке администратора в рабочее время (10:00-20:00) <br> Администратор проведет с вами личную беседу, познакомит с будущем питомцем и, в случае взаимной симпатии, оформит нужные документы.  </p>
         </div>
     </div>
         
