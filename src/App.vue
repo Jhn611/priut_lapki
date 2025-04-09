@@ -232,9 +232,9 @@ export default {
 
       <div class="poloska2"></div>
       <div class="p_bottom_footer">
-        <p>&#169; Котоприют</p>
+        <p> &#169; 2025 Котоприют </p> 
+        <br> <br>  <br> <br>
         <div class="p_bottom_right_footer">
-          <p>Котоприют</p>
           <p>Лапочки</p>
         </div>
       </div>

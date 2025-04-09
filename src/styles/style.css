@@ -91,6 +91,7 @@ footer {
   align-items: center;
   justify-content: center;
   background-color: #FFF1E3;
+  color: #793F3F;
 }
 
 .bgr_footer {
@@ -184,13 +185,13 @@ footer {
 .p_bottom_footer {
   display: flex;
   flex-direction: row;
-  align-items: start;
+  justify-content: space-between;
+  width: 970px;
 }
 
 .p_bottom_right_footer {
   display: flex;
   flex-direction: row;
-  align-items: end;
 }
 
 .background_profile {

@@ -189,12 +189,12 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
   background-color: #ffffff;
   border-radius: 11px;
   width: 1025px;
   height: 647px;
   z-index: 1001;
+  color: #945B22;
 }
 
 .black-bg {
@@ -205,4 +205,131 @@ body {
   height: var(--cardblackbgheight);
   background-color: rgba(0, 0, 0, 0.2666666667);
   z-index: 1000;
+}
+
+.card-open-cat {
+  width: 503px;
+  height: 647px;
+  border-radius: 0 11px 0 0;
+  margin: 0 30px 0 0;
+  padding: 0;
+}
+
+.oc-zag {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 20px;
+}
+
+.kotkoshka {
+  margin: 0;
+  color: #FFC07E;
+  font-size: 25px;
+}
+
+.kotname {
+  margin: -8px 0 0 0;
+  font-size: 45px;
+}
+
+.charact_cat {
+  display: flex;
+  flex-direction: column;
+}
+
+.pol {
+  height: 6px;
+  width: 436px;
+  background-color: #FFF5EA;
+  margin: -12px 0 0 0;
+}
+.pol-s1 {
+  height: 6px;
+  width: 436px;
+  margin: -12px 0 0 0;
+  background-color: #FFF5EA;
+}
+.pol-s2 {
+  height: 6px;
+  width: 436px;
+  margin: -12px 0 0 0;
+  background-color: #FFF2E4;
+}
+.pol-s3 {
+  height: 6px;
+  width: 436px;
+  margin: -12px 0 0 0;
+  background-color: #FFEDDB;
+}
+.pol-s4 {
+  height: 6px;
+  width: 436px;
+  margin: -12px 0 0 0;
+  background-color: #FFE7CE;
+}
+
+.oc-right {
+  font-size: 20px;
+  height: 564px;
+  margin: -50px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: -30px 0 0 0;
+}
+
+.oc-zag-polos {
+  display: flex;
+  flex-direction: row;
+  margin: -12px 0 0 0;
+}
+
+.polos1 {
+  height: 6px;
+  width: 136px;
+  background-color: #FFC07E;
+}
+
+.polos2 {
+  height: 6px;
+  width: 200px;
+  background-color: #FFE8D0;
+}
+
+.polos3 {
+  height: 6px;
+  width: 100px;
+  background-color: #FFE8D0;
+}
+
+.button-to-saved {
+  height: 46px;
+  width: 411px;
+  border: 3px solid #856A56;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  margin: 26px 0 8px 0;
+}
+
+.button-to-priyutit {
+  height: 46px;
+  width: 416px;
+  background-color: #F3CBA5;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+}
+
+.buttons-catcard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }/*# sourceMappingURL=card.css.map */

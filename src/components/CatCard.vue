@@ -120,16 +120,40 @@ export default {
 
     <div class="black-bg" v-if="isVisible">
         <div class="open-card">
-            <div class="card-imgBlock opened-card">
+            <div class="card-open-cat">
                 <img class="card-imgBlock-img" :src="`http://26.48.41.80:8000/static/photos/${data.photo_url}`" alt="" ref="cardImg">
-                <img class="card-imgBlock-like" src="../assets/imgs/Heart.svg" alt="" @click="addFav" ref="cardFav">
             </div>
-            <div class="card-infoBlock">
+            <div class="oc-right">
+                <p class="kotkoshka"> {{data.gender}} </p>
+                <p class="kotname"> <b> {{data.name}} </b></p>
+                <div class="oc-zag"> <p style="cursor: pointer"> Информация </p> <p style="cursor: pointer"> Описание </p> <p style="cursor: pointer"> История </p> </div>
+                <div class="oc-zag-polos"> <div class="polos1"> </div> <div class="polos2"> </div> <div class="polos3"> </div> </div>
+                <div class="charact_cat">
+                    <!-- <p> описание описания </p> -->
+                    <!-- <p> рассказ истории </p> -->
+                <p> Пол: {{data.gender}}</p>
+                <div class="pol"> </div>
+                <p> Возраст: {{data.age}}</p>
+                <div class="pol-s1"> </div>
+                <p> Порода: {{data.breed}}</p>
+                <div class="pol-s2"> </div>
+                <p> Стерилизация/кастрация: {{data.is_sterilized}}</p>
+                <div class="pol-s3"> </div>
+                <p> Прививка от бешенства: {{data.has_rabies_vaccine}}</p>
+                <div class="pol-s4"> </div>
+                </div>
+                <div class="buttons-catcard">
+                    <div class="button-to-saved" style="cursor: pointer"> <p> Добавить в избранное </p></div>
+                    <div class="button-to-priyutit" style="cursor: pointer"> <p> Приютить кота </p></div>
+                </div>
+            </div>
+            
+            <!-- <div class="card-infoBlock">
                 <div class="card-infoBlock-name"><p>{{data.name}}</p></div>
                 <div class="card-infoBlock-discription"><p>Описание</p><p class="discription">{{data.description}}</p>
                     <p class="discription">Порода: {{data.breed}}, Пол: {{data.gender}}, Возраст: {{data.age}}, Цвет: {{data.color}}.</p></div>
                 <div class="card-infoBlock-btn" @click="bindCat"><p>Приютить</p></div>
-            </div>
+            </div> -->
         </div>
         
         </div>
