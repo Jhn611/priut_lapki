@@ -239,6 +239,11 @@ body {
   flex-direction: column;
 }
 
+.description_cat {
+  width: 400px;
+  height: 290px;
+}
+
 .pol {
   height: 6px;
   width: 436px;
@@ -289,7 +294,7 @@ body {
 .polos1 {
   height: 6px;
   width: 136px;
-  background-color: #FFC07E;
+  background-color: #FFE8D0;
 }
 
 .polos2 {
@@ -302,6 +307,10 @@ body {
   height: 6px;
   width: 100px;
   background-color: #FFE8D0;
+}
+
+.active {
+  background-color: #FFC07E;
 }
 
 .button-to-saved {

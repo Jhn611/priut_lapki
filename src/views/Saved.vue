@@ -30,6 +30,7 @@ export default {
       isBinded: false,
       lastClickTime: 0,
       changed: false,
+      cardPageActive: 1,
       modules: [Navigation, Pagination, A11y],
       swiperOptions: {
         slidesPerView: 3,
@@ -248,9 +249,11 @@ export default {
         Здесь пока ничего нет, надеемся вы найдете любимчиков!
       </a>
     </div>
+    <div class="home">
     <div class="loader" v-if="load">
       <img src="../assets/imgs/Loader.svg" alt="" />
     </div>
+  </div>
     <div class="saved_cats_else" v-if="!load">
       <a class="sce_text">
         Добавляйте котиков не только в избранное, но и в свой дом!
@@ -276,16 +279,19 @@ export default {
           <b> {{ cat.name }} </b>
         </p>
         <div class="oc-zag">
-          <p style="cursor: pointer">Информация</p>
-          <p style="cursor: pointer">Описание</p>
-          <p style="cursor: pointer">История</p>
+          <p @click="cardPageActive = 1" style="cursor: pointer">Информация</p>
+          <p @click="cardPageActive = 2" style="cursor: pointer">Описание</p>
+          <p @click="cardPageActive = 3" style="cursor: pointer">История</p>
         </div>
         <div class="oc-zag-polos">
-          <div class="polos1"></div>
-          <div class="polos2"></div>
-          <div class="polos3"></div>
+          <div class="polos1" :class="{ active: cardPageActive == 1 }"></div>
+          <div class="polos2" :class="{ active: cardPageActive == 2 }"></div>
+          <div class="polos3" :class="{ active: cardPageActive == 3 }"></div>
         </div>
-        <div class="charact_cat">
+        <div class="description_cat" v-if="cardPageActive == 2 || cardPageActive == 3">
+          <p>{{ cat.description  }} </p>
+        </div>
+        <div class="charact_cat" v-if="cardPageActive == 1">
           <!-- <p> описание описания </p> -->
           <!-- <p> рассказ истории </p> -->
           <p>Пол: {{ cat.gender }}</p>
@@ -294,9 +300,9 @@ export default {
           <div class="pol-s1"></div>
           <p>Порода: {{ cat.breed }}</p>
           <div class="pol-s2"></div>
-          <p>Стерилизация/кастрация: {{ cat.is_sterilized }}</p>
+          <p>Стерилизация/кастрация: {{  cat.is_sterilized ? 'Да' : 'Нет' }}</p>
           <div class="pol-s3"></div>
-          <p>Прививка от бешенства: {{ cat.has_rabies_vaccine }}</p>
+          <p>Прививка от бешенства: {{ cat.has_rabies_vaccine ? 'Да' : 'Нет'}}</p>
           <div class="pol-s4"></div>
         </div>
         <div class="buttons-catcard">
