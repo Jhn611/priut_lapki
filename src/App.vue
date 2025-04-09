@@ -188,7 +188,7 @@ export default {
     <RouterView :command="command" />
   </main>
 
-  <footer class=".bgr_footer">
+  <footer class=".bgr_footer" v-if="!load">
     <div class="elements_footer">
       <div class="logo_footer">
         <img src="./assets/imgs/logo.svg" class="logo_img_footer" />
