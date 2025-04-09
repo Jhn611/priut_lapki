@@ -100,6 +100,7 @@ export default {
 <template>
     <div class="card" @mouseenter="scaleOn" @mouseleave="scaleOff">
         <div class="card-imgBlock">
+            
             <img class="card-imgBlock-img" @click="openCard" :src="`http://26.48.41.80:8000/static/photos/${data.photo_url}`"  alt="" ref="cardImg">
             <img class="card-imgBlock-like" src="../assets/imgs/Heart.svg" alt="" @click="addFav" ref="cardFav">
             <div class="card-imgBlock-name" @click="openCard">
