@@ -88,15 +88,15 @@ export default {
       this.load = true;
       try {
         const json = await login(this.phone, this.password);
-        this.token = json['access_token']
-        this.name = json['first_name']
-        this.last_name = json['last_name']
-        this.phone = json['phone_number']
-        localStorage.setItem("token", this.token)
-        localStorage.setItem("name", this.name)
-        localStorage.setItem("last_name", this.last_name)
-        localStorage.setItem("phone", this.phone)
-        location.reload()
+        this.token = json["access_token"];
+        this.name = json["first_name"];
+        this.last_name = json["last_name"];
+        this.phone = json["phone_number"];
+        localStorage.setItem("token", this.token);
+        localStorage.setItem("name", this.name);
+        localStorage.setItem("last_name", this.last_name);
+        localStorage.setItem("phone", this.phone);
+        location.reload();
         this.load = false;
       } catch {
         this.load = false;
@@ -105,9 +105,14 @@ export default {
     async RegInUser() {
       this.load = true;
       try {
-        const reg = await register(this.name, this.last_name, this.phone, this.password);
-        if(typeof reg != 'number' && typeof reg != 'undefined'){
-          this.LogInUser()
+        const reg = await register(
+          this.name,
+          this.last_name,
+          this.phone,
+          this.password
+        );
+        if (typeof reg != "number" && typeof reg != "undefined") {
+          this.LogInUser();
         }
         this.load = false;
       } catch {
@@ -183,51 +188,52 @@ export default {
     <RouterView :command="command" />
   </main>
 
-  <footer>
-    <div class="bgr_footer">
+  <footer class=".bgr_footer">
     <div class="elements_footer">
-        <div class="logo_footer"> 
-          <img src="./assets/imgs/logo.svg" class="logo_img_footer">
-          <div class="boxes_img_footer">
-            <img src="./assets/imgs/Box.svg" class="box_img_footer">
-            <img src="./assets/imgs/Box.svg" class="box_img_footer">
-            <img src="./assets/imgs/Box.svg" class="box_img_footer">
-          </div>     
+      <div class="logo_footer">
+        <img src="./assets/imgs/logo.svg" class="logo_img_footer" />
+        <div class="boxes_img_footer">
+          <img src="./assets/imgs/Box.svg" class="box_img_footer" />
+          <img src="./assets/imgs/Box.svg" class="box_img_footer" />
+          <img src="./assets/imgs/Box.svg" class="box_img_footer" />
         </div>
-        
-        <div class="zag_pol_footer">
-          <div class="zag_footer"> <p> Информация </p> <p> Контакты </p> <p> Мы в соцсетях </p> </div>
-          <div class="poloska1"> </div>
-          <div class="infos_footer"> 
-            <div class="info1_footer">
-            <p> Время работы: </p>
-            <p> 10:00-20:00 </p>
-            <p> Адрес: </p>
-            <p> ул. Софьи 228 </p>
-            </div>
+      </div>
 
-            <div class="info2_footer">
-              <p> Номер телефона: </p>
-              <p> +7 999 888 55 44 </p>
-              <p> Почта: </p>
-              <p> priyut@mail.ru </p>
-            </div>
-
-            <div class="info3_footer">
-              <p> <a href="https://vk.com/"> Вконтакте </a> </p>
-              <p> <a href="https://web.telegram.org/"> Telegram </a> </p>
-            </div>
-          </div>
-          
+      <div class="zag_pol_footer">
+        <div class="zag_footer">
+          <p>Информация</p>
+          <p>Контакты</p>
+          <p>Мы в соцсетях</p>
         </div>
-        
-        <div class="poloska2"> </div>
-        <div class="p_bottom_footer">
-          <p> &#169; Котоприют </p>
-          <div class="p_bottom_right_footer"> 
-            <p> Котоприют </p>
-            <p> Лапочки </p>
+        <div class="poloska1"></div>
+        <div class="infos_footer">
+          <div class="info1_footer">
+            <p>Время работы:</p>
+            <p>10:00-20:00</p>
+            <p>Адрес:</p>
+            <p>ул. Софьи 228</p>
           </div>
+
+          <div class="info2_footer">
+            <p>Номер телефона:</p>
+            <p>+7 999 888 55 44</p>
+            <p>Почта:</p>
+            <p>priyut@mail.ru</p>
+          </div>
+
+          <div class="info3_footer">
+            <p><a href="https://vk.com/"> Вконтакте </a></p>
+            <p><a href="https://web.telegram.org/"> Telegram </a></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="poloska2"></div>
+      <div class="p_bottom_footer">
+        <p>&#169; Котоприют</p>
+        <div class="p_bottom_right_footer">
+          <p>Котоприют</p>
+          <p>Лапочки</p>
         </div>
       </div>
     </div>
