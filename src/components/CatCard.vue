@@ -3,7 +3,7 @@ import { get_interview_status, bind_cat, add_fav } from "@/API";
 export default {
   data() {
     return {
-        fav: false,
+        fav: this.data.is_favorite,
         isVisible: false,
         isBinded: false,
         token: '',

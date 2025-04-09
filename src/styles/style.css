@@ -17,7 +17,7 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  height: var(--mainHeight);
+  height: auto;
 }
 
 #app {
@@ -105,8 +105,6 @@ header {
 }
 
 .bgr_footer {
-  bottom: 0;
-  left: 0;
   height: 435px;
   width: 100%;
   background-color: #FFF1E3;
@@ -117,10 +115,17 @@ header {
   width: 995px;
   height: 400px;
   display: flex;
-  flex-direction: columnn;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
   padding: 0 300px 0 230px;
+}
+
+.upper_piece {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 .logo_footer {
@@ -528,6 +533,7 @@ header {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  height: calc(var(--mainHeight) + 200px);
   font-size: 22px;
 }
 .saved_all .loader {
