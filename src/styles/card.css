@@ -4,25 +4,29 @@ body {
 }
 
 .card {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  width: 211px;
-  height: 280px;
+  width: 326px;
+  height: 586px;
   border-radius: 13px;
-  background-color: #ebddcf;
+  background-color: #ffffff;
   margin: 0 60px 0 0;
+  color: #5A2F10;
 }
 .card:last-child {
   margin: 0;
 }
 .card-imgBlock {
   position: relative;
+  top: 21px;
   overflow: hidden;
-  width: 200px;
-  height: 235px;
-  border-radius: 11px;
+  width: 275px;
+  height: 275px;
+  border-radius: 50%;
+  box-shadow: 5px 3px 10px 0px #9E9B97;
 }
 .card-imgBlock-img {
   width: 100%;
@@ -33,15 +37,21 @@ body {
   transition: transform 0.5s ease-out;
   transform: scale(1);
   cursor: pointer;
+  top: 30px;
 }
 .card-imgBlock-like {
   position: absolute;
-  top: 10px;
   right: 10px;
+  top: 10px;
+  height: 41px;
+  width: 41px;
   cursor: pointer;
 }
 .card-imgBlock-name {
-  position: absolute;
+  top: 25px;
+  color: #5A2F10;
+  font-size: 28px;
+  position: relative;
   bottom: 10px;
   width: 100%;
   height: 40px;
@@ -64,6 +74,27 @@ body {
   width: auto;
 }
 .card-info {
+  position: relative;
+  top: 0px;
+  color: #5A2F10;
+  font-size: 23px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 30px;
+  border-radius: 11px;
+  font-weight: 400px;
+  cursor: pointer;
+}
+.card-info p {
+  margin: 0;
+}
+.card-info-age {
+  position: relative;
+  top: -15px;
+  color: #5A2F10;
+  font-size: 25px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -72,9 +103,22 @@ body {
   border-radius: 11px;
   cursor: pointer;
 }
-.card-info p {
-  font-size: 16px;
+.card-info-age p {
+  font-size: 25px;
   margin: 0;
+}
+.card-button {
+  width: 213px;
+  height: 56px;
+  background-color: #FFBD7B;
+  border-radius: 15px;
+  font-size: 25px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  border: 2px solid #351B00;
 }
 .card-infoBlock {
   display: flex;
