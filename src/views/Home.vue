@@ -243,7 +243,17 @@ export default {
 </script>
 
 <template>
+
   <div class="background_card_container" v-if="!load">
+    <div class="background_hello">
+      <div class="friend-left">
+        <div class="friends"> <img src="../assets/imgs/text1.svg"> </div>
+        <div class="friends_s2"> <img src="../assets/imgs/text2.svg"> </div>
+        <div class="button-to-find-friend" style="cursor: pointer"> <p> Найти друга </p> <img class="button-down" src="../assets/imgs/Down.svg"> </div>
+      </div>
+      
+      <img src="../assets/imgs/cat-hello.webp" class="cat-hello-img">
+    </div>
     <div class="background_card" v-for="(x, index) in cats" :key="index">
       <div class="slider-wrapper">
         <swiper
