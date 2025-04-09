@@ -1,11 +1,12 @@
 <script>
-import { get_interview_status, bind_cat } from "@/API";
+import { get_interview_status, bind_cat, add_fav } from "@/API";
 export default {
   data() {
     return {
         fav: false,
         isVisible: false,
         isBinded: false,
+        token: '',
     }
   },
   props: {
@@ -23,11 +24,24 @@ export default {
         const img = this.$refs.cardImg
         img.style.transform = "scale(1.0)"
     },
-    addFav(){
+    async addFav(){
         this.fav = !this.fav
         const imgFav = this.$refs.cardFav
         if(this.fav){
             // хз пока чё тут
+        }
+        try{
+            this.token = localStorage.getItem('token')
+            if(this.token && this.token != ''){
+                const json = await get_interview_status(this.token);
+                if(json == 401){
+                    localStorage.setItem("token", '') 
+                }else{
+                    await add_fav(this.data.id, this.token)
+                }
+            }
+        }catch{
+
         }
     },
     openCard(){
@@ -84,15 +98,15 @@ export default {
 </script>
 
 <template>
-    <div class="card" @mouseenter="scaleOn" @mouseleave="scaleOff" @click="openCard">
+    <div class="card" @mouseenter="scaleOn" @mouseleave="scaleOff">
         <div class="card-imgBlock">
-            <img class="card-imgBlock-img" :src="`http://26.48.41.80:8000/static/photos/${data.photo_url}`"  alt="" ref="cardImg">
+            <img class="card-imgBlock-img" @click="openCard" :src="`http://26.48.41.80:8000/static/photos/${data.photo_url}`"  alt="" ref="cardImg">
             <img class="card-imgBlock-like" src="../assets/imgs/Heart.svg" alt="" @click="addFav" ref="cardFav">
-            <div class="card-imgBlock-name">
+            <div class="card-imgBlock-name" @click="openCard">
                 <h3>{{ data.name }}</h3>
             </div>
         </div>
-        <div class="card-info">
+        <div class="card-info" @click="openCard">
             <p>{{ data.breed }} </p>
         </div>
     </div>

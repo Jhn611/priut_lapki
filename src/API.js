@@ -139,3 +139,28 @@ export async function bind_cat(id, token) {
 export async function get_book_cats(token) {
   return req("", `/admin/booked-cats`, "get", token);
 }
+
+export async function search_book_cats(name, token) {
+  const data = {
+    name: name,
+  };
+  return req(data, `/admin/search-booked-cats`, "post", token);
+}
+
+export async function unbind_cat(id, token) {
+  const data = {
+    cat_id: id,
+  };
+  return req(data, `/cats/${id}/unbook`, "post", token);
+}
+
+export async function get_favorite(token) {
+  return req('', `/favorites`, "get", token);
+}
+
+export async function add_fav(id, token) {
+  const data = {
+    cat_id: id,
+  };
+  return req(data, `/cats/${id}/favorite`, "post", token);
+}

@@ -58,7 +58,7 @@ export default {
             this.cats = x;
           }
           console.log(this.cats);
-          const height = this.cats.length * 286 + this.cats.length * 50;
+          const height = this.cats.length * 286 + this.cats.length * 30;
           const currentStyles = document.body.style.cssText;
           document.body.style.cssText = currentStyles + `--mainHeight: ${height}px`
           this.load = false
@@ -93,7 +93,7 @@ export default {
       }
       console.log(this.cats);
 
-      const height = this.cats.length * 286 + this.cats.length * 50;
+      const height = this.cats.length * 286 + this.cats.length * 30;
       const currentStyles = document.body.style.cssText;
       document.body.style.cssText = currentStyles + `--mainHeight: ${height}px`
       this.load = false 

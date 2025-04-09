@@ -1,4 +1,5 @@
 <script>
+import { get_interview_status } from "@/API";
 import CatCard from "../components/CatCard.vue";
 export default {
   data() {
@@ -7,6 +8,7 @@ export default {
       token: "",
       name: "",
       last_name: "",
+      login: false,
     };
   },
   components: {
@@ -38,6 +40,15 @@ export default {
     changePageToProfile_cats(){
       this.$router.push('/profile_cats');
     },
+    logout(){
+      this.token = '';
+      this.name = '';
+      this.last_name = '';
+      localStorage.setItem('token', '')
+      localStorage.setItem('name', '')
+      localStorage.setItem('last_name', '')
+      this.$router.push("/home");
+    },  
     //тут функции которые будем использовать для изменения визуального контента (изменение переменных, добавление стилей, и т. д.) в целом можно все тут писать
   },
 
@@ -46,10 +57,11 @@ export default {
     this.token = localStorage.getItem("token");
     if (this.token && this.token != "") {
       this.name = localStorage.getItem("name");
-        this.last_name = localStorage.getItem("last_name");
+      this.last_name = localStorage.getItem("last_name");
       const json = await get_interview_status(this.token);
       if(json == 401 || typeof json == 'undefined'){
         localStorage.setItem("token", '') 
+        this.login = false;
       }else{
         this.login = true;
       }
@@ -103,6 +115,7 @@ export default {
         </div>
       </div>
     </div>
+    <div v-if="login" class="btn" @click="logout"><p>Выйти</p></div>
   </div>
 
   <div class="background_profile_right"> 

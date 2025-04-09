@@ -106,7 +106,9 @@ export default {
       this.load = true;
       try {
         const reg = await register(this.name, this.last_name, this.phone, this.password);
-        this.LogInUser()
+        if(typeof reg != 'number' && typeof reg != 'undefined'){
+          this.LogInUser()
+        }
         this.load = false;
       } catch {
         this.load = false;

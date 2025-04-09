@@ -10,6 +10,7 @@ export default {
       last_name: "",
       phone: "",
       load: false,
+      login: false,
     };
   },
   components: {
@@ -43,6 +44,15 @@ export default {
         this.load = false;
       }
     },
+    logout(){
+      this.token = '';
+      this.name = '';
+      this.last_name = '';
+      localStorage.setItem('token', '')
+      localStorage.setItem('name', '')
+      localStorage.setItem('last_name', '')
+      this.$router.push("/home");
+    },  
     //тут функции которые будем использовать для изменения визуального контента (изменение переменных, добавление стилей, и т. д.) в целом можно все тут писать
   },
 
@@ -56,6 +66,7 @@ export default {
       const json = await get_interview_status(this.token);
       if(json == 401 || typeof json == 'undefined'){
         localStorage.setItem("token", '') 
+        this.login = false;
       }else{
         this.login = true;
       }
@@ -106,8 +117,9 @@ export default {
         <img src="../assets/imgs/Radio_button_off.svg" class="rad_but3">
         <div class="bgr_catstopriyut"> <a> Коты, сданные в приют </a> </div>
       </div>
-
+      
     </div>
+    <div v-if="login" class="btn" @click="logout"><p>Выйти</p></div>
   </div>
 
   <div class="background_profile_right"> 
