@@ -49,19 +49,19 @@ export async function req(params, request, type, API_TOKEN) {
   }
 }
 
-export async function get_cats(start = 0, end = 12) {
+export async function get_cats(start = 0, end = 12, token) {
   const params = {
     skip: start,
     limit: end,
   };
-  return req(params, "/cats", "get", "");
+  return req(params, "/cats", "get", token);
 }
 
-export async function search_cats(query) {
+export async function search_cats(query, token) {
   const data = {
     query,
   };
-  return req(data, "/search_cats", "post", "");
+  return req(data, "/search_cats", "post", token);
 }
 
 export async function register(first_name, last_name, phone_number, password) {
@@ -163,4 +163,8 @@ export async function add_fav(id, token) {
     cat_id: id,
   };
   return req(data, `/cats/${id}/favorite`, "post", token);
+}
+
+export async function get_cat(id, token) {
+  return req("", `/cats/${id}`, "get", token);
 }

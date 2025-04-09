@@ -7,6 +7,7 @@ export default {
         isVisible: false,
         isBinded: false,
         token: '',
+        imageUrl: new URL("../assets/imgs/Heart.svg", import.meta.url).href,
     }
   },
   props: {
@@ -26,9 +27,11 @@ export default {
     },
     async addFav(){
         this.fav = !this.fav
-        const imgFav = this.$refs.cardFav
         if(this.fav){
-            // хз пока чё тут
+            this.imageUrl = new URL("../assets/imgs/HeartFill.svg", import.meta.url).href
+        }
+        else{
+            this.imageUrl = new URL("../assets/imgs/Heart.svg", import.meta.url).href
         }
         try{
             this.token = localStorage.getItem('token')
@@ -91,6 +94,12 @@ export default {
     },
   },
   async mounted() {
+    if(this.fav){
+        this.imageUrl = new URL("../assets/imgs/HeartFill.svg", import.meta.url).href
+    }
+    else{
+        this.imageUrl = new URL("../assets/imgs/Heart.svg", import.meta.url).href
+    }
     document.addEventListener('click', this.closeCat.bind(this))
     document.addEventListener("click", this.closeBind.bind(this));
   },
@@ -101,19 +110,19 @@ export default {
 
     <div class="card" @mouseenter="scaleOn" @mouseleave="scaleOff">
         <div class="card-imgBlock">
-            <img class="card-imgBlock-img" @click="openCard" :src="`http://26.48.41.80:8000/static/photos/${data.photo_url}`"  alt="" ref="cardImg">
+            <img class="card-imgBlock-img" @click="$emit('click', this.data.id)" :src="`http://26.48.41.80:8000/static/photos/${data.photo_url}`"  alt="" ref="cardImg">
         </div>
-        <img class="card-imgBlock-like" src="../assets/imgs/Heart.svg" alt="" @click="addFav" ref="cardFav">
-        <div class="card-imgBlock-name" @click="openCard">
+        <img class="card-imgBlock-like" :src="imageUrl" alt="" @click="addFav">
+        <div class="card-imgBlock-name" @click="$emit('click', this.data.id)">
                 <h3>{{ data.name }}</h3>
         </div>
-        <div class="card-info" @click="openCard">
+        <div class="card-info" @click="$emit('click', this.data.id)">
             <p>{{ data.breed }} </p>
         </div>
-        <div class="card-info-age" @click="openCard">
+        <div class="card-info-age" @click="$emit('click', this.data.id)">
             <p>{{ data.age }} </p>
         </div>
-        <div class="card-button" @click="openCard">
+        <div class="card-button" @click="$emit('click', this.data.id)">
             <p> Приютить </p>
         </div>
     </div>
