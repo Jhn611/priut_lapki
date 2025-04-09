@@ -81,7 +81,7 @@ export default {
 <template>
   <div class="saved_all">
     <div class="saved_cats"><a> Котики, которые вам понравились </a></div>
-    <div class="background_card_container" v-if="!load">
+    <div class="background_card_container" v-if="!load && cats">
       <div class="background_card" v-for="x in cats" :key="x">
         <CatCard v-for="i in x" :key="i" :data="i" />
       </div>
