@@ -117,6 +117,14 @@ export default {
   <div class="loader" v-if="load">
     <img src="../assets/imgs/Loader.svg" alt="">
   </div>
+
+  <!-- <footer>
+    <div class="bgr_footer">
+      <div class="elements_footer">
+
+      </div>
+    </div>
+  </footer> -->
   
 </template>
 

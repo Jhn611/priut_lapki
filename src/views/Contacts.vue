@@ -87,7 +87,7 @@ export default {
         </video>
       </div>
     </div>
-  </div>
+  </div>  
 </template>
 
 <style src="../styles/style.css"></style>

@@ -104,6 +104,103 @@ header {
   height: var(--mainHeight);
 }
 
+.bgr_footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 435px;
+  width: 100%;
+  background-color: #FFF1E3;
+  color: #793F3F;
+}
+
+.elements_footer {
+  width: 995px;
+  height: 400px;
+  display: flex;
+  flex-direction: columnn;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 300px 0 230px;
+}
+
+.logo_footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 0 25px 120px 0;
+}
+
+.logo_img_footer {
+  height: 75px;
+  width: 191px;
+}
+
+.box_img_footer {
+  height: 40px;
+  width: 40px;
+}
+
+.zag_pol_footer {
+  display: flex;
+  flex-direction: column;
+}
+
+.zag_footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 733px;
+  padding: 0 0 0 0;
+}
+.zag_footer p {
+  font-size: 32px;
+}
+
+.poloska1 {
+  background-color: #F6D3B9;
+  height: 6px;
+  width: 722px;
+}
+
+.infos_footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 680px;
+  align-items: start;
+}
+.infos_footer p {
+  font-size: 20px;
+}
+
+.info3_footer a {
+  color: #793F3F;
+  text-decoration: none;
+}
+.info3_footer a:hover {
+  color: #924f4f;
+}
+
+.poloska2 {
+  background-color: #D9B296;
+  height: 6px;
+  width: 981px;
+}
+
+.p_bottom_footer {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+}
+
+.p_bottom_right_footer {
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+}
+
 .background_profile {
   display: flex;
   flex-direction: row;

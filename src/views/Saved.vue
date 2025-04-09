@@ -100,6 +100,8 @@ export default {
       </a>
     </div>
   </div>
+
+  
 </template>
 
 <style src="../styles/style.css"></style>
