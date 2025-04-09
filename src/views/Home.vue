@@ -169,6 +169,18 @@ export default {
         }
       }
     },
+    scrollTo(id) {
+      const element = document.querySelector(id);
+      
+      const offset = 140;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    },
   },
   watch: {
     async command(newCommand) {
@@ -194,7 +206,7 @@ export default {
             this.cats = x;
           }
           console.log(this.cats);
-          const height = this.cats.length * 650 + this.cats.length * 30;
+          const height = this.cats.length * 620 + this.cats.length * 30;
           const currentStyles = document.body.style.cssText;
           document.body.style.cssText =
             currentStyles + `--mainHeight: ${height}px`;
@@ -229,7 +241,7 @@ export default {
       }
       console.log(this.cats);
 
-      const height = this.cats.length * 650 + this.cats.length * 30;
+      const height = this.cats.length * 620 + this.cats.length * 30;
       const currentStyles = document.body.style.cssText;
       document.body.style.cssText = currentStyles + `--mainHeight: ${height}px`;
       this.load = false;
@@ -250,12 +262,11 @@ export default {
       <div class="friend-left">
         <div class="friends"> <img src="../assets/imgs/text1.svg"> </div>
         <div class="friends_s2"> <img src="../assets/imgs/text2.svg"> </div>
-        <div class="button-to-find-friend" style="cursor: pointer"> <p> Найти друга </p> <img class="button-down" src="../assets/imgs/Down.svg"> </div>
+        <div @click="scrollTo('#cats')" class="button-to-find-friend" style="cursor: pointer"> <p> Найти друга </p> <img class="button-down" src="../assets/imgs/Down.svg"> </div>
       </div>
-      
       <img src="../assets/imgs/cat-hello.webp" class="cat-hello-img">
     </div>
-    <div class="background_card" v-for="(x, index) in cats" :key="index">
+    <div id="cats" class="background_card" v-for="(x, index) in cats" :key="index">
       <div class="slider-wrapper">
         <swiper
           v-bind="swiperOptions"
@@ -365,7 +376,7 @@ export default {
       </p>
     </div>
   </div>
-  <div class="home">
+  <div class="home" v-if="load">
     <div class="loader" v-if="load">
       <img src="../assets/imgs/Loader.svg" alt="" />
     </div>

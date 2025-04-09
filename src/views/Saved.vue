@@ -249,7 +249,7 @@ export default {
         Здесь пока ничего нет, надеемся вы найдете любимчиков!
       </a>
     </div>
-    <div class="home">
+    <div class="home" v-if="load">
     <div class="loader" v-if="load">
       <img src="../assets/imgs/Loader.svg" alt="" />
     </div>
