@@ -190,40 +190,42 @@ export default {
 
   <footer class=".bgr_footer" v-if="!load">
     <div class="elements_footer">
-      <div class="logo_footer">
-        <img src="./assets/imgs/logo.svg" class="logo_img_footer" />
-        <div class="boxes_img_footer">
-          <img src="./assets/imgs/Box.svg" class="box_img_footer" />
-          <img src="./assets/imgs/Box.svg" class="box_img_footer" />
-          <img src="./assets/imgs/Box.svg" class="box_img_footer" />
-        </div>
-      </div>
-
-      <div class="zag_pol_footer">
-        <div class="zag_footer">
-          <p>Информация</p>
-          <p>Контакты</p>
-          <p>Мы в соцсетях</p>
-        </div>
-        <div class="poloska1"></div>
-        <div class="infos_footer">
-          <div class="info1_footer">
-            <p>Время работы:</p>
-            <p>10:00-20:00</p>
-            <p>Адрес:</p>
-            <p>ул. Софьи 228</p>
+      <div class="upper_piece">
+        <div class="logo_footer">
+          <img src="./assets/imgs/logo.svg" class="logo_img_footer" />
+          <div class="boxes_img_footer">
+            <img src="./assets/imgs/Box.svg" class="box_img_footer" />
+            <img src="./assets/imgs/Box.svg" class="box_img_footer" />
+            <img src="./assets/imgs/Box.svg" class="box_img_footer" />
           </div>
+        </div>
 
-          <div class="info2_footer">
-            <p>Номер телефона:</p>
-            <p>+7 999 888 55 44</p>
-            <p>Почта:</p>
-            <p>priyut@mail.ru</p>
+        <div class="zag_pol_footer">
+          <div class="zag_footer">
+            <p>Информация</p>
+            <p>Контакты</p>
+            <p>Мы в соцсетях</p>
           </div>
+          <div class="poloska1"></div>
+          <div class="infos_footer">
+            <div class="info1_footer">
+              <p>Время работы:</p>
+              <p>10:00-20:00</p>
+              <p>Адрес:</p>
+              <p>ул. Софьи 228</p>
+            </div>
 
-          <div class="info3_footer">
-            <p><a href="https://vk.com/"> Вконтакте </a></p>
-            <p><a href="https://web.telegram.org/"> Telegram </a></p>
+            <div class="info2_footer">
+              <p>Номер телефона:</p>
+              <p>+7 999 888 55 44</p>
+              <p>Почта:</p>
+              <p>priyut@mail.ru</p>
+            </div>
+
+            <div class="info3_footer">
+              <p><a href="https://vk.com/"> Вконтакте </a></p>
+              <p><a href="https://web.telegram.org/"> Telegram </a></p>
+            </div>
           </div>
         </div>
       </div>
