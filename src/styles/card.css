@@ -240,8 +240,21 @@ body {
 }
 
 .description_cat {
-  width: 400px;
+  width: 440px;
   height: 290px;
+  overflow-y: auto;
+}
+.description_cat::-webkit-scrollbar {
+  width: 6px;
+  padding: 0 5px 0 0;
+}
+.description_cat::-webkit-scrollbar-thumb {
+  background-color: #F3CBA5;
+  border-radius: 4px;
+}
+.description_cat::-webkit-scrollbar-track {
+  background: #FFFFFF;
+  border-radius: 11px;
 }
 
 .pol {

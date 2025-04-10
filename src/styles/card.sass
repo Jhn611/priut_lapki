@@ -208,8 +208,20 @@ body
     display: flex
     flex-direction: column
 .description_cat
-    width: 400px
+    width: 440px
     height: 290px
+    overflow-y: auto
+    &::-webkit-scrollbar
+        width: 6px // Ширина скроллбара
+        padding: 0 5px 0 0
+
+    &::-webkit-scrollbar-thumb
+        background-color: #F3CBA5 // Цвет ползунка
+        border-radius: 4px // Закругление углов
+
+    &::-webkit-scrollbar-track
+        background: #FFFFFF // Цвет фона скроллбара
+        border-radius: 11px
 .pol
     height: 6px
     width: 436px

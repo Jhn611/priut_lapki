@@ -202,7 +202,7 @@ export default {
         }
         console.log(this.cats);
 
-        const height = this.cats.length * 650 + this.cats.length * 30;
+        const height = this.cats.length * 650 + this.cats.length * 30 - 750;
         const currentStyles = document.body.style.cssText;
         document.body.style.cssText =
           currentStyles + `--mainHeight: ${height}px`;

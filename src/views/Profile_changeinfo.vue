@@ -30,6 +30,13 @@ export default {
     changePageToProfile_cats(){
       this.$router.push('/profile_cats');
     },
+    fix(str){
+      if(str == ""){
+        return "";
+      }else{
+        return str[0];
+      }
+    },  
     async sendChanges(){
       this.load = true;
       try {
@@ -85,7 +92,7 @@ export default {
     <div class="profile_setup">
         <div class="bgr_avatarka">
           <div class="p_NS">
-            <p>{{ name[0] + last_name[0] }}</p>
+            <p>{{ fix(name) + fix(last_name) }}</p>
           </div>
         </div>
         <div class="Name_Subname">
