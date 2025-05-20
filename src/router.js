@@ -1,8 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Home from './views/Announcements.vue';
-import Profile from './views/Profile_status_sobes.vue';
 import Saved from './views/Saved.vue';
-import Contacts from './views/Priyut.vue';
+import Priyut from './views/Priyut.vue';
 import Profile_changeinfo from './views/Profile_changeinfo.vue';
 import Profile_cats from './views/Profile_cats.vue';
 import Howtohelp from './views/Howtohelp.vue';
@@ -11,6 +9,7 @@ import Sobesedovanie from './views/Sobesedovanie.vue';
 import LogRegIn from './views/LogRegIn.vue';
 import Admin from './views/Admin_see_ad.vue';
 import Hellopage from './views/Hellopage.vue';
+import Announcements from './views/Announcements.vue';
 
 const routes = [
 ];
@@ -19,21 +18,21 @@ const router = createRouter({
   history: createWebHistory(), // Использует HTML5 History API
   routes: [
     {
-      path: '/hello_page',
-      name: 'hello_page',
-      props: (route) => ({ command: route.query.command }),
-      component: Home,
+      path: '/hellopage',
+      name: 'hellopage',
+      // props: (route) => ({ command: route.query.command }),
+      component: Hellopage,
     },
     {
-      path: '/home',
-      name: 'user_home',
-      props: (route) => ({ command: route.query.command }),
-      component: Home,
+      path: '/announcements',
+      name: 'announcements',
+      // props: (route) => ({ command: route.query.command }),
+      component: Announcements,
     },
     {
-      path: '/profile',
-      name: 'user_profile',
-      component: Profile,
+      path: '/priyut',
+      name: 'priyut',
+      component: Priyut,
     },
     {
       path: '/profile_changeinfo',
@@ -51,24 +50,19 @@ const router = createRouter({
       component: Saved,
     },
     {
-      path: '/contacts',
-      name: 'contacts',
-      component: Contacts,
-    },
-    {
       path: '/howtohelp',
       name: 'howtohelp',
       component: Howtohelp,
     },
     {
-      path: '/surrender_a_cat',
-      name: 'surrender_a_cat',
-      component: Surrender_a_cat,
+      path: '/post_an_ad',
+      name: 'post_an_a',
+      component: Post_an_ad,
     },
     {
       path: '/sobesedovanie',
       name: 'sobesedovanie',
-      component: Sobes,
+      component: Sobesedovanie,
     },
     {
       path: '/auth',
