@@ -6,10 +6,11 @@ import Contacts from './views/Priyut.vue';
 import Profile_changeinfo from './views/Profile_changeinfo.vue';
 import Profile_cats from './views/Profile_cats.vue';
 import Howtohelp from './views/Howtohelp.vue';
-import Surrender_a_cat from './views/Post_an_ad.vue';
-import Sobes from './views/Sobesedovanie.vue';
+import Post_an_ad from './views/Post_an_ad.vue';
+import Sobesedovanie from './views/Sobesedovanie.vue';
 import LogRegIn from './views/LogRegIn.vue';
 import Admin from './views/Admin_see_ad.vue';
+import Hellopage from './views/Hellopage.vue';
 
 const routes = [
 ];
@@ -17,6 +18,12 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(), // Использует HTML5 History API
   routes: [
+    {
+      path: '/hello_page',
+      name: 'hello_page',
+      props: (route) => ({ command: route.query.command }),
+      component: Home,
+    },
     {
       path: '/home',
       name: 'user_home',
@@ -59,8 +66,8 @@ const router = createRouter({
       component: Surrender_a_cat,
     },
     {
-      path: '/sobes',
-      name: 'sobes',
+      path: '/sobesedovanie',
+      name: 'sobesedovanie',
       component: Sobes,
     },
     {

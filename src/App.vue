@@ -63,11 +63,11 @@ export default {
     changePageToSaved() {
       this.$router.push("/saved");
     },
-    changePageToContacts() {
-      this.$router.push("/contacts");
+    changePageToSobesedovanie() {
+      this.$router.push("/sobesedovanie");
     },
-    changePageToHowtohelp() {
-      this.$router.push("/howtohelp");
+    changePageToPost_an_ad() {
+      this.$router.push("/post_an_ad");
     },
     changePageToSurrenderaCat() {
       this.$router.push("/surrender_a_cat");
@@ -166,14 +166,14 @@ export default {
       </div>
       <div class="header_text">
         <div class="header_text1">
-          <a @click="changePageToHowtohelp" style="cursor: pointer">
-            Как помочь
+          <a @click="changePageToHowtoAnnouncements" style="cursor: pointer">
+            Объявления
           </a>
-          <a @click="changePageToSurrenderaCat" style="cursor: pointer">
-            Сдать кошку в приют
+          <a @click="changePageToPost_an_ad" style="cursor: pointer">
+            Выложить объявление
           </a>
-          <a @click="changePageToContacts" style="cursor: pointer">
-            Контакты
+          <a @click="changePageToSobesedovanie" style="cursor: pointer">
+            Собеседование
           </a>
         </div>
 
