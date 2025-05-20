@@ -1,15 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Home from './views/Home.vue';
-import Profile from './views/Profile.vue';
+import Home from './views/Announcements.vue';
+import Profile from './views/Profile_status_sobes.vue';
 import Saved from './views/Saved.vue';
-import Contacts from './views/Contacts.vue';
+import Contacts from './views/Priyut.vue';
 import Profile_changeinfo from './views/Profile_changeinfo.vue';
 import Profile_cats from './views/Profile_cats.vue';
 import Howtohelp from './views/Howtohelp.vue';
-import Surrender_a_cat from './views/Surrender_a_cat.vue';
-import Sobes from './views/Sobes.vue';
+import Surrender_a_cat from './views/Post_an_ad.vue';
+import Sobes from './views/Sobesedovanie.vue';
 import LogRegIn from './views/LogRegIn.vue';
-import Admin from './views/Admin.vue';
+import Admin from './views/Admin_see_ad.vue';
 
 const routes = [
 ];

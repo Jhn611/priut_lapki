@@ -180,7 +180,7 @@ export default {
   async mounted() {
     // то что происходит когда страница создаётся (то есть запуск анимаций которые должны проиграться при открытии страницы и подобное)
     this.token = localStorage.getItem("token");
-    if (this.token && this.token != "") {
+    if (this.token && this.token != "" && false) {
       this.load = true;
       try {
         const cats_cards = await get_favorite(this.token);
@@ -223,7 +223,7 @@ export default {
 
 <template>
   <div class="saved_all">
-    <div class="saved_cats"><a> Котики, которые вам понравились</a></div>
+    <div class="saved_cats"><a> Здесь находятся котики, которые вам понравились </a></div>
     <div class="background_card_container" v-if="!load && cats.length != 0">
       <div class="background_card" v-for="x in cats" :key="x">
         <div class="slider-wrapper">
@@ -256,7 +256,7 @@ export default {
   </div>
     <div class="saved_cats_else" v-if="!load">
       <a class="sce_text">
-        Добавляйте котиков не только в избранное, но и в свой дом!
+        Показать еще
       </a>
     </div>
   </div>
