@@ -110,14 +110,14 @@ export default {
 <template>
   <div class="adminbroni_all">
     <div class="bgr_adminbroni_cats">
-      <p class="text_broni"><b> Список броней </b></p>
+      <p class="text_broni"><b> Список объявлений на модерацию </b></p>
       <div class="search-bar">
         <input type="text" v-model="query" placeholder="Поиск..." />
         <button @click="search">
           <img src="../assets/imgs/Search.svg" />
         </button>
       </div>
-      <div class="bgr_bronicats-container" v-if="!load">
+      <!-- <div class="bgr_bronicats-container" v-if="!load">
         <div class="bgr_bronicats" v-for="item in cats" :key="item">
           <div class="photo_cat">
             <img
@@ -151,12 +151,87 @@ export default {
           </div>
           <div class="button_krest" @click="unbind(item.cat.id)"><img src="../assets/imgs/krest.svg" /></div>
         </div>
+      </div> -->
+        <div class="rectangle_admod">
+          <div class="info_priyutad">
+            <div class="namepriyutt">
+              <p> Приют </p>
+            </div>
+            <div class="namepriyutt2">
+              <p> Хвостики </p>
+            </div>
+            <div class="namepriyutt_status">
+              <p> Подтвержден </p>
+            </div>
+          </div>
+          <div class="info_with_img">
+            <div class="img_of_catinandmod"> </div>
+            <div class="info_catadmod_all">
+              <div class="info_catadmod">
+            <div class="info_cat1">
+              <p> Имя кошки </p>
+            </div>
+            <div class="info_cat2">
+              <p> Джесси </p>
+            </div>
+          </div>
+          <div class="info_catadmod">
+            <div class="info_cat1">
+              <p> Порода </p>
+            </div>
+            <div class="info_cat2">
+              <p> Шотландская </p>
+            </div>
+          </div>
+          <div class="info_catadmod">
+            <div class="info_cat1">
+              <p> Возраст </p>
+            </div>
+            <div class="info_cat2">
+              <p> 8 лет </p>
+            </div>
+          </div>
+          <div class="info_catadmod">
+            <div class="info_cat1">
+              <p> Кастрация/Стерилизация </p>
+            </div>
+            <div class="info_cat2">
+              <p> Да </p>
+            </div>
+          </div>
+          <div class="info_catadmod">
+            <div class="info_cat1">
+              <p> Прививка от бешенства </p>
+            </div>
+            <div class="info_cat2">
+              <p> Да </p>
+            </div>
+          </div>
+            </div>
+          </div>
+
+          <div class="opisanie_catsmod">
+            <p> Описание </p>
+          </div>
+
+          <div class="opisanie_catsmod_big">
+            <p> Описание </p>
+          </div>
+          <div class="buttons_catmod">
+            <div class="button_good_catmod">
+            <p> Одобрить </p>
+            </div>
+            <div class="button_bad_catmod">
+              <p> Отклонить </p>
+            </div>
+          </div>
+
       </div>
       <div class="loader" v-if="load">
         <img src="../assets/imgs/Loader.svg" alt="" />
       </div>
     </div>
-  </div>
+    </div>
 </template>
 
 <style src="../styles/style.css"></style>

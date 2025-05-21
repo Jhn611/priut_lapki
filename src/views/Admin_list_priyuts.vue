@@ -237,8 +237,7 @@ export default {
   </div>
 </template>
 
-<style scoped>
-.lp_wrapper {
+<style src="../styles/style.css">.lp_wrapper {
   position: relative;
   display: inline-block;
 }
@@ -284,5 +283,3 @@ export default {
   background-color: #DCC5AC;
 }
 </style>
-
-<style src="../styles/style.css"></style>

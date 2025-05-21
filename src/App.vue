@@ -186,7 +186,7 @@ export default {
         </div>
       </div>
       <div class="header_text">
-        <div class="header_text1" v-if="$route.path == '/admin_see_ad' || $route.path == '/admin_list_priyuts' || $route.path == '/admin_list_users' || $route.path == '/admin_list_priyut_for_moderation' || $route.path == '/admin_list_ad_for_moderation'">
+        <!-- <div class="header_text1_admin" v-if="$route.path == '/admin_see_ad' || $route.path == '/admin_list_priyuts' || $route.path == '/admin_list_users' || $route.path == '/admin_list_priyut_for_moderation' || $route.path == '/admin_list_ad_for_moderation'">
           <a @click="changePageAdmin_see_ad" style="cursor: pointer">
             Просмотр объявлений
           </a>
@@ -202,7 +202,54 @@ export default {
           <a @click="changePageAdmin_list_priyuts" style="cursor: pointer">
             Список приютов
           </a>
+        </div> -->
+
+        <div class="header_text">
+          <div
+            class="header_text1_admin"
+            v-if="$route.path.startsWith('/admin')"
+          >
+            <div
+              class="admin-link"
+              :class="{ active: $route.path === '/admin_see_ad' }"
+              @click="changePageAdmin_see_ad"
+            >
+              Просмотр объявлений
+            </div>
+            <div
+              class="admin-link"
+              :class="{ active: $route.path === '/admin_list_ad_for_moderation' }"
+              @click="changePageAdmin_list_ad_for_moderation"
+            >
+              Модерация объявлений
+            </div>
+            <div
+              class="admin-link"
+              :class="{ active: $route.path === '/admin_list_priyut_for_moderation' }"
+              @click="changePageAdmin_list_priyut_for_moderation"
+            >
+              Модерация приютов
+            </div>
+            <div
+              class="admin-link"
+              :class="{ active: $route.path === '/admin_list_users' }"
+              @click="changePageAdmin_list_users"
+            >
+              Список пользователей
+            </div>
+            <div
+              class="admin-link"
+              :class="{ active: $route.path === '/admin_list_priyuts' }"
+              @click="changePageAdmin_list_priyuts"
+            >
+              Список приютов
+            </div>
+          </div>
         </div>
+
+
+
+        
         <div class="header_text1" v-if="($route.path !== '/admin_see_ad') && ($route.path !== '/admin_list_priyuts') && ($route.path !== '/admin_list_users') && ($route.path !== '/admin_list_priyut_for_moderation') && ($route.path !== '/admin_list_ad_for_moderation')">
           <a @click="changePageToAnnouncements" style="cursor: pointer">
             Объявления
