@@ -35,10 +35,10 @@ const router = createRouter({
       component: Hellopage,
     },
     {
-      path: '/home',
-      name: 'home',
+      path: '/announcements',
+      name: 'announcements',
       props: (route) => ({ command: route.query.command }),
-      component: Home,
+      component: Announcements,
     },
     {
       path: '/profile',

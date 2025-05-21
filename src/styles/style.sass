@@ -83,7 +83,56 @@ header
     width: 150px
     height: 70px
 .header_text1
-    width: 440px
+    width: 100%
+    display: flex
+    flex-direction: row
+    justify-content: space-evenly
+.header_text1_admin
+    width: 100%
+    display: flex
+    flex-direction: row
+    justify-content: space-evenly
+// .header_text
+//   display: flex
+//   flex-direction: row
+//   justify-content: space-between
+//   align-items: center
+//   width: 95%
+//   height: 30%
+//   font-size: 14px
+
+.header_text
+  display: flex
+  flex-direction: row
+  justify-content: space-between
+  align-items: center
+  width: 1000px
+  height: 30%
+  font-size: 14px
+
+.header_text2
+    width: 500px
+
+.header_text1_admin
+  width: 100%
+  display: flex
+  flex-wrap: wrap
+  gap: 10px
+  justify-content: center
+
+.admin-link
+  border-radius: 10px
+  padding: 10px 16px
+  cursor: pointer
+  transition: background-color 0.2s ease
+  white-space: nowrap
+
+  &:hover
+    background-color: #DCC5AC
+
+  &.active
+    background-color: #E9D4C0
+
 .background_card
     // background-color: #FFFFFF
     width: 1005px
@@ -241,8 +290,10 @@ footer
     flex-direction: row
     align-items: center
     justify-content: center
+    cursor: pointer
 .rad_but
     padding: 0 7px 7px 0
+    cursor: pointer
 .rad_but3
     padding: 0 7px 0px 0
 .bgr_sobes
@@ -983,6 +1034,131 @@ footer
     align-items: center
     justify-content: space-evenly
 //админка
+//модерация ad
+.rectangle_admod
+    background-color: #FFEFDF
+    border-radius: 11px
+    height: 1052px
+    width: 922px
+    margin: 0px 0 25px 0
+    display: flex
+    flex-direction: column
+.info_priyutad
+    height: 49px
+    width: 792px
+    display: flex
+    flex-direction: row
+    margin: 25px 0 0 60px
+.namepriyutt
+    background-color: #FFFFFF
+    border-radius: 11px 0px 0px 11px
+    height: 49px
+    width: 119px
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: center
+.namepriyutt2
+    background-color: #F4D0AC
+    border-radius: 0px
+    height: 49px
+    width: 466px
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: center
+.namepriyutt_status
+    background-color: #CEF8BD
+    border-radius: 0px 11px 11px 0px
+    height: 49px
+    width: 207px
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: center
+//мяу
+.info_catadmod
+    height: 49px
+    width: 596px
+    display: flex
+    flex-direction: row
+    margin: 25px 0 0 60px
+.info_cat1
+    background-color: #FFFFFF
+    border-radius: 11px 0px 0px 11px
+    height: 49px
+    width: 299px
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: center
+.info_cat2
+    background-color: #F4D0AC
+    border-radius: 0 11px 11px 0px
+    height: 49px
+    width: 297px
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: center
+.info_with_img
+    display: flex
+    flex-direction: row
+.info_catadmod_all
+    display: flex
+    flex-direction: column
+.img_of_catinandmod
+    height: 226px
+    width: 226px
+    border-radius: 50%
+    margin: 80px 0 0 20px
+    background-color: #ffffff
+.opisanie_catsmod
+    height: 49px
+    width: 819px
+    border-radius: 11px
+    background-color: #ffffff
+    margin: 45px 0 0 55px
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: center
+.opisanie_catsmod_big
+    height: 352px
+    width: 819px
+    border-radius: 11px
+    background-color: #F4D0AC
+    margin: 15px 0 0 55px
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: center
+.button_good_catmod
+    height: 49px
+    width: 297px
+    border-radius: 11px
+    background-color: #DCFFD4
+    color: #105A1E
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: center
+.button_bad_catmod
+    height: 49px
+    width: 297px
+    border-radius: 11px
+    background-color: #FFD8D4
+    color: #5A2F10
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: center
+.buttons_catmod
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: space-evenly
+    margin: 20px 0 0 0
 //список пользователей
 .rectangle2_user
     background-color: #FFFFFF
@@ -1012,7 +1188,7 @@ footer
     color: #5A2F10
 
 //.lp_wrapper
-    
+
 //список приютов
 .adminbroni_all
     height: 100%

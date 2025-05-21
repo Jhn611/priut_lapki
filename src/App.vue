@@ -71,7 +71,7 @@ export default {
       this.$router.push("/post_an_ad");
     },
     changePageToSobesedovanie() {
-      this.$router.push("/sobesevodanie");
+      this.$router.push("/sobesedovanie");
     },
     //other
     changePageToHome() {
@@ -160,7 +160,7 @@ export default {
         <img
           class="logo_find"
           src="./assets/imgs/logo.svg"
-          @click="changePageToHome"
+          @click="changePageToHellopage"
           style="cursor: pointer"
         />
         <MainSearch v-model="command" />
@@ -186,7 +186,7 @@ export default {
         </div>
       </div>
       <div class="header_text">
-        <div class="header_text1" v-if="$route.path == '/admin_see_ad' || $route.path == '/admin_list_priyuts' || $route.path == '/admin_list_users' || $route.path == '/admin_list_priyut_for_moderation' || $route.path == '/admin_list_ad_for_moderation'">
+        <!-- <div class="header_text1_admin" v-if="$route.path == '/admin_see_ad' || $route.path == '/admin_list_priyuts' || $route.path == '/admin_list_users' || $route.path == '/admin_list_priyut_for_moderation' || $route.path == '/admin_list_ad_for_moderation'">
           <a @click="changePageAdmin_see_ad" style="cursor: pointer">
             Просмотр объявлений
           </a>
@@ -202,17 +202,73 @@ export default {
           <a @click="changePageAdmin_list_priyuts" style="cursor: pointer">
             Список приютов
           </a>
+        </div> -->
+
+        <div class="header_text" v-if="$route.path.startsWith('/admin')">
+          <div class="header_text1_admin">
+            <div
+              class="admin-link"
+              :class="{ active: $route.path === '/admin_see_ad' }"
+              @click="changePageAdmin_see_ad"
+            >
+              Просмотр объявлений
+            </div>
+            <div
+              class="admin-link"
+              :class="{
+                active: $route.path === '/admin_list_ad_for_moderation',
+              }"
+              @click="changePageAdmin_list_ad_for_moderation"
+            >
+              Модерация объявлений
+            </div>
+            <div
+              class="admin-link"
+              :class="{
+                active: $route.path === '/admin_list_priyut_for_moderation',
+              }"
+              @click="changePageAdmin_list_priyut_for_moderation"
+            >
+              Модерация приютов
+            </div>
+            <div
+              class="admin-link"
+              :class="{ active: $route.path === '/admin_list_users' }"
+              @click="changePageAdmin_list_users"
+            >
+              Список пользователей
+            </div>
+            <div
+              class="admin-link"
+              :class="{ active: $route.path === '/admin_list_priyuts' }"
+              @click="changePageAdmin_list_priyuts"
+            >
+              Список приютов
+            </div>
+          </div>
         </div>
-        <div class="header_text1" v-if="($route.path !== '/admin_see_ad') && ($route.path !== '/admin_list_priyuts') && ($route.path !== '/admin_list_users') && ($route.path !== '/admin_list_priyut_for_moderation') && ($route.path !== '/admin_list_ad_for_moderation')">
-          <a @click="changePageToAnnouncements" style="cursor: pointer">
-            Объявления
-          </a>
-          <a @click="changePageToPost_an_ad" style="cursor: pointer">
-            Выложить объявление
-          </a>
-          <a @click="changePageToSobesedovanie" style="cursor: pointer">
-            Собеседование
-          </a>
+
+        <div
+          class="header_text header_text2"
+          v-if="
+            $route.path !== '/admin_see_ad' &&
+            $route.path !== '/admin_list_priyuts' &&
+            $route.path !== '/admin_list_users' &&
+            $route.path !== '/admin_list_priyut_for_moderation' &&
+            $route.path !== '/admin_list_ad_for_moderation'
+          "
+        >
+          <div class="header_text1">
+            <a @click="changePageToAnnouncements" style="cursor: pointer">
+              Объявления
+            </a>
+            <a @click="changePageToPost_an_ad" style="cursor: pointer">
+              Выложить объявление
+            </a>
+            <a @click="changePageToSobesedovanie" style="cursor: pointer">
+              Собеседование
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -224,9 +280,9 @@ export default {
 
   <footer class=".bgr_footer" v-if="!load">
     <div class="backgr_footer">
-      <div class="p_footer"> 
-        <p> Вместе мы сможем подарить каждому дом</p>
-        <p class="p_footer2"> Нужна именно твоя помощь </p>
+      <div class="p_footer">
+        <p>Вместе мы сможем подарить каждому дом</p>
+        <p class="p_footer2">Нужна именно твоя помощь</p>
       </div>
     </div>
   </footer>
