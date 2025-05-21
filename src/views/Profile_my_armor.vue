@@ -11,6 +11,21 @@ export default {
       phone: "",
       load: false,
       login: false,
+      armored_cats: [{
+    "name": "string",
+    "age": "string",
+    "color": "string",
+    "breed": "string",
+    "gender": "string",
+    "description": "string",
+    "photo_url": new URL("../assets/imgs/cat1.jpg", import.meta.url).href,
+    "is_sterilized": false,
+    "has_rabies_vaccine": false,
+    "id": 0,
+    "booked_by_user_id": 0,
+    "is_favorite": false
+  }],
+  activeModalId: null,
     };
   },
   components: {
@@ -21,14 +36,20 @@ export default {
     // тут функции которые что-то считают и возвращают что-то (пока можно не использовать, это для оптимизации)
   },
   methods: {
-    changePageToProfile(){
-      this.$router.push('/profile');
+    openModal(catId) {
+      this.activeModalId = catId; // Устанавливаем ID кота для модального окна
     },
-    changePageToProfile_changeinfo(){
-      this.$router.push('/profile_changeinfo');
+    closeModal(e) {
+      // Закрываем только если клик был не по кнопке меню
+      if (!e.target.closest(".menu-modal-btn")) {
+        this.activeModalId = null;
+      }
     },
-    changePageToProfile_cats(){
-      this.$router.push('/profile_cats');
+    isModalOpen(catId) {
+      return this.activeModalId === catId; // Проверяем, для этого ли кота открыто окно
+    },
+    changeTab() {
+      this.$router.push(`/home`);
     },
     fix(str){
       if(str == ""){
@@ -78,101 +99,38 @@ export default {
         this.login = true;
       }
     }
+    document.addEventListener("click", this.closeModal.bind(this));
   },
 
   unmounted() {
-    // то что происходит когда страница закрывается/происходит переход на другу страницу
+    document.removeEventListener("click", this.closeModal.bind(this));
   },
 };
 </script>
 
 <template>
-  <div class="background_profile"> 
-  <div class="background_profile_left">
-    <div class="profile_setup">
-        <div class="bgr_avatarka">
-          <div class="p_NS">
-            <p>{{ fix(name) + fix(last_name) }}</p>
+  <div class="background_profile_right"> 
+    <div class="status_sobes" v-if="!load && armored_cats.length != 0"> <p> Мои брони </p> </div>
+    <div class="cats_armored" v-if="!load && armored_cats.length != 0">
+      <div v-for="cat in armored_cats" :key="cat.id">
+        <div class="profile-armored-cat">
+          <img :src="cat.photo_url" alt="">
+          <div class="profile-armored-cat-right">
+            <div class="profile-armored-cat-right-header"><p>{{ cat.name }}</p> <div class="menu-modal-btn" @click="openModal(cat.id)">...</div></div>
+            <div class="profile-armored-cat-right-description"><p>Кот за вами забронирован.
+Свяжитесь с приютом для уточнения деталей.</p> <button>Связаться</button></div>
+          </div>
+          <div class="menu-modal" v-if="isModalOpen(cat.id)">
+            <p class="menu-modal-option">Перейти к объявлению</p>
+            <p class="menu-modal-option">Снять бронь</p>
           </div>
         </div>
-        <div class="Name_Subname">
-          <p class="Name">{{ name }}</p>
-          <p class="Subname">{{ last_name }}</p>
-        </div>
-      </div>
-
-    <div class="meaning">
-      <img src="../assets/imgs/Rectangle.svg" />
-      <p class="text_mean"> Любитель котиков, который может подарить счастливую жизнь и любимый дом
-        коту. </p>
-        <p class="text_mean_gpt">(Сгенерированно GigaChat)</p>
+      </div> 
     </div>
-
-    <div class="pr_setup_all"> 
-
-      <div class="bgr_ch_pr_with_rb" @click="changePageToProfile_changeinfo" style="cursor: pointer;"> 
-        <img src="../assets/imgs/Radio_button_on.svg" class="rad_but">
-        <div class="bgr_change_pr"> <a> Изменить профиль </a></div>
-      </div>
-
-      <div class="bgr_ch_pr_with_rb" @click="changePageToProfile" style="cursor: pointer;"> 
-        <img src="../assets/imgs/Radio_button_off.svg" class="rad_but">
-        <div class="bgr_sobes"> <a> Статус собеседования </a></div>
-      </div>
-
-      <div class="bgr_ch_pr_with_rb" @click="changePageToProfile_cats" style="cursor: pointer;">
-        <img src="../assets/imgs/Radio_button_off.svg" class="rad_but3">
-        <div class="bgr_catstopriyut"> <a> Коты, сданные в приют </a> </div>
-      </div>
-      
-    </div>
-    <div v-if="login" class="btn" @click="logout"><p>Выйти</p></div>
-  </div>
-
-  <div class="background_profile_right"> 
-    <div class="status_sobes" v-if="!load"> <p> Изменение информации профиля </p> </div>
-    <div class="bgr_status_sobes" v-if="!load"> 
-      <p> Имя </p>
-      <label class="input">
-            <input
-              v-model="name"
-              class="input__field"
-              type="text"
-              placeholder=" "
-            />
-            <span class="input__label">Например: Иван</span>
-      </label>
-    
-      <p> Фамилия </p>
-      <label class="input">
-            <input
-              v-model="last_name"
-              class="input__field"
-              type="text"
-              placeholder=" "
-            />
-            <span class="input__label">Например: Иванов</span>
-      </label>
-      
-      <p> Номер телефона </p>
-      <label class="input">
-            <input
-              v-model="phone"
-              class="input__field"
-              type="text"
-              placeholder=" "
-            />
-            <span class="input__label">Например: +79321112723</span>
-      </label>
-
-      <div @click="sendChanges" class="btn">
-        <p>Изменить</p>
-      </div>
-    </div>
+    <div class="status_sobes" v-if="!load && armored_cats.length == 0" @click="changeTab"> <p> Просмотр объявлений </p> </div>
     <div class="loader" v-if="load">
         <img src="../assets/imgs/Loader.svg" alt="" />
     </div>   
-  </div>
   </div>
 </template>
 
