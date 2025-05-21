@@ -183,3 +183,19 @@ export async function send_priyut_form(formData, API_TOKEN) {
         );
         return response.data
 }
+
+export async function get_priyuts(token) {
+  return req("", `/admin/shelter_applications`, "get", token);
+}
+
+export async function post_priyuts_status(action,rejection_reason, id, token) {
+  const data = {
+    action: action,
+    rejection_reason: rejection_reason
+  };
+  return req(data, `/admin/shelter_applications/${id}/action`, "post", token);
+}
+
+export async function get_users(token) {
+  return req("", `/admin/users`, "get", token);
+}

@@ -1,246 +1,444 @@
 <script>
-import { get_book_cats, search_book_cats, unbind_cat } from "@/API";
+import { get_priyuts, post_priyuts_status } from "@/API";
 import CatCard from "../components/CatCard.vue";
+
 export default {
   data() {
     return {
-      // тут переменные которые будут изменяться или использоваться для отображения или для изменения состояния(видно или не видно блок например)
       token: "",
       name: "",
       last_name: "",
-      cats: [],
+      priyuts: [],
       query: "",
       load: false,
+      activeTab: 'all',
       menuVisible: false,
+      currentPriyutId: null,
+      showRejectDialog: false,
+      rejectionReason: "",
+      tabs: [
+        { id: 'all', label: 'Все приюты' },
+        { id: 'moderation', label: 'На модерации' },
+        { id: 'approved', label: 'Одобренные' },
+        { id: 'rejected', label: 'Отклоненные' }
+      ]
     };
   },
   components: {
-    //тут импортируются компоненты (например карточка)
     CatCard,
   },
   computed: {
-    // тут функции которые что-то считают и возвращают что-то (пока можно не использовать, это для оптимизации)
+    filteredPriyuts() {
+      let filtered = this.priyuts;
+      
+      if (this.activeTab === 'moderation') {
+        filtered = filtered.filter(p => p.status === 'pending');
+      } else if (this.activeTab === 'approved') {
+        filtered = filtered.filter(p => p.status === 'approved');
+      } else if (this.activeTab === 'rejected') {
+        filtered = filtered.filter(p => p.status === 'rejected');
+      }
+      
+      if (this.query) {
+        const q = this.query.toLowerCase();
+        filtered = filtered.filter(p => 
+          p.name.toLowerCase().includes(q) ||
+          p.town.toLowerCase().includes(q) ||
+          p.address.toLowerCase().includes(q) ||
+          p.phone_number.includes(q)
+        );
+      }
+      
+      return filtered;
+    }
   },
   methods: {
-    changePageToProfile() {
-      this.$router.push("/profile");
-    },
-    changePageToHome() {
-      this.$router.push("/home");
-    },
-    changePageToSaved() {
-      this.$router.push("/saved");
-    },
-    changePageToContacts() {
-      this.$router.push("/contacts");
-    },
-    changePageToHowtohelp() {
-      this.$router.push("/howtohelp");
-    },
-    //админка
-    changePageAdmin_see_ad() {
-      this.$router.push("/admin_see_ad");
-    },
-    changePageAdmin_list_users() {
-      this.$router.push("/admin_list_users");
-    },
-    changePageAdmin_list_priyuts() {
-      this.$router.push("/admin_list_priyuts");
-    },
-    changePageAdmin_list_priyut_for_moderation() {
-      this.$router.push("/admin_list_priyut_for_moderation");
-    },
-    changePageAdmin_list_ad_for_moderation() {
-      this.$router.push("/admin_list_ad_for_moderation");
-    },
-    async loadBookedCats() {
+    async loadPriyuts() {
       this.load = true;
       try {
-        const reg = await get_book_cats(this.token);
-        if (typeof reg != "number" && typeof reg != "undefined") {
-          console.log(reg, typeof reg);
-          this.cats = reg;
+        const response = await get_priyuts(this.token);
+        if (response && Array.isArray(response)) {
+          this.priyuts = response;
         }
-        this.load = false;
-      } catch {
-        this.load = false;
-      }
-    },
-    async search() {
-      this.load = true;
-      try {
-        const reg = await search_book_cats(this.query, this.token);
-        if (typeof reg != "number" && typeof reg != "undefined") {
-          console.log(reg, typeof reg);
-          this.cats = reg;
-        }
-        this.load = false;
-      } catch {
+      } catch (error) {
+        console.error('Ошибка загрузки приютов:', error);
+      } finally {
         this.load = false;
       }
     },
-    async unbind(cat) {
-      this.load = true;
-      try {
-        const reg = await unbind_cat(cat, this.token);
-        this.loadBookedCats();
-        this.load = false;
-      } catch {
-        this.load = false;
-      }
+    changeTab(tab) {
+      this.activeTab = tab;
     },
-    toggleMenu() {
+    toggleMenu(priyutId, event) {
+      event.stopPropagation();
+      this.currentPriyutId = priyutId;
       this.menuVisible = !this.menuVisible;
     },
-    handleOption(option) {
-      alert(`Вы выбрали: ${option}`);
+    async handleOption(option) {
       this.menuVisible = false;
-    },
-    handleClickOutside(event) {
-      if (!this.$el.contains(event.target)) {
-        this.menuVisible = false;
+      
+      if (option === 'Подтвердить статус') {
+        await this.approveShelter();
+      } else if (option === 'Отклонить') {
+        this.showRejectDialog = true;
+      } else {
+        console.log(`Действие: ${option} для приюта ID: ${this.currentPriyutId}`);
+        // Здесь можно добавить другие действия
       }
     },
-    //тут функции которые будем использовать для изменения визуального контента (изменение переменных, добавление стилей, и т. д.) в целом можно все тут писать
+    async approveShelter() {
+      this.load = true;
+      try {
+        const response = await post_priyuts_status(
+          'approve',
+          null,
+          this.currentPriyutId,
+          this.token
+        );
+        if (response) {
+          await this.loadPriyuts();
+        }
+      } catch (error) {
+        console.error('Ошибка подтверждения приюта:', error);
+      } finally {
+        this.load = false;
+      }
+    },
+    async rejectShelter() {
+      if (!this.rejectionReason) {
+        alert('Пожалуйста, укажите причину отказа');
+        return;
+      }
+      
+      this.load = true;
+      try {
+        const response = await post_priyuts_status(
+          'reject',
+          this.rejectionReason,
+          this.currentPriyutId,
+          this.token
+        );
+        if (response) {
+          this.showRejectDialog = false;
+          this.rejectionReason = "";
+          await this.loadPriyuts();
+        }
+      } catch (error) {
+        console.error('Ошибка отклонения приюта:', error);
+      } finally {
+        this.load = false;
+      }
+    },
+    handleClickOutside() {
+      this.menuVisible = false;
+    },
+    getStatusText(status) {
+      switch(status) {
+        case 'approved': return 'Подтвержден';
+        case 'rejected': return 'Отклонен';
+        case 'pending': return 'На модерации';
+        default: return status;
+      }
+    },
+    getStatusClass(status) {
+      switch(status) {
+        case 'approved': return 'status-approved';
+        case 'rejected': return 'status-rejected';
+        case 'pending': return 'status-pending';
+        default: return '';
+      }
+    },
+    formatDate(dateString) {
+      const date = new Date(dateString);
+      return date.toLocaleDateString('ru-RU');
+    }
   },
-
   async mounted() {
-    // то что происходит когда страница создаётся (то есть запуск анимаций которые должны проиграться при открытии страницы и подобное)
     this.token = localStorage.getItem("token");
     if (this.token && this.token != "") {
       this.name = localStorage.getItem("name");
       this.last_name = localStorage.getItem("last_name");
-      await this.loadBookedCats();
+      await this.loadPriyuts();
     }
     document.addEventListener("click", this.handleClickOutside);
   },
-
   unmounted() {
     document.removeEventListener("click", this.handleClickOutside);
-    // то что происходит когда страница закрывается/происходит переход на другу страницу
-  },
+  }
 };
 </script>
 
 <template>
-  <div class="adminbroni_all">
-    <div class="bgr_adminbroni_cats">
-      <p class="text_broni"><b> Список приютов </b></p>
-      <div class="search-bar">
-        <input type="text" v-model="query" placeholder="Поиск..." />
-        <button @click="search">
-          <img src="../assets/imgs/Search.svg" />
+  <div class="admin-priyuts-container">
+    <!-- Диалог отклонения приюта -->
+    <div v-if="showRejectDialog" class="reject-dialog-overlay">
+      <div class="reject-dialog">
+        <h3>Укажите причину отказа</h3>
+        <textarea v-model="rejectionReason" placeholder="Причина отказа..."></textarea>
+        <div class="dialog-buttons">
+          <button @click="rejectShelter" class="confirm-btn">Отклонить</button>
+          <button @click="showRejectDialog = false" class="cancel-btn">Отмена</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="admin-header">
+      <h1>Управление приютами</h1>
+      <div class="admin-tabs">
+        <button 
+          v-for="tab in tabs" 
+          :key="tab.id"
+          :class="{ 'active-tab': activeTab === tab.id }"
+          @click="changeTab(tab.id)"
+        >
+          {{ tab.label }}
         </button>
       </div>
-      <!-- <div class="bgr_bronicats-container" v-if="!load">
-        <div class="bgr_bronicats" v-for="item in cats" :key="item">
-          <div class="photo_cat">
-            <img
-              class="photo_cat-img"
-              :src="`http://26.48.41.80:8000/static/photos/${item.cat.photo_url}`"
-              alt=""
-            />
-          </div>
-          <div class="data_broni">
-            <div class="all_bgr_imya">
-              <div class="bgr_imya">
-                <p class="p_imya">Имя кошки</p>
-                <div class="bgr_imya_cat">
-                  <p class="p_imya_cat">{{ item.cat.name }}</p>
-                </div>
-              </div>
-            </div>
+    </div>
 
-            <div class="bgr_imya">
-              <p class="p_imya">Имя клиента</p>
-              <div class="bgr_imya_cat">
-                <p class="p_imya_cat">{{ item.user.first_name }}</p>
-              </div>
-            </div>
-            <div class="bgr_imya">
-              <p class="p_imya">Номер телефона</p>
-              <div class="bgr_imya_cat">
-                <p class="p_imya_cat">{{ item.user.phone_number }}</p>
-              </div>
-            </div>
-          </div>
-          <div class="button_krest" @click="unbind(item.cat.id)"><img src="../assets/imgs/krest.svg" /></div>
+    <div class="search-container">
+      <input 
+        type="text" 
+        v-model="query" 
+        placeholder="Поиск по названию, городу или адресу..."
+        class="search-input"
+      />
+    </div>
+
+    <div class="priyuts-list" v-if="!load && filteredPriyuts.length > 0">
+      <div class="priyut-card" v-for="priyut in filteredPriyuts" :key="priyut.id">
+        <div class="priyut-photo">
+          <img 
+            :src="`http://26.48.41.80:8000${priyut.photo_url}`"
+            :alt="priyut.name"
+          />
         </div>
-      </div> -->
-
-      <div class="rectangle1">
-        <div class="rectangle2">
-          <div class="charact_priyut">
-            <div class="div_listpriyut1">
-            <div class="div_lp1">
-            <p> Название </p>
-            </div>
-            <p class="name_lp"> Любимчики </p>
+        <div class="priyut-info">
+          <h3>{{ priyut.name }}</h3>
+          <div class="priyut-meta">
+            <span class="priyut-location">
+              {{ priyut.town }}, {{ priyut.address }}
+            </span>
+            <span class="priyut-phone">
+              {{ priyut.phone_number }}
+            </span>
+            <span :class="['priyut-status', getStatusClass(priyut.status)]">
+              {{ getStatusText(priyut.status) }}
+            </span>
           </div>
-          <div class="div_listpriyut1">
-            <div class="div_lp2">
-            <p> Город </p>
-            </div>
-            <p class="name_lp"> Москва </p>
+          <p class="priyut-description">{{ priyut.description }}</p>
+          <div class="priyut-footer">
+            <a :href="priyut.link_maps" target="_blank" class="map-link">
+              Посмотреть на карте
+            </a>
+            <span class="priyut-date">
+              Создан: {{ formatDate(priyut.created_at) }}
+            </span>
           </div>
-          <div class="div_listpriyut1">
-            <div class="div_lp2">
-            <p> Адрес </p>
-            </div>
-            <p class="name_lp"> ул. Любимчики </p>
+          <div v-if="priyut.rejection_reason" class="rejection-reason">
+            <strong>Причина отказа:</strong> {{ priyut.rejection_reason }}
           </div>
-          <div class="div_listpriyut1">
-            <div class="div_lp2">
-            <p> Номер телефона </p>
-            </div>
-            <p class="name_lp"> +7 906 538 92 71 </p>
-          </div>
-          <div class="div_listpriyut1">
-            <div class="div_lp2">
-            <p> Статус </p>
-            </div>
-            <div class="status_lp_good">
-              <p class="name_lp"> Подтвержден </p>
-            </div>
-          </div>
-          <div class="div_listpriyut1">
-            <div class="div_lp3">
-            <p> Объявления </p>
-            </div>
-            <p class="name_lp"> 7 </p>
-            <img src="../assets/imgs/Externallink2.svg">
-          </div>
-          </div>
+        </div>
+        <div class="priyut-actions">
           <div class="lp_wrapper">
-          <div class="lp_menu" @click="toggleMenu">
-            <p> . . . </p>
+            <div class="lp_menu" @click="toggleMenu(priyut.id, $event)">
+              <p>...</p>
+            </div>
+            <div
+              class="lp_dropdown"
+              v-show="menuVisible && currentPriyutId === priyut.id"
+              @click.stop
+            >
+              <div class="lp_option" @click="handleOption('Удалить приют')">Удалить приют</div>
+              <div class="lp_option" @click="handleOption('Заблокировать')">Заблокировать</div>
+              <div class="lp_option" @click="handleOption('Разблокировать')">Разблокировать</div>
+              <div 
+                class="lp_option" 
+                @click="handleOption(priyut.status === 'pending' ? 'Подтвердить статус' : 'Отклонить')"
+              >
+                {{ priyut.status === 'pending' ? 'Подтвердить статус' : 'Отклонить' }}
+              </div>
+            </div>
           </div>
-          <div
-            class="lp_dropdown"
-            v-show="menuVisible"
-            @click.stop
-          >
-            <div class="lp_option" @click="handleOption('Удалить приют')">Удалить приют</div>
-            <div class="lp_option" @click="handleOption('Заблокировать')">Заблокировать</div>
-            <div class="lp_option" @click="handleOption('Разблокировать')">Разблокировать</div>
-            <div class="lp_option" @click="handleOption('Подтвердить статус')">Подтвердить статус</div>
-          </div>
-        </div>
-          
         </div>
       </div>
+    </div>
 
-      <div class="loader" v-if="load">
-        <img src="../assets/imgs/Loader.svg" alt="" />
-      </div>
+    <div v-else-if="!load && filteredPriyuts.length === 0" class="no-results">
+      <p>Нет приютов для отображения</p>
+    </div>
+
+    <div v-if="load" class="loader-container">
+      <img src="../assets/imgs/Loader.svg" alt="Загрузка..." />
     </div>
   </div>
 </template>
 
 <style scoped>
+.admin-priyuts-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.admin-header {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  color: #5A2F10;
+}
+
+.admin-tabs {
+  display: flex;
+  gap: 10px;
+  border-bottom: 1px solid #DFBB9E;
+  padding-bottom: 10px;
+}
+
+.admin-tabs button {
+  padding: 8px 16px;
+  background: #FFEEE0;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.admin-tabs button.active-tab {
+  background: #DFBB9E;
+  color: white;
+}
+
+.search-container {
+  margin-bottom: 20px;
+}
+
+.search-input {
+  width: 850px;
+  padding: 10px 15px;
+  border: 1px solid #DFBB9E;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.search-input:focus {
+  border: 1px solid #DFBB9E;
+  outline: none;
+}
+
+.priyuts-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.priyut-card {
+  width: 850px;
+  display: flex;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+}
+
+.priyut-photo {
+  width: 250px;
+  height: 200px;
+  flex-shrink: 0;
+}
+
+.priyut-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.priyut-info {
+  flex: 1;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.priyut-info h3 {
+  margin: 0;
+  color: #333;
+}
+
+.priyut-meta {
+  display: flex;
+  gap: 15px;
+  font-size: 14px;
+  color: #666;
+}
+
+.priyut-status {
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.status-approved {
+  background-color: #E6F7E6;
+  color: #2E7D32;
+}
+
+.status-rejected {
+  background-color: #FFEBEE;
+  color: #C62828;
+}
+
+.status-pending {
+  background-color: #FFF8E1;
+  color: #F57F17;
+}
+
+.priyut-description {
+  margin: 0;
+  color: #444;
+  font-size: 14px;
+}
+
+.priyut-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: auto;
+  font-size: 13px;
+}
+
+.map-link {
+  color: #1976d2;
+  text-decoration: none;
+}
+
+.map-link:hover {
+  text-decoration: underline;
+}
+
+.priyut-date {
+  color: #888;
+}
+
+.rejection-reason {
+  margin-top: 10px;
+  padding: 8px;
+  background-color: #ffebee;
+  border-radius: 4px;
+  font-size: 13px;
+  color: #c62828;
+}
+
+.priyut-actions {
+  padding: 15px;
+  border-left: 1px solid #eee;
+}
+
 .lp_wrapper {
   position: relative;
-  display: inline-block;
 }
 
 .lp_menu {
@@ -253,24 +451,21 @@ export default {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  margin: 5px 5px 0 0;
   user-select: none;
 }
 
 .lp_dropdown {
   position: absolute;
-  top: 50px;
-  right: 0;
+  top: 5px;
+  right: 70px;
   background-color: #FFEAD4;
   border-radius: 11px;
   width: 261px;
-  height: 149px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   z-index: 10;
-  padding: 10px 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
 }
 
 .lp_option {
@@ -278,11 +473,96 @@ export default {
   cursor: pointer;
   transition: background-color 0.2s;
   font-size: 16px;
+  margin:0;
 }
+.lp_option:first-child {
+  border-radius: 11px 11px 0 0;
+}
+.lp_option:last-child {
+ border-radius:  0 0 11px 11px;
+}
+
 
 .lp_option:hover {
   background-color: #DCC5AC;
 }
-</style>
 
-<style src="../styles/style.css"></style>
+.no-results {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+}
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+}
+
+.reject-dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.reject-dialog {
+  background-color: white;
+  padding: 20px;
+  border-radius: 11px;
+  width: 400px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.reject-dialog h3 {
+  margin-top: 0;
+  color: #5A2F10;
+}
+
+.reject-dialog textarea {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #DFBB9E;
+  border-radius: 8px;
+  resize: vertical;
+}
+
+.dialog-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.confirm-btn {
+  background-color: #FF5252;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.cancel-btn {
+  background-color: #FFEEE0;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.confirm-btn:hover {
+  background-color: #FF1744;
+}
+
+.cancel-btn:hover {
+  background-color: #DFBB9E;
+}
+</style>
