@@ -180,7 +180,7 @@ export default {
   async mounted() {
     // то что происходит когда страница создаётся (то есть запуск анимаций которые должны проиграться при открытии страницы и подобное)
     this.token = localStorage.getItem("token");
-    if (this.token && this.token != "" && false) {
+    if (this.token && this.token != "") {
       this.load = true;
       try {
         const cats_cards = await get_favorite(this.token);

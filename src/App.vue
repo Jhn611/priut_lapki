@@ -54,23 +54,28 @@ export default {
         this.openCard();
       }
     },
-    changePageToProfile() {
-      this.$router.push("/profile");
-    },
-    changePageToHome() {
-      this.$router.push("/home");
+    //header
+    changePageToHellopage() {
+      this.$router.push("/hellopage");
     },
     changePageToSaved() {
       this.$router.push("/saved");
     },
-    changePageToContacts() {
-      this.$router.push("/contacts");
+    changePageToProfile() {
+      this.$router.push("/profile_changeinfo");
     },
-    changePageToHowtohelp() {
-      this.$router.push("/howtohelp");
+    changePageToAnnouncements() {
+      this.$router.push("/announcements");
     },
-    changePageToSurrenderaCat() {
-      this.$router.push("/surrender_a_cat");
+    changePageToPost_an_ad() {
+      this.$router.push("/post_an_ad");
+    },
+    changePageToSobesedovanie() {
+      this.$router.push("/sobesevodanie");
+    },
+    //other
+    changePageToHome() {
+      this.$router.push("/priyut");
     },
     changePageToLogRegIn() {
       this.$router.push("/auth");
@@ -147,7 +152,7 @@ export default {
           <img
             class="icon_home"
             src="./assets/imgs/Home.svg"
-            @click="changePageToHome"
+            @click="changePageToHellopage"
             style="cursor: pointer"
           />
           <img
@@ -166,19 +171,15 @@ export default {
       </div>
       <div class="header_text">
         <div class="header_text1">
-          <a @click="changePageToHowtohelp" style="cursor: pointer">
-            Как помочь
+          <a @click="changePageToAnnouncements" style="cursor: pointer">
+            Объявления
           </a>
-          <a @click="changePageToSurrenderaCat" style="cursor: pointer">
-            Сдать кошку в приют
+          <a @click="changePageToPost_an_ad" style="cursor: pointer">
+            Выложить объявление
           </a>
-          <a @click="changePageToContacts" style="cursor: pointer">
-            Контакты
+          <a @click="changePageToSobesedovanie" style="cursor: pointer">
+            Собеседование
           </a>
-        </div>
-
-        <div class="header_text2">
-          <a> Москва Ул. Софьи Ковалевской 228 </a>
         </div>
       </div>
     </div>
@@ -189,54 +190,10 @@ export default {
   </main>
 
   <footer class=".bgr_footer" v-if="!load">
-    <div class="elements_footer">
-      <div class="upper_piece">
-        <div class="logo_footer">
-          <img src="./assets/imgs/logo.svg" class="logo_img_footer" />
-          <div class="boxes_img_footer">
-            <img src="./assets/imgs/Box.svg" class="box_img_footer" />
-            <img src="./assets/imgs/Box.svg" class="box_img_footer" />
-            <img src="./assets/imgs/Box.svg" class="box_img_footer" />
-          </div>
-        </div>
-
-        <div class="zag_pol_footer">
-          <div class="zag_footer">
-            <p>Информация</p>
-            <p>Контакты</p>
-            <p>Мы в соцсетях</p>
-          </div>
-          <div class="poloska1"></div>
-          <div class="infos_footer">
-            <div class="info1_footer">
-              <p>Время работы:</p>
-              <p>10:00-20:00</p>
-              <p>Адрес:</p>
-              <p>ул. Софьи 228</p>
-            </div>
-
-            <div class="info2_footer">
-              <p>Номер телефона:</p>
-              <p>+7 999 888 55 44</p>
-              <p>Почта:</p>
-              <p>priyut@mail.ru</p>
-            </div>
-
-            <div class="info3_footer">
-              <p><a href="https://vk.com/"> Вконтакте </a></p>
-              <p><a href="https://web.telegram.org/"> Telegram </a></p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="poloska2"></div>
-      <div class="p_bottom_footer">
-        <p> &#169; 2025 Котоприют </p> 
-        <br> <br>  <br> <br>
-        <div class="p_bottom_right_footer">
-          <p>Лапочки</p>
-        </div>
+    <div class="backgr_footer">
+      <div class="p_footer"> 
+        <p> Вместе мы сможем подарить каждому дом </p>
+        <p class="p_footer2"> Нужна именно твоя помощь </p>
       </div>
     </div>
   </footer>

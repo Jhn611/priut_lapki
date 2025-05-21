@@ -14,20 +14,28 @@ export default {
     // тут функции которые что-то считают и возвращают что-то (пока можно не использовать, это для оптимизации)
   },
   methods: {
-    changePageToProfile() {
-      this.$router.push("/profile");
+    //header
+    changePageToPriyut() {
+      this.$router.push("/hellopage");
     },
-    changePageToHome() {
-      this.$router.push("/home");
-    },
-    changePageToSaved() {
+    changePageToPriyut() {
       this.$router.push("/saved");
     },
-    changePageToContacts() {
-      this.$router.push("/contacts");
+    changePageToProfile() {
+      this.$router.push("/profile_changeinfo");
+    },
+    changePageToPriyut() {
+      this.$router.push("/announcements");
+    },
+    changePageToSaved() {
+      this.$router.push("/post_an_ad");
     },
     changePageToHowtohelp() {
-      this.$router.push("/howtohelp");
+      this.$router.push("/sobesevodanie");
+    },
+    //other
+    changePageToHome() {
+      this.$router.push("/priyut");
     },
     //тут функции которые будем использовать для изменения визуального контента (изменение переменных, добавление стилей, и т. д.) в целом можно все тут писать
   },
@@ -43,13 +51,9 @@ export default {
 </script>
 
 <template>
-  <div class="contacts_all">
+  <div class="priyut_all">
     <div class="bgr_photo_map">
       <div class="image_priyut">
-        <div class="metro_adres">
-          <div class="bgr_metro"><p>м. Селигерская</p></div>
-          <div class="bgr_adres"><p>ул. Софьи Ковалевской 228</p></div>
-        </div>
       </div>
       <div class="priyut_map">
         <div style="position: relative; overflow: hidden">
@@ -71,21 +75,23 @@ export default {
       </div>
     </div>
     <div class="bgr_info_video">
-      <div class="div_ph"><p>Номер телефона</p></div>
-      <p>+7 (999) 888 33 55</p>
-      <div class="div_adres"><p>Адрес</p></div>
-      <p>г. Москва ул. Софьи Ковалевской 228</p>
-      <div class="div_howdobr"><p>Как добраться?</p></div>
-      <p>Видео как добраться от метро</p>
-      <div class="video">
-        <video  autoplay muted loop playsinline>
-          <source
-            src="../assets/video/video_2025-04-03_10-46-04.mp4"
-            type="video/mp4"
-          />
-          Ваш браузер не поддерживает видео.
-        </video>
+      <div class="p1_priyut">
+        <p class="p1_1_priyut"> Приют </p>
+        <p class="p1_2_priyut"> "Любимчики"</p>
       </div>
+      <div class="p2_priyut">
+        Адрес
+      <div class="priyut_div1"> </div>
+      </div>
+      <div class="p3_priyut">
+        Номер телефона
+      <div class="priyut_div2"> </div>
+      </div>
+      <div class="p4_priyut">
+        Описание
+      <div class="priyut_div3"> </div>
+      </div>
+      <div class="button_to_ad_priyut"> Просмотреть <br> объявления от приюта </div>
     </div>
   </div>  
 </template>
