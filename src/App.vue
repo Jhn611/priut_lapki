@@ -62,7 +62,7 @@ export default {
       this.$router.push("/saved");
     },
     changePageToProfile() {
-      this.$router.push("/profile_changeinfo");
+      this.$router.push("/profile");
     },
     changePageToAnnouncements() {
       this.$router.push("/announcements");
