@@ -16,6 +16,11 @@ import LogRegIn from './views/LogRegIn.vue';
 import Admin from './views/Admin_see_ad.vue';
 import Hellopage from './views/Hellopage.vue';
 import Announcements from './views/Announcements.vue';
+import Admin_see_ad from './views/Admin_see_ad.vue';
+import Admin_list_users from './views/Admin_list_users.vue';
+import Admin_list_priyuts from './views/Admin_list_priyuts.vue';
+import Admin_list_priyut_for_moderation from './views/Admin_list_priyut_for_moderation.vue';
+import Admin_list_ad_for_moderation from './views/Admin_list_ad_for_moderation.vue';
 
 const routes = [
 ];
@@ -91,9 +96,29 @@ const router = createRouter({
       component: LogRegIn,
     },
     {
-      path: '/admin',
-      name: 'admin',
-      component: Admin,
+      path: '/admin_see_ad',
+      name: 'admin_see_ad',
+      component: Admin_see_ad,
+    },
+    {
+      path: '/admin_list_priyuts',
+      name: 'admin_list_priyuts',
+      component: Admin_list_priyuts,
+    },
+    {
+      path: '/admin_list_users',
+      name: 'admin_list_users',
+      component: Admin_list_users,
+    },
+    {
+      path: '/admin_list_priyut_for_moderation',
+      name: 'admin_list_priyut_for_moderation',
+      component: Admin_list_priyut_for_moderation,
+    },
+    {
+      path: '/admin_list_ad_for_moderation',
+      name: 'admin_list_ad_for_moderation',
+      component: Admin_list_ad_for_moderation,
     },
   ]
 });
