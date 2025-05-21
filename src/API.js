@@ -168,3 +168,18 @@ export async function add_fav(id, token) {
 export async function get_cat(id, token) {
   return req("", `/cats/${id}`, "get", token);
 }
+
+export async function send_priyut_form(formData, API_TOKEN) {
+  const response = await axios.post(
+          BASE_URL + '/shelter_application',
+          formData,
+          {
+            headers: {
+              'accept': 'application/json',
+              'Authorization': `Bearer ${API_TOKEN}`,
+              'Content-Type': 'multipart/form-data'
+            }
+          }
+        );
+        return response.data
+}
