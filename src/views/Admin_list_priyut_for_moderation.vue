@@ -36,8 +36,21 @@ export default {
     changePageToHowtohelp() {
       this.$router.push("/howtohelp");
     },
-    changePageAdmin() {
-      this.$router.push("/admin");
+    //админка
+    changePageAdmin_see_ad() {
+      this.$router.push("/admin_see_ad");
+    },
+    changePageAdmin_list_users() {
+      this.$router.push("/admin_list_users");
+    },
+    changePageAdmin_list_priyuts() {
+      this.$router.push("/admin_list_priyuts");
+    },
+    changePageAdmin_list_priyut_for_moderation() {
+      this.$router.push("/admin_list_priyut_for_moderation");
+    },
+    changePageAdmin_list_ad_for_moderation() {
+      this.$router.push("/admin_list_ad_for_moderation");
     },
     async loadBookedCats() {
       this.load = true;

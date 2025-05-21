@@ -11,6 +11,7 @@ export default {
       cats: [],
       query: "",
       load: false,
+      menuVisible: false,
     };
   },
   components: {
@@ -36,8 +37,21 @@ export default {
     changePageToHowtohelp() {
       this.$router.push("/howtohelp");
     },
-    changePageAdmin() {
-      this.$router.push("/admin");
+    //админка
+    changePageAdmin_see_ad() {
+      this.$router.push("/admin_see_ad");
+    },
+    changePageAdmin_list_users() {
+      this.$router.push("/admin_list_users");
+    },
+    changePageAdmin_list_priyuts() {
+      this.$router.push("/admin_list_priyuts");
+    },
+    changePageAdmin_list_priyut_for_moderation() {
+      this.$router.push("/admin_list_priyut_for_moderation");
+    },
+    changePageAdmin_list_ad_for_moderation() {
+      this.$router.push("/admin_list_ad_for_moderation");
     },
     async loadBookedCats() {
       this.load = true;
@@ -75,6 +89,18 @@ export default {
         this.load = false;
       }
     },
+    toggleMenu() {
+      this.menuVisible = !this.menuVisible;
+    },
+    handleOption(option) {
+      alert(`Вы выбрали: ${option}`);
+      this.menuVisible = false;
+    },
+    handleClickOutside(event) {
+      if (!this.$el.contains(event.target)) {
+        this.menuVisible = false;
+      }
+    },
     //тут функции которые будем использовать для изменения визуального контента (изменение переменных, добавление стилей, и т. д.) в целом можно все тут писать
   },
 
@@ -86,9 +112,11 @@ export default {
       this.last_name = localStorage.getItem("last_name");
       await this.loadBookedCats();
     }
+    document.addEventListener("click", this.handleClickOutside);
   },
 
   unmounted() {
+    document.removeEventListener("click", this.handleClickOutside);
     // то что происходит когда страница закрывается/происходит переход на другу страницу
   },
 };
@@ -97,14 +125,14 @@ export default {
 <template>
   <div class="adminbroni_all">
     <div class="bgr_adminbroni_cats">
-      <p class="text_broni"><b> Список броней </b></p>
+      <p class="text_broni"><b> Список приютов </b></p>
       <div class="search-bar">
         <input type="text" v-model="query" placeholder="Поиск..." />
         <button @click="search">
           <img src="../assets/imgs/Search.svg" />
         </button>
       </div>
-      <div class="bgr_bronicats-container" v-if="!load">
+      <!-- <div class="bgr_bronicats-container" v-if="!load">
         <div class="bgr_bronicats" v-for="item in cats" :key="item">
           <div class="photo_cat">
             <img
@@ -138,12 +166,123 @@ export default {
           </div>
           <div class="button_krest" @click="unbind(item.cat.id)"><img src="../assets/imgs/krest.svg" /></div>
         </div>
+      </div> -->
+
+      <div class="rectangle1">
+        <div class="rectangle2">
+          <div class="charact_priyut">
+            <div class="div_listpriyut1">
+            <div class="div_lp1">
+            <p> Название </p>
+            </div>
+            <p class="name_lp"> Любимчики </p>
+          </div>
+          <div class="div_listpriyut1">
+            <div class="div_lp2">
+            <p> Город </p>
+            </div>
+            <p class="name_lp"> Москва </p>
+          </div>
+          <div class="div_listpriyut1">
+            <div class="div_lp2">
+            <p> Адрес </p>
+            </div>
+            <p class="name_lp"> ул. Любимчики </p>
+          </div>
+          <div class="div_listpriyut1">
+            <div class="div_lp2">
+            <p> Номер телефона </p>
+            </div>
+            <p class="name_lp"> +7 906 538 92 71 </p>
+          </div>
+          <div class="div_listpriyut1">
+            <div class="div_lp2">
+            <p> Статус </p>
+            </div>
+            <div class="status_lp_good">
+              <p class="name_lp"> Подтвержден </p>
+            </div>
+          </div>
+          <div class="div_listpriyut1">
+            <div class="div_lp3">
+            <p> Объявления </p>
+            </div>
+            <p class="name_lp"> 7 </p>
+            <img src="../assets/imgs/Externallink2.svg">
+          </div>
+          </div>
+          <div class="lp_wrapper">
+          <div class="lp_menu" @click="toggleMenu">
+            <p> . . . </p>
+          </div>
+          <div
+            class="lp_dropdown"
+            v-show="menuVisible"
+            @click.stop
+          >
+            <div class="lp_option" @click="handleOption('Удалить приют')">Удалить приют</div>
+            <div class="lp_option" @click="handleOption('Заблокировать')">Заблокировать</div>
+            <div class="lp_option" @click="handleOption('Разблокировать')">Разблокировать</div>
+            <div class="lp_option" @click="handleOption('Подтвердить статус')">Подтвердить статус</div>
+          </div>
+        </div>
+          
+        </div>
       </div>
+
       <div class="loader" v-if="load">
         <img src="../assets/imgs/Loader.svg" alt="" />
       </div>
     </div>
   </div>
 </template>
+
+<style scoped>
+.lp_wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.lp_menu {
+  background-color: #FFEAD4;
+  border-radius: 11px;
+  height: 44px;
+  width: 57px;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: 5px 5px 0 0;
+  user-select: none;
+}
+
+.lp_dropdown {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: #FFEAD4;
+  border-radius: 11px;
+  width: 261px;
+  height: 149px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.lp_option {
+  padding: 8px 20px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-size: 16px;
+}
+
+.lp_option:hover {
+  background-color: #DCC5AC;
+}
+</style>
 
 <style src="../styles/style.css"></style>

@@ -80,6 +80,22 @@ export default {
     changePageToLogRegIn() {
       this.$router.push("/auth");
     },
+    //админка
+    changePageAdmin_see_ad() {
+      this.$router.push("/admin_see_ad");
+    },
+    changePageAdmin_list_users() {
+      this.$router.push("/admin_list_users");
+    },
+    changePageAdmin_list_priyuts() {
+      this.$router.push("/admin_list_priyuts");
+    },
+    changePageAdmin_list_priyut_for_moderation() {
+      this.$router.push("/admin_list_priyut_for_moderation");
+    },
+    changePageAdmin_list_ad_for_moderation() {
+      this.$router.push("/admin_list_ad_for_moderation");
+    },
     close(e) {
       if (
         !this.$el.contains(e.target) &&
@@ -170,7 +186,24 @@ export default {
         </div>
       </div>
       <div class="header_text">
-        <div class="header_text1">
+        <div class="header_text1" v-if="$route.path == '/admin_see_ad' || $route.path == '/admin_list_priyuts' || $route.path == '/admin_list_users' || $route.path == '/admin_list_priyut_for_moderation' || $route.path == '/admin_list_ad_for_moderation'">
+          <a @click="changePageAdmin_see_ad" style="cursor: pointer">
+            Просмотр объявлений
+          </a>
+          <a @click="changePageAdmin_list_ad_for_moderation" style="cursor: pointer">
+            Модерация объявлений
+          </a>
+          <a @click="changePageAdmin_list_priyut_for_moderation" style="cursor: pointer">
+            Модерация приютов
+          </a>
+          <a @click="changePageAdmin_list_users" style="cursor: pointer">
+            Список пользователей
+          </a>
+          <a @click="changePageAdmin_list_priyuts" style="cursor: pointer">
+            Список приютов
+          </a>
+        </div>
+        <div class="header_text1" v-if="($route.path !== '/admin_see_ad') && ($route.path !== '/admin_list_priyuts') && ($route.path !== '/admin_list_users') && ($route.path !== '/admin_list_priyut_for_moderation') && ($route.path !== '/admin_list_ad_for_moderation')">
           <a @click="changePageToAnnouncements" style="cursor: pointer">
             Объявления
           </a>
@@ -192,7 +225,7 @@ export default {
   <footer class=".bgr_footer" v-if="!load">
     <div class="backgr_footer">
       <div class="p_footer"> 
-        <p> Вместе мы сможем подарить каждому дом </p>
+        <p> Вместе мы сможем подарить каждому дом</p>
         <p class="p_footer2"> Нужна именно твоя помощь </p>
       </div>
     </div>
